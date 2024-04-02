@@ -1,0 +1,482 @@
+@font-face {
+  font-family: "Alagard", "IM Fell English", "IM Fell DW Pica";
+  src: url(../assets/fonts/Alagard.ttf);
+  src: url(../assets/fonts/IMFellEnglish-Regular.ttf);
+  src: url(../assets/fonts/IMFellDWPica-Regular.ttf);
+}
+
+html {
+  font-family: "Alagard";
+  overscroll-behavior-y: none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  background-color: #D9A066;
+}
+
+html::-webkit-scrollbar {
+  display: none;
+}
+
+a {
+  color: black;
+}
+
+a:hover {
+  color:#B40101;
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+
+#loading {
+  width: 100vw;
+  height: 100vh;
+  color: black;
+  font-family: "Alagard";
+  text-align: center;
+  z-index: 10;
+  position: absolute;
+}
+
+/* #loading:before {
+  content:"";
+  background-color:#D9A066;
+  position: absolute;
+  height: 100%;
+  width: 6000px;
+  left: -200px;
+  z-index: -1;
+} */
+
+#loading-text {
+  margin-top: 8%;
+  font-size: 2em;
+}
+
+#loading-text:after {
+  animation: dots 2s linear infinite;
+  content: '';
+  color: black;
+}
+
+@keyframes dots {
+  0%, 20% {
+    content: '.';
+  }
+  40% {
+    content: '..';
+  }
+  60% {
+    content: '...';
+  }
+  90%, 100% {
+    content: '';
+  }
+}
+
+#svg-wrapper {
+  background-color:#ddd0b9;
+  position: absolute;
+  height: 44%;
+  top: 50%;
+  margin: 70vh 0;
+  transform: translate(0%, -113.64%);
+  width: 100vw;
+  display: block;
+}
+
+#song-svg {
+  position: absolute;
+  height: 44%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -113.64%);
+  display: block;
+  background-color: #ddd0b9;
+  margin: 1% auto;
+  place-items: center;
+  width: 80%;
+  z-index: 0;
+}
+
+/* #song-svg:before {
+  content:"";
+  background-color:#ddd0b9;
+  position: absolute;
+  height: 100%;
+  width: 100vw;
+  left: -2000px;
+  z-index: -1;
+} */
+
+.ChantScore {
+  margin: .5% 0;
+}
+
+.ChantNotationElement {
+  fill: black;
+}
+
+.ChantNotationElement:hover {
+  fill: #B40101 !important;
+}
+
+/* SVG HITBOXES */
+.Accidental {
+  stroke: pink;
+  stroke-width: 7rem;
+  stroke-opacity: 0%;
+}
+.dividerLine {
+  stroke: pink;
+  stroke-width: 1rem;
+  stroke-opacity: 0%;
+}
+.glyph {
+  stroke: pink;
+  stroke-width: 10rem;
+  stroke-opacity: 0%;
+}
+.neumeLine {
+  stroke: pink;
+  stroke-width: .7rem;
+  stroke-opacity: 0%;
+}
+.annotation {
+  stroke: pink;
+  stroke-width: 1rem;
+  stroke-opacity: 0%;
+}
+/* END SVG HITBOXES */
+
+.annotation:hover {
+  fill: #B40101;
+}
+
+.dropdown-menu {
+  background-color: #402D2B;
+}
+
+.dropdown-item {
+  color: white;
+}
+
+#TextMeasurer {
+  display: none;
+}
+
+body {
+  background-color: #D9A066;
+}
+
+#left-content {
+  position:absolute;
+  top: 0;
+  left: 0.6vw;
+  margin: 1% 0.5%;
+  width: 30%;
+}
+
+#title {
+  font-size: 3vw;
+  font-family: "Alagard";
+  color: black;
+  margin: 0;
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+
+#title:hover {
+  color: #B40101;
+  /* color: #cb3d24; */
+  /* color: #cd3d24; */
+}
+
+.btn {
+  font-family: "Alagard";
+  color: white;
+  background-color: #402D2B;
+  border-color: #402D2B;
+  margin: .35rem 0;
+}
+
+.btn:hover {
+  background-color: #2b1f1e;
+  color: white;
+  border-color: #2b1f1e;
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+
+.btn:disabled:hover {
+  background-color:#373c3f;
+  border-color:#373c3f;
+  cursor: default;
+}
+
+.dropdown-item {
+  font-family: "Alagard";
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+
+#monks-closed {
+  position: absolute;
+  z-index: -1;
+  height: 44%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -54.8%);
+}
+#monks-open {
+  position: absolute;
+  z-index: -2;
+  height: 44%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -54.8%);
+}
+#monks-closed-noeyes {
+  position: absolute;
+  z-index: -3;
+  height: 44%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -54.8%);
+}
+
+#speech-box {
+  font-family: "Alagard";
+  font-size: 16px;
+  position: absolute;
+  height: 22%;
+  top: 2%;
+  left: 24%;
+  right: 24%;
+  display: flex;
+  align-items: flex-end;
+  margin: 6px 6px;
+  z-index: 4;
+}
+
+#speech-text {
+  position: absolute;
+  margin: 2px 6px;
+  /* border-style: solid;
+  border-width: 1px; */
+  border-radius: 10px;
+  border-color: black;
+  background-color: #ddd0b9;
+  padding: 6px 14px;
+  display: none;
+}
+
+#ghost-box {
+  font-family: "Alagard";
+  font-size: 16px;
+  position: absolute;
+  height: 22%;
+  top: 2%;
+  left: 24%;
+  right: 24%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  margin: 6px 6px;
+  z-index: -8;
+}
+
+#ghost-text {
+  position: absolute;
+  margin: 2px 6px;
+  /* border-style: solid;
+  border-width: 1px; */
+  border-radius: 10px;
+  border-color: black;
+  background-color: #ddd0b9;
+  padding: 6px 14px;
+  opacity: 0;
+}
+
+.solfege {
+  color: #136b1f;
+  /* #224527 */
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+.red-text {
+  color: #B40101;
+  /* #224527 */
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+.blue-text {
+  color:rgb(0, 0, 197);
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+/* .blue-text:hover {
+  cursor: none;
+} */
+#blue-text-div {
+  font-family: "Alagard";
+  position: absolute;
+  display: none;
+  background-color: #ddd0b9;
+  border-color: #402D2B;
+  border-style: solid;
+  border-width: 6px;
+  z-index: 5;
+  max-width: 250px;
+  float: right;
+  padding: 6px 6px;
+}
+#blue-div-text {
+  margin: auto;
+}
+#term {
+  color:rgb(0, 0, 197);
+}
+#word-form {
+  color: #136b1f;
+}
+#def {
+  color: #B40101;
+}
+
+#hide-span {
+  display: none;
+}
+
+#right-content {
+  position:absolute;
+  top: 0;
+  right: 0.6vw;
+  margin: 1% 0.5%;
+}
+
+.right-btn {
+  float: right;
+}
+
+/* INFO WINDOW */
+#info-window {
+  font-family: "IM Fell English";
+  font-size: 1.2rem;
+  display: none;
+  position: absolute;
+  top: 2%;
+  left: 10%;
+  right: 10%;
+  border-color: #402D2B;
+  border-style: solid;
+  border-width: 6px;
+  background-color: #ddd0b9;
+  z-index: 5;
+  color: black;
+  padding: 12px;
+}
+#info-window p {
+  margin: 0 24px 6px;
+}
+.indent {
+  text-indent: 2em;
+}
+#info-window a {
+  display: block;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+}
+#info-window img {
+  margin: 12px auto;
+}
+#x {
+  position: absolute;
+  margin: 10px;
+  right: 4px;
+  font-size: 1.2rem;
+}
+#x:hover {
+  color:#B40101;
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+.info-title {
+  text-align: center;
+  font-size: 1.4rem;
+  margin: 12px;
+}
+.info-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  font-style: italic;
+}
+.img-sub {
+  padding: 2px 0 8px;
+}
+#dictionary {
+  display: none;
+}
+#history {
+  display: none;
+}
+#notation {
+  display: none;
+}
+#modes {
+  display: none;
+}
+#solfege-info {
+  display: none;
+}
+#about {
+  display: none;
+}
+#gigachad {
+  width: 50%;
+  margin: auto;
+  display: block;
+}
+#clefs-wrapper {
+  text-align: center;
+}
+.clefs-and-txt {
+  display: inline-block;
+  text-align: center;
+  width: 221px;
+  margin: 0 2.2rem;
+}
+#solfege-staff {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+#modern-modes-img {
+  display: block;
+  width: 65%;
+  margin: 0 auto;
+}
+#gregorian-modes-img {
+  display: block;
+  width: 80%;
+  margin: 0 auto;
+}
+#neumatic-notation-img {
+  display: block;
+  width: 60%;
+  margin: 0 auto;
+}
+#body-div {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -50;
+}
+/* END INFO WINDOW */
+
+/* #history {
+  font-family: "Alagard";
+  display: none;
+  position: absolute;
+  height: 90%;
+  top: 2%;
+  left: 24%;
+  right: 24%;
+  border-color: #402D2B;
+  border-style: solid;
+  border-width: 6px;
+  background-color: #ddd0b9;
+  z-index: 4;
+} */

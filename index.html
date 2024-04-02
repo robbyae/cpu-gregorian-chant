@@ -1,0 +1,148 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset=utf-8>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>CPU Gregorian Chant</title>
+  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+  <!-- bootstrap css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+  <!-- my css -->
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <!-- pyscript css-->
+  <link rel="stylesheet" type="text/css" href="https://pyscript.net/releases/2024.1.1/core.css">
+
+  <!-- tone.js -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <!-- exsurge -->
+  <script defer type="text/javascript" src="js/exsurge.js"></script>
+  <!-- pyscript -->
+  <!-- <script defer src="https://pyscript.net/releases/2024.1.3/core.js" type="module"></script>
+  <script defer src="pyscript/compose.py" type="py" config="pyscript/pyscript.json"></script> -->
+  <!-- bootstrap js -->
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <!-- my js-->
+  <script defer src="js/main.js"></script>
+  <script defer src="js/speech.js"></script>
+</head>
+
+<body onload="loaded()">
+  <div id="body-div">
+    <div id="loading">
+      <p id="loading-text">Loading</p>
+    </div>
+    <div id="left-content">
+      <p id="title">CPU Gregorian Chant</p>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="mode-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mode</button>
+        <div class="dropdown-menu" aria-labelledby="mode-dropdown">
+          <a class="dropdown-item" href="#" onclick="showMode(this)">1: Dorian</a>
+          <a class="dropdown-item" href="#" onclick="showMode(this)">2: Hypodorian</a>
+          <a class="dropdown-item" href="#" onclick="showMode(this)">3: Phrygian</a>
+          <a class="dropdown-item" href="#" onclick="showMode(this)">4: Hypophrygian</a>
+          <a class="dropdown-item" href="#" onclick="showMode(this)">5: Lydian</a>
+          <a class="dropdown-item" href="#" onclick="showMode(this)">6: Hypolydian</a>
+          <a class="dropdown-item" href="#" onclick="showMode(this)">7: Mixolydian</a>
+          <a class="dropdown-item" href="#" onclick="showMode(this)">8: Hypomixolydian</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="form-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Form</button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#" onclick="showForm(this)">Syllabic</a>
+          <a class="dropdown-item" href="#" onclick="showForm(this)">Neumatic</a>
+          <a class="dropdown-item" href="#" onclick="showForm(this)">Melismatic</a>
+        </div>
+      </div>
+      <button py-click="generate_song" class="btn btn-secondary" id="generate-button">Compose</button>
+      <br>
+      <button class="btn btn-secondary" id="perform-button">Perform</button>
+    </div>
+    <div id="right-content">
+      <!-- <button class="btn btn-secondary right-btn" id="dictionary-button">Dictionary</button>
+      <br> -->  
+      <button class="btn btn-secondary right-btn" id="bibliography-button">Bibliography</button>
+      <br>
+      <button class="btn btn-secondary right-btn" id="notation-button">Notation</button>
+      <br>
+      <button class="btn btn-secondary right-btn" id="history-button">History</button>
+      <br>
+      <button class="btn btn-secondary right-btn" id="about-button">About</button>    
+    </div>
+    </div>
+    <div id="blue-text-div">
+      <p id="blue-div-text"><span id="term"></span> (<span id="word-form"></span>): <span id="def"></span></p>
+    </div>
+    <div id="speech-box">
+      <p id="speech-text"></p>
+    </div>
+    <div id="ghost-box">
+      <p id="ghost-text"></p>
+    </div>
+    <div class="monks-images">
+      <img id="monks-closed" src="assets/img/monks-closed-hd.png"/>
+      <img id="monks-closed-noeyes" src="assets/img/monks-closed-noeyes-hd.png"/>
+      <img id="monks-open" src="assets/img/monks-open-hd.png"/>
+    </div>
+    <div id="svg-wrapper">
+      <div id="song-svg" class="song-svg"></div>
+    </div>
+    </div>
+    <div id="info-window">
+      <div id="x"><p>[x]</p></div>
+      <div id="dictionary">
+        <h3 class="info-title">~ Dictionary ~</h3>
+        <p class="dict-item">Mode: the arrangment of notes in a scale</p>
+        <p class="dict-item">Scale: a series of notes covering the span of an octave</p>
+      </div>
+      <div id="history">
+        <h3 class="info-title">~ History of Gregorian Chant ~</h3>
+        <p></p>
+      </div>
+      <div id="notation">
+        <h3 class="info-title">~ Gregorian Notation ~</h3>
+        <p class="indent">For centuries, the method of chant transmission was oral. This posed problems, however, as the lack of a musical notation left much room for interpretation and, in turn, melodic corruption. In an attempt to standardize the repertoire and unify the liturgical practices of the Christian world, notation was invented. The date of invention is unknown, but the earliest surviving tomes of notated chants date to the late ninth century [1]. Its earliest manifestation presented itself in the form of <i>neumatic notation</i>, a style in which symbols called neumes appear above words, denoting the number of syllables to sing and the melodic direction of the song. These early neumes, however, did not specify the exact pitches or rhythms to be sung, and as such served only as a memory aid to those already familiar with the melody.</p>
+        <div class="img-sub">
+          <img id="neumatic-notation-img" src="assets/img/Graz, Universitätsbibliothek, Ms 748.png" alt="Graz, Universitätsbibliothek, Ms 748; Gradual from the Bologna region from around 890/900"/>
+          <a href="https://unipub.uni-graz.at/urn:nbn:at:at-ubg:2-26249" target="_blank" class="info-subtitle">Neumatic Notation from a Gradual of the Bologna region, c. 890/900<br>Graz, Universitätsbibliothek, Ms. 748</a> <!--https://unipub.uni-graz.at/obvugrscript/content/pageview/5746911-->
+        </div>
+        <p class="indent">Gregorian notation materialized to near completion during the first half of the eleventh century with the invention of the four-line staff, an innovation ascribed to the Benedictine monk, Guido of Arezzo (Italian: <i>Guido d'Arezzo</i>). The four-line staff enabled the notation of specific pitches and rhythms.
+        Two movable clefs, the <i>Do</i> and <i>Fa</i> clefs are used to determine the placement of their respective pitches. These may be placed on different lines of the staff to change the singing range (Goodchild 1944, 6-7).</p>
+        <div id="clefs-wrapper">
+          <div class="clefs-and-txt">
+            <img src="assets/img/do-clef.png" alt="Do Clef"/>
+            <p class="info-subtitle">Do Clef</p>
+          </div>
+          <div class="clefs-and-txt">
+            <img src="assets/img/fa-clef.png" alt="Fa Clef"/>
+            <p class="info-subtitle">Fa Clef</p>
+          </div>
+        </div>
+        <p class="indent">Gregorian Notation is not defined by time signatures, rather the length of the sections is dependent on the textual content and neumatic form.</p>
+        <p>[1]<cite id="notation-1"> Burkholder, Grout, & Palisca, "A History of Western Music" 2006, 34-35</cite></p>
+      </div>
+      <div id="solfege-info">
+        <h3 class="info-title">~ Solfege ~</h3>
+        <p>Plainsong is discussed in Solfège, a system of solmization believed to have been invented by Guido d'Arezzo. A possible arrangement of pitches is demonstrated on the staff below.</p>
+        <img id="solfege-staff" src="assets/img/solfege-staff.png" alt="Solfege Staff"/>
+        <p>Note that the locations of these pitches will vary depending on the clef used and its placement on the staff.</p>
+      </div>
+      <div id="modes">
+        <h3 class="info-title">~ Modes ~</h3>
+        <p>The term <i>mode</i> refers to a musical scale and its characteristic melodic and harmonic qualities. In modern music, two modes are common: the Ionian (major) and Aeolian (minor). The Ionian mode spans from <i>Do</i> to <i>Do</i>, and the Aeolian from <i>La</i> to <i>La</i>.</p>
+        <img id="modern-modes-img" src="assets/img/modern-modes.png" alt="modern modes"/>
+        <p>There are eight Gregorian modes, each defined by a <i>final</i> and organized in two categories: authentic and plagal. Each authentic mode has a relative plagal and vice versa. Relative modes share the same final.</p>
+          <img id="gregorian-modes-img" src="assets/img/gregorian-modes.png" alt="gregorian modes"/>
+          <p class="info-subtitle"><i>Finals are underlined. Dominants are encircled.</i></p>
+      </div>
+      <div id="about">
+        <img id="gigachad" src="assets/img/gigachad.png"/>
+      </div>
+  </div>
+</body>
+</html>
