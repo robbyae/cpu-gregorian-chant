@@ -9,7 +9,7 @@ function loaded()
 {
     // document.getElementById("loading").style.display = "none";
     document.getElementById("loading").style.display = "none";
-    txt = 'Welcome to CPU Gregorian Chant, a generative music application for medieval church song! Gregorian Chant refers to the primary repertory of Western plainsong, a type of monophonic song sung in liturgies of the Western Church. Click or hover over our illuminated words for more information or select a mode and form to compose a chant.';
+    txt = 'Welcome to CPU Gregorian Chant, a generative music application for medieval church song! Gregorian Chant refers to the primary repertory of Western plainsong, a type of monophonic song sung in liturgies of the Western Church. Click or hover over our illuminated words for more information, or select a mode and form to compose a chant.';
     find_important();
 }
 
@@ -277,7 +277,7 @@ function initialize_performance(disable_perform)
     if(perform_button.innerHTML == "Perform")
     {
         is_performing = 1;
-        // perform(voice);
+        perform(voice);
         generate_button.disabled = true;
         perform_button.innerHTML = "Stop";
     }

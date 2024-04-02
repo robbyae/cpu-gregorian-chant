@@ -12,7 +12,7 @@
 }
 
 html {
-  font-family: "Alagard", "IM Fell English", "IM Fell DW Pica";
+  font-family: "Alagard";
   overscroll-behavior-y: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -377,17 +377,17 @@ body {
 #info-window p {
   margin: 0 24px 6px;
 }
-.indent {
-  text-indent: 2em;
-}
 #info-window a {
   display: block;
   text-align: center;
-  width: 50%;
+  width: 60%;
   margin: auto;
 }
 #info-window img {
   margin: 12px auto;
+}
+.indent {
+  text-indent: 2em;
 }
 #x {
   position: absolute;
