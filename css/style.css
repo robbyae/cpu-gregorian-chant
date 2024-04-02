@@ -1,7 +1,13 @@
 @font-face {
-  font-family: "Alagard", "IM Fell English", "IM Fell DW Pica";
-  src: url(assets/fonts/Alagard.ttf);
-  src: url(assets/fonts/IMFellEnglish-Regular.ttf);
+  font-family: "Alagard";
+  src: url(../assets/fonts/Alagard.ttf);
+}
+@font-face {
+  font-family: "IM Fell English";
+  src: url(../assets/fonts/IMFellEnglish-Regular.ttf);
+}
+@font-face {
+  font-family: "IM Fell DW Pica";
   src: url(assets/fonts/IMFellDWPica-Regular.ttf);
 }
 
