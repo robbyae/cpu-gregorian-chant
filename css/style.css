@@ -12,7 +12,7 @@
 }
 
 html {
-  font-family: "Alagard";
+  font-family: "Alagard", "IM Fell English", "IM Fell DW Pica";
   overscroll-behavior-y: none;
   -ms-overflow-style: none;
   scrollbar-width: none;
