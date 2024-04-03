@@ -29,7 +29,7 @@ document.getElementById("title").addEventListener("click", () => {
 var active_mode;
 document.getElementById("mode-dropdown").addEventListener("click", () => {
     // txt = 'Greogorian Chant uses the diatonic scale and is categorized by eight modes. Modes 1, 3, 5, and 7 are the authentic modes, and modes 2, 4, 6, and 8 are the plagal modes. Each authentic mode has a relative plagal and vice versa. Each mode posesses three defining attributes: a final, a dominant, and an ambitus.';
-    txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but carry different dominants.';
+    txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but carry different dominants. Click the mode button for more.';
     find_important();
 });
 var prev_mode = "";
@@ -281,7 +281,7 @@ function find_important()
     red_index = 0;
     blue_index = 0;
     plural_i = 0;
-    type_speed = 15;
+    type_speed = 18;
     speech_text.innerHTML="";
     type_iterator = 0;
     perform_clicked = 0;
@@ -372,7 +372,7 @@ function getOffset(el) // https://stackoverflow.com/a/28222246/23386341
 
 // TYPEWRITER EFFECT //
 var type_iterator = 0;
-var type_speed = 15;
+var type_speed = 18;
 var isTyping = false;
 var new_span;
 var span_len;
@@ -449,9 +449,9 @@ function typeWriter()
                         red_spans[i].addEventListener("mousemove", (e) => {
                             blue_text(e,"#a50202",red_spans[i],red_spans[i].innerHTML,1);
                         });
-                        // red_spans[i].addEventListener("mouseleave", (e) => {
-                        //     blue_text(e,"#a50202",red_spans[i],red_spans[i].innerHTML,0);
-                        // });
+                        red_spans[i].addEventListener("mouseleave", (e) => {
+                            blue_text(e,"#a50202",red_spans[i],red_spans[i].innerHTML,0);
+                        });
                     }
                     if(span_status == 1){red_index += 2;}
                     span_status = 0;
@@ -478,7 +478,6 @@ function typeWriter()
                 else
                 {
                     blue_spans = document.getElementsByClassName("blue-text");
-                    // if(blue_indices[blue_index] == plural_indices[plural_i]){plural=1;plural_i++;}else{plural=0;};
                     for(let i=0; i<blue_spans.length; i++)
                     {
                         blue_spans[i].addEventListener("mousemove", (e) => {
@@ -504,17 +503,17 @@ function typeWriter()
             speech_text.insertAdjacentHTML('beforeend', txt.charAt(type_iterator));
             if(txt.charAt(type_iterator) == "," || txt.charAt(type_iterator) == ":")
             {
-                type_speed = 100;
+                type_speed = 150;
                 talk_speed = 200;
             }
             else if(txt.charAt(type_iterator) == "." || txt.charAt(type_iterator) == "!")
             {
-                type_speed = 150;
+                type_speed = 200;
                 talk_speed = 250;
             }
             else
             {
-                type_speed = 15;
+                type_speed = 18;
                 talk_speed = 100;
             }
             type_iterator++;

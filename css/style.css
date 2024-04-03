@@ -7,8 +7,8 @@
   src: url(../assets/fonts/IMFellEnglish-Regular.ttf);
 }
 @font-face {
-  font-family: "IM Fell DW Pica";
-  src: url(../assets/fonts/IMFellDWPica-Regular.ttf);
+  font-family: "IM Fell English Italic";
+  src: url(../assets/fonts/IMFellEnglish-Italic.ttf);
 }
 
 html {
@@ -19,7 +19,7 @@ html {
   background-color: #D9A066;
 }
 body {
-  font-family: "Alagard","IM Fell DW Pica","IM Fell English";
+  font-family: "Alagard","IM Fell English","IM Fell English Italic";
 }
 
 html::-webkit-scrollbar {
@@ -84,13 +84,22 @@ a:hover {
 #svg-wrapper {
   background-color:#ddd0b9;
   position: absolute;
-  height: 44%;
+  height: 30%;
   top: 50%;
-  margin: 70vh 0;
-  transform: translate(0%, -113.64%);
+  margin: 20vh 0 0;
   width: 100vw;
   display: block;
 }
+/* #svg-wrapper {
+  background-color:#ddd0b9;
+  position: absolute;
+  height: 44%;
+  top: 50%;
+  margin: 70vh 0 0;
+  transform: translate(0%, -113.64%);
+  width: 100vw;
+  display: block;
+} */
 
 #song-svg {
   position: absolute;
@@ -204,7 +213,7 @@ body {
   color: white;
   background-color: #402D2B;
   border-color: #402D2B;
-  font-size: 20px;
+  font-size: 16px;
   margin: .35rem 0;
 }
 
@@ -224,7 +233,7 @@ body {
 .dropdown-item {
   font-family: "Alagard";
   cursor: url(../assets/cursors/cursor-finger.png), auto;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 #monks-closed {
@@ -327,14 +336,10 @@ body {
   border-style: solid;
   border-width: 6px;
   z-index: 5;
-  width: 200px;
   max-width: 250px;
   padding: 6px;
 }
 #blue-div-text {
-  margin: auto;
-}
-#def {
   margin: auto;
 }
 #term {
@@ -366,13 +371,13 @@ body {
 
 /* INFO WINDOW */
 #info-window {
-  font-family: "IM Fell DW Pica";
+  font-family: "IM Fell English";
   font-size: 1.2rem;
   display: none;
   position: absolute;
   top: 2%;
-  left: 10%;
-  right: 10%;
+  left: 11%;
+  right: 11%;
   border-color: #402D2B;
   border-style: solid;
   border-width: 6px;
@@ -391,7 +396,22 @@ body {
   margin: auto;
 }
 #info-window img {
-  margin: 12px auto;
+  margin: 12px auto 18px;
+}
+i {
+  font-family: "IM Fell English Italic";
+  font-style: normal;
+}
+.italic {
+  font-family: "IM Fell English Italic";
+  font-style: normal;
+}
+cite {
+  font-family: "IM Fell English Italic";
+  font-style: normal;
+}
+.citations {
+  margin-top: 24px;
 }
 .indent {
   text-indent: 2em;
@@ -414,10 +434,10 @@ body {
 .info-subtitle {
   text-align: center;
   font-size: 1.2rem;
-  font-style: italic;
 }
 .img-sub {
   padding: 2px 0 8px;
+  text-align: center;
 }
 #dictionary {
   display: none;
@@ -450,6 +470,7 @@ body {
   text-align: center;
   width: 221px;
   margin: 0 2.2rem;
+  padding: 2px 0 8px;
 }
 #solfege-staff {
   display: block;
@@ -469,6 +490,16 @@ body {
 #neumatic-notation-img {
   display: block;
   width: 60%;
+  margin: 0 auto;
+}
+#notes-img {
+  display: block;
+  width: 40%;
+  margin: 0 auto;
+}
+#neume-img {
+  display: block;
+  width: 15%;
   margin: 0 auto;
 }
 #body-div {

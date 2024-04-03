@@ -9,7 +9,7 @@ function loaded()
 {
     // document.getElementById("loading").style.display = "none";
     document.getElementById("loading").style.display = "none";
-    txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information or select a mode and form to compose a chant.';
+    txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or select a mode and form on the left to compose a chant.';
     find_important();
 }
 
@@ -77,25 +77,29 @@ var x = document.getElementById("x");
 var history_btn = document.getElementById("history-button");
 var notation_btn = document.getElementById("notation-button");
 var about_btn = document.getElementById("about-button");
+var mode_btn = document.getElementById("mode-button");
 // var dict_display = document.getElementById("dictionary");
 var history_display = document.getElementById("history");
 var notation_display = document.getElementById("notation");
 var solfege_display = document.getElementById("solfege-info");
 var about_display = document.getElementById("about");
 var info_window = document.getElementById("info-window");
-var modes_display = document.getElementById("modes");
+var mode_display = document.getElementById("modes");
 var window_clicked = 0;
 x.addEventListener("click", () => winderp("x"));
 // dict_btn.addEventListener("click", () => winderp("dict"));
 history_btn.addEventListener("click", () => winderp("history"));
 notation_btn.addEventListener("click", () => winderp("notation"));
 about_btn.addEventListener("click", () => winderp("about"));
+mode_btn.addEventListener("click", () => winderp("modes"));
+var svg_wrapper = document.getElementById("svg-wrapper");
 var prev_active;
 function winderp(active)
 {
     console.log(active);
     if(window_clicked == 0)
     {
+
         // dict_display.style.display = "none";
         history_display.style.display = "none";
         notation_display.style.display = "none";
@@ -109,25 +113,26 @@ function winderp(active)
         else if(active=="notation")
         {
             notation_display.style.display = "block";
-            modes_display.style.display = "block";
         }
         else if(active=="solfege"){solfege_display.style.display = "block";}
-        else if(active=="modes" || active=="Modes"){document.getElementById("modes").style.display = "block";}
+        else if(active=="modes" || active=="Modes"){mode_display.style.display = "block";}
         else if(active=="about")
         {
             about_display.style.display = "block";
         }
+        svg_wrapper.style.height = info_window.offsetHeight - 400 + "px";
         window_clicked = 1;
         prev_active = active;
         setTimeout(() => {
             document.getElementById("body-div").addEventListener("click", hide_info);
-            document.getElementById("svg-wrapper").addEventListener("click", hide_info);
+            svg_wrapper.addEventListener("click", hide_info);
         }, 0);
         return;
     }
     else
     {
         window_clicked = 0;
+        svg_wrapper.style.height = "30%";
         if(active == prev_active || active == "x")
         {
             info_window.style.display = "none";
@@ -136,6 +141,7 @@ function winderp(active)
             history_display.style.display = "none";
             notation_display.style.display = "none";
             solfege_display.style.display = "none";
+            mode_display.style.display = "none";
             document.getElementById("modes").style.display = "none";
         }
         else
@@ -146,11 +152,13 @@ function winderp(active)
 }
 function hide_info()
 {
+    svg_wrapper.style.height = "30%";
     x.style.display = "none";
     info_window.style.display = "none";
     // dict_display.style.display = "none";
     history_display.style.display = "none";
     notation_display.style.display = "none";
+    mode_display.style.display = "none";
     document.getElementById("body-div").removeEventListener("click", hide_info);
     window_clicked = 0;
 }
@@ -159,7 +167,6 @@ function hide_info()
 var blue_div = document.getElementById("blue-text-div");
 var blue_div_text = document.getElementById("blue-div-text");
 var blue_term = document.getElementById("term");
-var blue_form = document.getElementById("word-form");
 var blue_def = document.getElementById("def");
 var blue_dict = ["Gregorian Chant","n","the central cultural and musical practice of Western plainsong",
                 "Hover","v","to float over an object without clicking",
@@ -195,34 +202,18 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Hypomixolydian","adj","the eigth Gregorian mode",
                 "Medieval","adj","the time period spanning ~500-1500 AD during which the Chrisitan Church dominated cultural and artistic development"];
 var blue_dict_i = 0;
-var black_1 = document.getElementById("black-text-1");
-var black_2 = document.getElementById("black-text-2");
 function blue_text(e,color,node,str,in_out)
 {
     blue_term.style.color = color;
-    if(color)
-    {
-        blue_form.style.display = "none";
-        black_1.style.display = "none";
-        black_2.style.display = "none";
-    }
-    else
-    {
-        blue_form.style.display = "inline";
-        black_1.style.display = "inline";
-        black_2.style.display = "inline";
-    }
     if(in_out == 1)
     {
-        speech_text.style.color = "rgba(0, 0, 0, 0.5)";
+        speech_text.style.color = "rgba(0, 0, 0, 1.0)"; // "rgba(0, 0, 0, 0.5)" //
         str = str.charAt(0).toUpperCase() + str.slice(1);
-        blue_div.style.display = "block";
-        let rects = blue_def.width;
-        blue_div_text.style.width = rects + "px";
+        blue_div.style.display = "inline-block";
         blue_dict_i = blue_dict.indexOf(str);
         blue_term.innerHTML = blue_dict[blue_dict_i];
-        blue_form.innerHTML = blue_dict[blue_dict_i+1];
-        blue_def.innerHTML = blue_dict[blue_dict_i +2];
+        // blue_form.innerHTML = blue_dict[blue_dict_i+1];
+        blue_def.innerHTML = blue_dict[blue_dict_i+2];
         if(e.clientX >= screen.width/2)
         {
             blue_div.style.left = e.clientX - 260 + "px";
