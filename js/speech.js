@@ -248,9 +248,9 @@ function read_svg_element()
 var plagal;
 var solfege_arr = ["Do","Re","Mi","Fa","Sol","La","Ti"];
 var solfege_indices = [];
-var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant"];
+var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant","syllabic","neumatic","melismatic","illuminated"];
 var red_indices = [];
-var blue_arr = ["monophonic","hover","mode","form","plainsong","final","dominant","ambitus","neume","syllabic","neumatic","melismatic"];
+var blue_arr = ["monophonic","hover","mode","form","plainsong","final","dominant","ambitus","neume"];
 var blue_indices = [];
 var plural_indices = [];
 var plural_i = 0;
@@ -285,19 +285,19 @@ function getIndicesOf(searchStr, str, caseSensitive, active_arr) //https://stack
             startIndex = index + searchStrLen;
         }
         else if(active_arr == "blue") {
-            if(str.charAt(index+searchStrLen)==" " || str.charAt(index+searchStrLen)=="." || str.charAt(index+searchStrLen)==",")
+            if(str.charAt(index+searchStrLen)==" " || str.charAt(index+searchStrLen)=="." || str.charAt(index+searchStrLen)=="," || str.charAt(index+searchStrLen)=="s")
             {
                 blue_indices.push(index);
                 blue_indices.push(index + searchStrLen);
                 startIndex = index + searchStrLen;
             }
-            else if(str.charAt(index+searchStrLen)=="s")
-            {
-                blue_indices.push(index);
-                blue_indices.push(index + searchStrLen + 1);
-                startIndex = index + searchStrLen + 1;
-                plural_indices.push(index);
-            }
+            // else if(str.charAt(index+searchStrLen)=="s")
+            // {
+            //     blue_indices.push(index);
+            //     blue_indices.push(index + searchStrLen);
+            //     startIndex = index + searchStrLen;
+            //     plural_indices.push(index);
+            // }
             else
             {
                 startIndex = index + searchStrLen;
@@ -314,7 +314,7 @@ function find_important()
     red_index = 0;
     blue_index = 0;
     plural_i = 0;
-    type_speed = 25;
+    type_speed = 15;
     speech_text.innerHTML="";
     type_iterator = 0;
     perform_clicked = 0;
@@ -364,7 +364,7 @@ function getOffset(el) // https://stackoverflow.com/a/28222246/23386341
 
 // TYPEWRITER EFFECT //
 var type_iterator = 0;
-var type_speed = 25;
+var type_speed = 15;
 var isTyping = false;
 var new_span;
 var span_len;
@@ -425,6 +425,7 @@ function typeWriter()
             new_span.className = "red-text";
             speech_text.appendChild(new_span);
             span_len = red_indices[red_index+1];
+            str_len = red_indices[red_index+1]-red_indices[red_index];
             let substr_type = () => {
                 if(type_iterator < span_len && span_status == 1)
                 {
@@ -435,8 +436,11 @@ function typeWriter()
                     red_spans = document.getElementsByClassName("red-text");
                     for(let i=0; i<red_spans.length; i++)
                     {
-                        red_spans[i].addEventListener("click", () => {
-                            winderp(red_spans[i].innerHTML.substr(0,str_len-plural).toLowerCase());
+                        red_spans[i].addEventListener("mousemove", (e) => {
+                            blue_text(e,red_spans[i],red_spans[i].innerHTML,1);
+                        });
+                        red_spans[i].addEventListener("mouseleave", (e) => {
+                            blue_text(e,red_spans[i],red_spans[i].innerHTML,0);
                         });
                     }
                     if(span_status == 1){red_index += 2;}
@@ -465,14 +469,14 @@ function typeWriter()
                 else
                 {
                     blue_spans = document.getElementsByClassName("blue-text");
-                    if(blue_indices[blue_index] == plural_indices[plural_i]){plural=1;plural_i++;}else{plural=0;};
+                    // if(blue_indices[blue_index] == plural_indices[plural_i]){plural=1;plural_i++;}else{plural=0;};
                     for(let i=0; i<blue_spans.length; i++)
                     {
                         blue_spans[i].addEventListener("mousemove", (e) => {
-                            blue_text(e,blue_spans[i],blue_spans[i].innerHTML.substr(0,str_len-plural).toLowerCase(),1);
+                            blue_text(e,blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),1);
                         });
                         blue_spans[i].addEventListener("mouseleave", (e) => {
-                            blue_text(e,blue_spans[i],blue_spans[i].innerHTML.substr(0,str_len-plural).toLowerCase(),0);
+                            blue_text(e,blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),0);
                         });
                     }
                     if(span_status == 1){blue_index += 2;}
@@ -491,17 +495,17 @@ function typeWriter()
             speech_text.insertAdjacentHTML('beforeend', txt.charAt(type_iterator));
             if(txt.charAt(type_iterator) == "," || txt.charAt(type_iterator) == ":" || txt.charAt(type_iterator) == "!")
             {
-                type_speed = 200;
+                type_speed = 150;
                 talk_speed = 200;
             }
             else if(txt.charAt(type_iterator) == ".")
             {
-                type_speed = 250;
+                type_speed = 150;
                 talk_speed = 250;
             }
             else
             {
-                type_speed = 25;
+                type_speed = 15;
                 talk_speed = 100;
             }
             type_iterator++;

@@ -8,7 +8,7 @@
 }
 @font-face {
   font-family: "IM Fell DW Pica";
-  src: url(assets/fonts/IMFellDWPica-Regular.ttf);
+  src: url(../assets/fonts/IMFellDWPica-Regular.ttf);
 }
 
 html {
@@ -17,6 +17,9 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
   background-color: #D9A066;
+}
+body {
+  font-family: "Alagard","IM Fell DW Pica","IM Fell English";
 }
 
 html::-webkit-scrollbar {
@@ -300,21 +303,18 @@ body {
 }
 
 .solfege {
-  color: #136b1f;
-  /* #224527 */
+  color: #105719;
+  /* color: #136b1f; */
   cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 .red-text {
-  color: #B40101;
-  /* #224527 */
+  color: #a50202;
   cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 .blue-text {
-  color:rgb(0, 0, 197);
+  color:rgb(36, 36, 142);
+  /* color:rgb(0, 0, 197); */
 }
-/* .blue-text:hover {
-  cursor: none;
-} */
 #blue-text-div {
   font-family: "Alagard";
   position: absolute;
@@ -332,13 +332,14 @@ body {
   margin: auto;
 }
 #term {
-  color:rgb(0, 0, 197);
+  color:rgb(36, 36, 142);
 }
 #word-form {
-  color: #136b1f;
+  color: #105719;
 }
 #def {
-  color: #B40101;
+  color: #a50202;
+  /* color: #B40101; */
 }
 
 #hide-span {
@@ -358,7 +359,7 @@ body {
 
 /* INFO WINDOW */
 #info-window {
-  font-family: "IM Fell English";
+  font-family: "IM Fell DW Pica";
   font-size: 1.2rem;
   display: none;
   position: absolute;

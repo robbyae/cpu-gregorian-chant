@@ -9,7 +9,7 @@ function loaded()
 {
     // document.getElementById("loading").style.display = "none";
     document.getElementById("loading").style.display = "none";
-    txt = 'Welcome to CPU Gregorian Chant, a generative music application for medieval church song! Gregorian Chant refers to the primary repertory of Western plainsong, a type of monophonic song sung in liturgies of the Western Church. Click or hover over our illuminated words for more information, or select a mode and form to compose a chant.';
+    txt = 'Welcome to CPU Gregorian Chant, a generative music application for medieval church song! Gregorian Chant refers to the primary repertory of Western plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, or select a mode and form to compose a chant.';
     find_important();
 }
 
@@ -159,7 +159,10 @@ var blue_div_text = document.getElementById("blue-div-text");
 var blue_term = document.getElementById("term");
 var blue_form = document.getElementById("word-form");
 var blue_def = document.getElementById("def");
-var blue_dict = ["Monophonic","adj","characterized by a single unaccompanied voice",
+var blue_dict = ["Gregorian Chant","n","the central cultural and musical practice of Western plainsong",
+                "Hover","v","to float over an object without clicking",
+                "Illuminated","adj","ornamented with painted decoration",
+                "Monophonic","adj","characterized by a single unaccompanied voice",
                 "Mode","n","a musical scale and its characteristic melodic and harmonic qualities",
                 "Final","n","the final tone of the melody",
                 "Dominant","n","the note of secondmost importance in a mode",
