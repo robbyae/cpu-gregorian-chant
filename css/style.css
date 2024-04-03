@@ -311,7 +311,6 @@ body {
 }
 .blue-text {
   color:rgb(0, 0, 197);
-  cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 /* .blue-text:hover {
   cursor: none;

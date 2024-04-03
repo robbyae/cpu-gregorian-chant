@@ -37,9 +37,9 @@
       <p id="loading-text">Loading</p>
     </div>
     <div id="left-content">
-      <p id="title">CPU Gregorian Chant</p>
+      <p id="title" onclick="reset_mode_and_form()">CPU Gregorian Chant</p>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="mode-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mode</button>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="mode-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="resetMode()">Mode</button>
         <div class="dropdown-menu" aria-labelledby="mode-dropdown">
           <a class="dropdown-item" href="#" onclick="showMode(this)">1: Dorian</a>
           <a class="dropdown-item" href="#" onclick="showMode(this)">2: Hypodorian</a>
@@ -52,7 +52,7 @@
         </div>
       </div>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="form-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Form</button>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="form-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="resetForm()">Form</button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <a class="dropdown-item" href="#" onclick="showForm(this)">Syllabic</a>
           <a class="dropdown-item" href="#" onclick="showForm(this)">Neumatic</a>

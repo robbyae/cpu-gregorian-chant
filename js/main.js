@@ -17,9 +17,22 @@ function loaded()
 var mode_selected = 0;
 var form_selected = 0;
 var is_performing = 0;
+var mode_dropdown = document.getElementById("mode-dropdown");
+function reset_mode_and_form()
+{
+    resetMode();
+    resetForm();
+}
+function resetMode()
+{
+    mode_dropdown.innerHTML = "Mode";
+    mode_selected = 0;
+    gen_btn.disabled = true;
+    perform_button.disabled = true;
+}
 function showMode(item)
 {
-    document.getElementById("mode-dropdown").innerHTML = item.innerHTML;
+    mode_dropdown.innerHTML = item.innerHTML;
     active_mode = item.innerHTML.substr(0,1);
     mode_selected = 1;
     mode_info(active_mode);
@@ -33,10 +46,17 @@ function showMode(item)
         initialize_performance(true);
     }
 }
-
+var form_dropdown = document.getElementById("form-dropdown");
+function resetForm()
+{
+    form_dropdown.innerHTML = "Form";
+    form_selected = 0;
+    gen_btn.disabled = true;
+    perform_button.disabled = true;
+}
 function showForm(item)
 {
-    document.getElementById("form-dropdown").innerHTML = item.innerHTML;
+    form_dropdown.innerHTML = item.innerHTML;
     active_form = item.innerHTML;
     form_selected = 1;
     form_info(active_form);
@@ -140,13 +160,18 @@ var blue_term = document.getElementById("term");
 var blue_form = document.getElementById("word-form");
 var blue_def = document.getElementById("def");
 var blue_dict = ["Monophonic","adj","characterized by a single unaccompanied voice",
-                "Final","n","the final tone of the melody",
                 "Mode","n","a musical scale and its characteristic melodic and harmonic qualities",
+                "Final","n","the final tone of the melody",
+                "Dominant","n","the note of secondmost importance in a mode",
+                "Ambitus","n","the range of tone in a mode",
+                "Syllabic","adj","a song of few or no neumes",
+                "Neumatic","adj","a song of frequently occurring neumes",
+                "Melismatic","adj","a song rife with neumes in which many notes are sung to a single syllable",
                 "Form","n","the structure of a musical composition",
-                "Plainsong","n","the body of monophonic chants used in liturgies of the Western church",
-                "dominant","ambitus"];
+                "Neume","n","a group of notes sung to a single syllable",
+                "Plainsong","n","the body of monophonic chants used in liturgies of the Western church"];
 var blue_dict_i = 0;
-function blue_text(e,str,in_out)
+function blue_text(e,node,str,in_out)
 {
     if(in_out == 1)
     {
@@ -156,8 +181,17 @@ function blue_text(e,str,in_out)
         blue_term.innerHTML = blue_dict[blue_dict_i];
         blue_form.innerHTML = blue_dict[blue_dict_i+1];
         blue_def.innerHTML = blue_dict[blue_dict_i +2];
-        blue_div.style.left = e.clientX - 250 + "px";
-        blue_div.style.top = e.clientY + "px";
+        if(e.clientX >= screen.width/2)
+        {
+            blue_div.style.left = e.clientX - 260 + "px";
+            node.style.cursor = "url(../assets/cursors/cursor-finger.png), auto";
+        }
+        else
+        {
+            blue_div.style.left = e.clientX + 10 + "px";
+            node.style.cursor = "url(../assets/cursors/cursor-finger-mirror.png) 30 0, auto";
+        }
+        blue_div.style.top = e.clientY - 15 + "px";
         blue_div.style.float = "left";
     }
     else
