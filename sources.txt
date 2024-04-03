@@ -10,3 +10,8 @@ Goodchild, Sister Mary Antonine. "Gregorian Chant for Church and School". Boston
         https://media.churchmusicassociation.org/pdf/goodchild.pdf
 
 Cursor from "The Maastricht Hours; Liège, early 14th century; British Library, Stowe MS 17, f. 193r."
+
+video:
+- target audience
+- no language assumptions
+- storyboard
