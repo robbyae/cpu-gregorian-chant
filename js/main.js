@@ -9,7 +9,7 @@ function loaded()
 {
     // document.getElementById("loading").style.display = "none";
     document.getElementById("loading").style.display = "none";
-    txt = 'Welcome to CPU Gregorian Chant, a generative music application for medieval church song! Gregorian Chant refers to the primary repertory of Western plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, or select a mode and form to compose a chant.';
+    txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information or select a mode and form to compose a chant.';
     find_important();
 }
 
@@ -83,6 +83,7 @@ var notation_display = document.getElementById("notation");
 var solfege_display = document.getElementById("solfege-info");
 var about_display = document.getElementById("about");
 var info_window = document.getElementById("info-window");
+var modes_display = document.getElementById("modes");
 var window_clicked = 0;
 x.addEventListener("click", () => winderp("x"));
 // dict_btn.addEventListener("click", () => winderp("dict"));
@@ -108,6 +109,7 @@ function winderp(active)
         else if(active=="notation")
         {
             notation_display.style.display = "block";
+            modes_display.style.display = "block";
         }
         else if(active=="solfege"){solfege_display.style.display = "block";}
         else if(active=="modes" || active=="Modes"){document.getElementById("modes").style.display = "block";}
@@ -164,22 +166,59 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Illuminated","adj","ornamented with painted decoration",
                 "Monophonic","adj","characterized by a single unaccompanied voice",
                 "Mode","n","a musical scale and its characteristic melodic and harmonic qualities",
-                "Final","n","the final tone of the melody",
-                "Dominant","n","the note of secondmost importance in a mode",
-                "Ambitus","n","the range of tone in a mode",
+                "Relative","adj","a mode that shares a finalis with another but holds its own dominant",
+                "Authentic","adj","characterized by a melody that moves primarily above the finalis",
+                "Plagal","adj","characterized by a melody that moves primarily below the finalis",
+                "Finalis","n","a mode's primary tone and the final tone of the melody",
+                "Dominant","n","the note of secondmost importance in a mode, strongly influencing its melodic qualities",
+                "Ambitus","n","the range of tones in a mode",
                 "Syllabic","adj","a song of few or no neumes",
                 "Neumatic","adj","a song of frequently occurring neumes",
                 "Melismatic","adj","a song rife with neumes in which many notes are sung to a single syllable",
                 "Form","n","the structure of a musical composition",
                 "Neume","n","a group of notes sung to a single syllable",
-                "Plainsong","n","the body of monophonic chants used in liturgies of the Western church"];
+                "Plainsong","n","the body of monophonic chants used in liturgies of the Western church",
+                "Do","n","originally Ut, the first degree of the diatonic scale",
+                "Re","n","the second degree of the diatonic scale",
+                "Mi","n","the third degree of the diatonic scale",
+                "Fa","n","the fourth degree of the diatonic scale",
+                "Sol","n","the fifth degree of the diatonic scale",
+                "La","n","the sixth degree of the diatonic scale",
+                "Ti","n","originally Si, the seventh degree of the diatonic scale",
+                "Dorian","adj","the first Gregorian mode",
+                "Hypodorian","adj","the second Gregorian mode",
+                "Phrygian","adj","the third Gregorian mode",
+                "Hypophrygian","adj","the fourth Gregorian mode",
+                "Lydian","adj","the fifth Gregorian mode",
+                "Hypolydian","adj","the sixth Gregorian mode",
+                "Mixolydian","adj","the seventh Gregorian mode",
+                "Hypomixolydian","adj","the eigth Gregorian mode",
+                "Medieval","adj","the time period spanning ~500-1500 AD during which the Chrisitan Church dominated cultural and artistic development"];
 var blue_dict_i = 0;
-function blue_text(e,node,str,in_out)
+var black_1 = document.getElementById("black-text-1");
+var black_2 = document.getElementById("black-text-2");
+function blue_text(e,color,node,str,in_out)
 {
+    blue_term.style.color = color;
+    if(color)
+    {
+        blue_form.style.display = "none";
+        black_1.style.display = "none";
+        black_2.style.display = "none";
+    }
+    else
+    {
+        blue_form.style.display = "inline";
+        black_1.style.display = "inline";
+        black_2.style.display = "inline";
+    }
     if(in_out == 1)
     {
+        speech_text.style.color = "rgba(0, 0, 0, 0.5)";
         str = str.charAt(0).toUpperCase() + str.slice(1);
         blue_div.style.display = "block";
+        let rects = blue_def.width;
+        blue_div_text.style.width = rects + "px";
         blue_dict_i = blue_dict.indexOf(str);
         blue_term.innerHTML = blue_dict[blue_dict_i];
         blue_form.innerHTML = blue_dict[blue_dict_i+1];
@@ -199,6 +238,7 @@ function blue_text(e,node,str,in_out)
     }
     else
     {
+        speech_text.style.color = "rgba(0, 0, 0, 1)"
         blue_div.style.display = "none";
     }
 }
@@ -256,7 +296,7 @@ generate_button.addEventListener("click", () => {
     }
     updateChant();
     document.getElementById("song-svg").style.display = "block";
-    document.getElementById("svg-wrapper").style.cursor = "url(../assets/cursors/cursor-finger.png), auto";
+    document.getElementById("svg-wrapper").style.cursor = "url(assets/cursors/cursor-finger.png), auto";
     }, 500);
 
     if(Tone.context.state != "running")

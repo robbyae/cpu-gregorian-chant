@@ -125,7 +125,7 @@ a:hover {
 }
 
 .ChantNotationElement:hover {
-  fill: #B40101 !important;
+  fill: #a50202 !important;
 }
 
 /* SVG HITBOXES */
@@ -157,7 +157,7 @@ a:hover {
 /* END SVG HITBOXES */
 
 .annotation:hover {
-  fill: #B40101;
+  fill: #a50202;
 }
 
 .dropdown-menu {
@@ -193,7 +193,8 @@ body {
 }
 
 #title:hover {
-  color: #B40101;
+  color: #a50202;
+  /* color: #B40101; */
   /* color: #cb3d24; */
   /* color: #cd3d24; */
 }
@@ -203,6 +204,7 @@ body {
   color: white;
   background-color: #402D2B;
   border-color: #402D2B;
+  font-size: 20px;
   margin: .35rem 0;
 }
 
@@ -222,6 +224,7 @@ body {
 .dropdown-item {
   font-family: "Alagard";
   cursor: url(../assets/cursors/cursor-finger.png), auto;
+  font-size: 18px;
 }
 
 #monks-closed {
@@ -266,13 +269,15 @@ body {
 #speech-text {
   position: absolute;
   margin: 2px 6px;
-  /* border-style: solid;
-  border-width: 1px; */
+  border-color: #402D2B;
+  border-style: solid;
+  border-width: 3px;
   border-radius: 10px;
-  border-color: black;
+  border-color: #402D2B;
   background-color: #ddd0b9;
   padding: 6px 14px;
   display: none;
+  transition: color 0.10s;
 }
 
 #ghost-box {
@@ -302,14 +307,12 @@ body {
   opacity: 0;
 }
 
-.solfege {
+.green-text {
   color: #105719;
   /* color: #136b1f; */
-  cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 .red-text {
   color: #a50202;
-  cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 .blue-text {
   color:rgb(36, 36, 142);
@@ -317,18 +320,21 @@ body {
 }
 #blue-text-div {
   font-family: "Alagard";
-  position: absolute;
+  position: relative;
   display: none;
   background-color: #ddd0b9;
   border-color: #402D2B;
   border-style: solid;
   border-width: 6px;
   z-index: 5;
+  width: 200px;
   max-width: 250px;
-  float: right;
-  padding: 6px 6px;
+  padding: 6px;
 }
 #blue-div-text {
+  margin: auto;
+}
+#def {
   margin: auto;
 }
 #term {
@@ -338,7 +344,8 @@ body {
   color: #105719;
 }
 #def {
-  color: #a50202;
+  color: black;
+  /* color: #a50202; */
   /* color: #B40101; */
 }
 

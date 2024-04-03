@@ -29,10 +29,18 @@ document.getElementById("title").addEventListener("click", () => {
 var active_mode;
 document.getElementById("mode-dropdown").addEventListener("click", () => {
     // txt = 'Greogorian Chant uses the diatonic scale and is categorized by eight modes. Modes 1, 3, 5, and 7 are the authentic modes, and modes 2, 4, 6, and 8 are the plagal modes. Each authentic mode has a relative plagal and vice versa. Each mode posesses three defining attributes: a final, a dominant, and an ambitus.';
-    txt = 'Gregorian Chant is categorized by eight modes. Modes 1, 3, 5, and 7 are the authentic modes, and modes 2, 4, 6, and 8 are the plagal modes. Each mode has a relative and posesses three defining attributes: a final, a dominant, and an ambitus.';
+    txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but carry different dominants.';
     find_important();
 });
 var prev_mode = "";
+var mode_text = ['The Dorian mode is an authentic mode and relative of the Hypodorian mode. Its finalis is Re, and its dominant falls on the fifth degree, La.',
+'The Hypodorian mode is a plagal mode and relative of the Dorian mode. Its finalis is Re, and its dominant falls on the third degree, Fa.',
+'The Phrygian mode is an authentic mode and relative of the Hypophrygian mode. Its finalis is Mi, and its dominant falls on the sixth degree, Do.',
+'The Hypophrygian mode is a plagal mode and relative of the Phrygian mode. Its finalis is Mi, and its dominant falls on the fourth degree, La.',
+'The Lydian mode is an authentic mode and relative of the Hypolydian mode. Its finalis is Fa, and its dominant falls on the fifth degree, Do.',
+'The Hypoydian mode is a plagal mode and relative of the Lydian mode. Its finalis is Fa, and its dominant falls on the third degree, La.',
+'The Mixolydian mode is an authentic mode and relative of the Hypomixolydian mode. Its finalis is Sol, and its dominant falls on the fifth degree, Re.',
+'The Hypomixolydian mode is a plagal mode and relative of the Mixolydian mode. Its finalis is Sol, and its dominant falls on the fourth degree, Do.']
 function mode_info(active_mode, reset)
 {
     if(active_mode != prev_mode && reset != 1)
@@ -40,46 +48,8 @@ function mode_info(active_mode, reset)
         document.getElementById("song-svg").style.display = "none";
         perform_btn.disabled = true;
     }
-    if(active_mode == "1")
-    {
-        txt = 'The Dorian mode is an authentic mode and relative of the Hypodorian mode. Its tonic is Re, its dominant falls on the fifth degree, Sol, and its final is Re.';
-        prev_mode = active_mode;
-    }
-    else if(active_mode == "2")
-    {
-        txt = 'The Hypodorian mode is a plagal mode and relative of the Dorian mode. Its tonic is La, its dominant falls on the sixth degree, Fa, and its final is Re.';
-        prev_mode = active_mode;
-    }
-    else if(active_mode == "3")
-    {
-        txt = 'Mode 3 is an authentic mode and relative of mode 4. Its tonic is Mi, its dominant falls on the sixth degree, Do, and its final is Mi.';
-        prev_mode = active_mode;
-    }
-    else if(active_mode == "4")
-    {
-        txt = "Mode 4 is a plagal mode and relative of mode 3. Its tonic is Ti, its dominant falls on the seventh degree, La, and its final is Mi.";
-        prev_mode = active_mode;
-    }
-    else if(active_mode == "5")
-    {
-        txt = "Mode 5 is an authentic mode and relative of mode 6. Its tonic is Fa, its dominant falls on the fifth degree, Do, and its final is Fa.";
-        prev_mode = active_mode;
-    }
-    else if(active_mode == "6")
-    {
-        txt = "Mode 6 is a plagal mode and relative of mode 5. Its tonic is Do, its dominant falls on the sixth degree, La, and its final is Fa.";
-        prev_mode = active_mode;
-    }
-    else if(active_mode == "7")
-    {
-        txt = "Mode 7 is an authentic mode and relative of mode 8. Its tonic is Sol, its dominant falls on the fifth degree, Re, and its final is Sol.";
-        prev_mode = active_mode;
-    }
-    else if(active_mode == "8")
-    {
-        txt = "Mode 8 is a plagal mode and relative of mode 7. Its tonic is Re, its dominant falls on the seventh degree, Do, and its final is Sol.";
-        prev_mode = active_mode;
-    }
+    txt = mode_text[active_mode-1];
+    prev_mode = active_mode;
     find_important();
     return txt;
 }
@@ -246,15 +216,12 @@ function read_svg_element()
 
 // GET INDICES OF IMPORTANT TEXT //
 var plagal;
-var solfege_arr = ["Do","Re","Mi","Fa","Sol","La","Ti"];
-var solfege_indices = [];
-var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant","syllabic","neumatic","melismatic","illuminated"];
+var green_arr = ["Do","Re","Mi","Fa","Sol","La","Ti","medieval","syllabic","neumatic","melismatic"];
+var green_indices = [];
+var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant","illuminated","Dorian","Hypodorian","Phrygian","Hypophrygian","Lydian","Hypolydian","Mixolydian","Hypomixolydian"];
 var red_indices = [];
-var blue_arr = ["monophonic","hover","mode","form","plainsong","final","dominant","ambitus","neume"];
+var blue_arr = ["monophonic","mode","form","plainsong","relative","finalis","dominant","ambitus","neume"];
 var blue_indices = [];
-var plural_indices = [];
-var plural_i = 0;
-var plural = 0;
 function getIndicesOf(searchStr, str, caseSensitive, active_arr) //https://stackoverflow.com/a/3410557/23386341
 {
     var searchStrLen = searchStr.length;
@@ -267,11 +234,11 @@ function getIndicesOf(searchStr, str, caseSensitive, active_arr) //https://stack
         searchStr = searchStr.toLowerCase();
     }
     while ((index = str.indexOf(searchStr, startIndex)) > -1) {
-        if(active_arr == "solfege") {
+        if(active_arr == "green") {
             if(str.charAt(index+searchStrLen)==" " || str.charAt(index+searchStrLen)=="." || str.charAt(index+searchStrLen)==",")
             {
-                solfege_indices.push(index);
-                solfege_indices.push(index + searchStrLen);
+                green_indices.push(index);
+                green_indices.push(index + searchStrLen);
                 startIndex = index + searchStrLen;
             }
             else
@@ -307,10 +274,10 @@ function getIndicesOf(searchStr, str, caseSensitive, active_arr) //https://stack
 }
 function find_important()
 {
-    solfege_indices = [];
+    green_indices = [];
     red_indices = [];
     blue_indices = [];
-    solfege_index = 0;
+    green_index = 0;
     red_index = 0;
     blue_index = 0;
     plural_i = 0;
@@ -326,19 +293,60 @@ function find_important()
         span_status = 0;
     }
 
-    for(let i=0; i<solfege_arr.length; i++)
+// GET ALL OCCURRENCES //
+    // for(let i=0; i<green_arr.length; i++)
+    // {
+    //     getIndicesOf(green_arr[i], txt, 0, "green");
+    // }
+    // for(let i=0; i<red_arr.length; i++)
+    // {
+    //     getIndicesOf(red_arr[i], txt, 0, "red");
+    // }
+    // for(let i=0; i<blue_arr.length; i++)
+    // {
+    //     getIndicesOf(blue_arr[i], txt, 0, "blue");
+    // }
+// GET FIRST OCCURRENCE //
+    for(let i=0; i<green_arr.length; i++)
     {
-        getIndicesOf(solfege_arr[i], txt, 1, "solfege");
+        if(txt.search(green_arr[i]) != -1)
+        {
+            let green_text_i_1 = txt.search(" "+green_arr[i])+1;
+            let next = green_text_i_1 + green_arr[i].length;
+            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
+            {
+                green_indices.push(green_text_i_1);
+                green_indices.push(green_text_i_1 + green_arr[i].length);
+            }
+        }
     }
     for(let i=0; i<red_arr.length; i++)
     {
-        getIndicesOf(red_arr[i], txt, 0, "red");
+        if(txt.search(red_arr[i]) != -1)
+        {
+            let red_text_i_1 = txt.search(" "+red_arr[i])+1;
+            let next = red_text_i_1 + red_arr[i].length;
+            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
+            {
+                red_indices.push(red_text_i_1);
+                red_indices.push(red_text_i_1 + red_arr[i].length);
+            }
+        }
     }
     for(let i=0; i<blue_arr.length; i++)
     {
-        getIndicesOf(blue_arr[i], txt, 0, "blue");
+        if(txt.search(blue_arr[i]) != -1)
+        {
+            let blue_text_i_1 = txt.search(" "+blue_arr[i])+1;
+            let next = blue_text_i_1 + blue_arr[i].length;
+            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
+            {
+                blue_indices.push(blue_text_i_1);
+                blue_indices.push(blue_text_i_1 + blue_arr[i].length);
+            }
+        }
     }
-    solfege_indices = solfege_indices.sort((a,b) => {return a-b;});
+    green_indices = green_indices.sort((a,b) => {return a-b;});
     red_indices = red_indices.sort((a,b) => {return a-b;});
     blue_indices = blue_indices.sort((a,b) => {return a-b;});
 
@@ -369,7 +377,7 @@ var isTyping = false;
 var new_span;
 var span_len;
 var span_status = 0;
-var solfege_index = 0;
+var green_index = 0;
 var red_index = 0;
 var blue_index = 0;
 var speech_box = document.getElementById("speech-box");
@@ -377,7 +385,7 @@ var speech_text = document.getElementById("speech-text");
 var ghost_text = document.getElementById("ghost-text");
 var red_spans = [];
 var blue_spans = [];
-var solfege_spans = [];
+var green_spans = [];
 function typeWriter()
 {
     isTyping = true;
@@ -387,13 +395,13 @@ function typeWriter()
     speech_box.style.left = getOffset(ghost_text).left - 12 + "px";
     if(type_iterator < txt.length)
     {
-        if(type_iterator == solfege_indices[solfege_index])
+        if(type_iterator == green_indices[green_index])
         {
             span_status = 1;
             new_span = document.createElement("span");
-            new_span.className = "solfege";
+            new_span.className = "green-text";
             speech_text.appendChild(new_span);
-            span_len = solfege_indices[solfege_index+1];
+            span_len = green_indices[green_index+1];
             let substr_type = () => {
                 if(type_iterator < span_len && span_status == 1)
                 {
@@ -401,14 +409,17 @@ function typeWriter()
                 }
                 else
                 {
-                    solfege_spans = document.getElementsByClassName("solfege");
-                    for(let i=0; i<solfege_spans.length; i++)
+                    green_spans = document.getElementsByClassName("green-text");
+                    for(let i=0; i<green_spans.length; i++)
                     {
-                        solfege_spans[i].addEventListener("click", () => {
-                            winderp("solfege");
+                        green_spans[i].addEventListener("mousemove", (e) => {
+                            blue_text(e,"#105719",green_spans[i],green_spans[i].innerHTML,1);
+                        });
+                        green_spans[i].addEventListener("mouseleave", (e) => {
+                            blue_text(e,"#105719",green_spans[i],green_spans[i].innerHTML,0);
                         });
                     }
-                    if(span_status == 1){solfege_index += 2;}
+                    if(span_status == 1){green_index += 2;}
                     span_status = 0;
                     setTimeout(typeWriter, type_speed);
                     return;
@@ -425,7 +436,6 @@ function typeWriter()
             new_span.className = "red-text";
             speech_text.appendChild(new_span);
             span_len = red_indices[red_index+1];
-            str_len = red_indices[red_index+1]-red_indices[red_index];
             let substr_type = () => {
                 if(type_iterator < span_len && span_status == 1)
                 {
@@ -437,11 +447,11 @@ function typeWriter()
                     for(let i=0; i<red_spans.length; i++)
                     {
                         red_spans[i].addEventListener("mousemove", (e) => {
-                            blue_text(e,red_spans[i],red_spans[i].innerHTML,1);
+                            blue_text(e,"#a50202",red_spans[i],red_spans[i].innerHTML,1);
                         });
-                        red_spans[i].addEventListener("mouseleave", (e) => {
-                            blue_text(e,red_spans[i],red_spans[i].innerHTML,0);
-                        });
+                        // red_spans[i].addEventListener("mouseleave", (e) => {
+                        //     blue_text(e,"#a50202",red_spans[i],red_spans[i].innerHTML,0);
+                        // });
                     }
                     if(span_status == 1){red_index += 2;}
                     span_status = 0;
@@ -460,7 +470,6 @@ function typeWriter()
             new_span.className = "blue-text";
             speech_text.appendChild(new_span);
             span_len = blue_indices[blue_index+1];
-            str_len = blue_indices[blue_index+1]-blue_indices[blue_index];
             let substr_type = () => {
                 if(type_iterator < span_len && span_status == 1)
                 {
@@ -473,10 +482,10 @@ function typeWriter()
                     for(let i=0; i<blue_spans.length; i++)
                     {
                         blue_spans[i].addEventListener("mousemove", (e) => {
-                            blue_text(e,blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),1);
+                            blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),1);
                         });
                         blue_spans[i].addEventListener("mouseleave", (e) => {
-                            blue_text(e,blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),0);
+                            blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),0);
                         });
                     }
                     if(span_status == 1){blue_index += 2;}
@@ -493,12 +502,12 @@ function typeWriter()
         else
         {
             speech_text.insertAdjacentHTML('beforeend', txt.charAt(type_iterator));
-            if(txt.charAt(type_iterator) == "," || txt.charAt(type_iterator) == ":" || txt.charAt(type_iterator) == "!")
+            if(txt.charAt(type_iterator) == "," || txt.charAt(type_iterator) == ":")
             {
-                type_speed = 150;
+                type_speed = 100;
                 talk_speed = 200;
             }
-            else if(txt.charAt(type_iterator) == ".")
+            else if(txt.charAt(type_iterator) == "." || txt.charAt(type_iterator) == "!")
             {
                 type_speed = 150;
                 talk_speed = 250;
