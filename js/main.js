@@ -184,12 +184,12 @@ function blue_text(e,node,str,in_out)
         if(e.clientX >= screen.width/2)
         {
             blue_div.style.left = e.clientX - 260 + "px";
-            node.style.cursor = "url(../assets/cursors/cursor-finger.png), auto";
+            node.style.cursor = "url(assets/cursors/cursor-finger.png), auto";
         }
         else
         {
             blue_div.style.left = e.clientX + 10 + "px";
-            node.style.cursor = "url(../assets/cursors/cursor-finger-mirror.png) 30 0, auto";
+            node.style.cursor = "url(assets/cursors/cursor-finger-mirror.png) 30 0, auto";
         }
         blue_div.style.top = e.clientY - 15 + "px";
         blue_div.style.float = "left";
