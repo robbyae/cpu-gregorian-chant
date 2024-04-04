@@ -201,7 +201,7 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Hypolydian","adj","the sixth Gregorian mode",
                 "Mixolydian","adj","the seventh Gregorian mode",
                 "Hypomixolydian","adj","the eigth Gregorian mode",
-                "Medieval","adj","the time period spanning ~500-1500 AD during which the Chrisitan Church dominated cultural and artistic development"];
+                "Medieval","adj","the time period spanning ~500-1500 AD during which the Chrisitan Church dominated cultural and artistic development in the Occident"];
 var blue_dict_i = 0;
 function blue_text(e,color,node,str,in_out)
 {
