@@ -477,14 +477,17 @@ cite {
   width: 80%;
   margin: 0 auto;
 }
+#modes {
+  max-height: 80%;
+}
 #modern-modes-img {
   display: block;
-  width: 65%;
+  width: 40%;
   margin: 0 auto;
 }
 #gregorian-modes-img {
   display: block;
-  width: 80%;
+  width: 40%;
   margin: 0 auto;
 }
 #neumatic-notation-img {

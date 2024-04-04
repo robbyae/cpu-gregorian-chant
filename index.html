@@ -21,8 +21,8 @@
   <!-- exsurge -->
   <script defer type="text/javascript" src="js/exsurge.js"></script>
   <!-- pyscript -->
-  <script defer src="https://pyscript.net/releases/2024.1.3/core.js" type="module"></script>
-  <script defer src="pyscript/compose.py" type="py" config="pyscript/pyscript.json"></script>
+  <!-- <script defer src="https://pyscript.net/releases/2024.1.3/core.js" type="module"></script>
+  <script defer src="pyscript/compose.py" type="py" config="pyscript/pyscript.json"></script> -->
   <!-- bootstrap js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -31,7 +31,7 @@
   <script defer src="js/speech.js"></script>
 </head>
 
-<body>  <!--onload="loaded()"-->
+<body onload="loaded()">
   <div id="body-div">
     <div id="loading">
       <p id="loading-text">Loading</p>
@@ -73,8 +73,8 @@
       <button class="btn btn-secondary right-btn" id="history-button">History</button>
       <br>
       <button class="btn btn-secondary right-btn" id="mode-button">Modes</button>
-      <!-- <br>
-      <button class="btn btn-secondary right-btn" id="about-button">About</button>     -->
+      <br>
+      <button class="btn btn-secondary right-btn" id="about-button">About</button>    
     </div>
     </div>
     <div id="blue-text-div">
@@ -148,15 +148,15 @@
       </div>
       <div id="modes">
         <h3 class="info-title">~ Modes ~</h3>
-        <p>The term <i>mode</i> refers to a musical scale and its characteristic melodic and harmonic qualities. In modern music, two modes are common: the Ionian (major) and Aeolian (minor). The Ionian mode spans from <i>Do</i> to <i>Do</i>, and the Aeolian from <i>La</i> to <i>La</i>.</p>
         <img id="modern-modes-img" src="assets/img/modern-modes.png" alt="modern modes"/>
         <p>There are eight Gregorian modes, each defined by a <i>final</i> and organized in two categories: authentic and plagal. Each authentic mode has a relative plagal and vice versa. Relative modes share the same final.</p>
           <img id="gregorian-modes-img" src="assets/img/gregorian-modes.png" alt="gregorian modes"/>
           <p class="info-subtitle"><i>Finals are underlined. Dominants are encircled.</i></p>
       </div>
       <div id="about">
-        <img id="gigachad" src="assets/img/gigachad.png"/>
       </div>
   </div>
 </body>
 </html>
+
+<!-- <div id="modes"> -->

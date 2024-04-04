@@ -77,6 +77,7 @@ var x = document.getElementById("x");
 var history_btn = document.getElementById("history-button");
 var notation_btn = document.getElementById("notation-button");
 var about_btn = document.getElementById("about-button");
+about_btn.style.display = "none";
 var mode_btn = document.getElementById("mode-button");
 // var dict_display = document.getElementById("dictionary");
 var history_display = document.getElementById("history");
