@@ -85,6 +85,7 @@ a:hover {
   background-color:#ddd0b9;
   position: absolute;
   height: 30%;
+  min-height: 30%;
   top: 50%;
   margin: 20vh 0 0;
   width: 100vw;
@@ -341,9 +342,6 @@ body {
 }
 #blue-div-text {
   margin: auto;
-}
-#term {
-  color:rgb(36, 36, 142);
 }
 #word-form {
   color: #105719;

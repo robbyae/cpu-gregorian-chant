@@ -9,7 +9,7 @@ function loaded()
 {
     // document.getElementById("loading").style.display = "none";
     document.getElementById("loading").style.display = "none";
-    txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or select a mode and form on the left to compose a chant.';
+    txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or select a mode and form on the left to compose a Grgeorian Chant.';
     find_important();
 }
 
@@ -176,7 +176,7 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Mode","n","a musical scale and its characteristic melodic and harmonic qualities",
                 "Relative","adj","a mode that shares a finalis with another but holds its own dominant",
                 "Authentic","adj","characterized by a melody that moves primarily above the finalis",
-                "Plagal","adj","characterized by a melody that moves primarily below the finalis",
+                "Plagal","adj","characterized by a melody that moves primarily below the finalis; has the prefix -hypo, Greek for 'under'",
                 "Finalis","n","a mode's primary tone and the final tone of the melody",
                 "Dominant","n","the note of secondmost importance in a mode, strongly influencing its melodic qualities",
                 "Ambitus","n","the range of tones in a mode",
@@ -193,15 +193,15 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Sol","n","the fifth degree of the diatonic scale",
                 "La","n","the sixth degree of the diatonic scale",
                 "Ti","n","originally Si, the seventh degree of the diatonic scale",
-                "Dorian","adj","the first Gregorian mode",
-                "Hypodorian","adj","the second Gregorian mode",
-                "Phrygian","adj","the third Gregorian mode",
-                "Hypophrygian","adj","the fourth Gregorian mode",
-                "Lydian","adj","the fifth Gregorian mode",
-                "Hypolydian","adj","the sixth Gregorian mode",
-                "Mixolydian","adj","the seventh Gregorian mode",
-                "Hypomixolydian","adj","the eigth Gregorian mode",
-                "Medieval","adj","the time period spanning ~500-1500 AD during which the Chrisitan Church dominated cultural and artistic development in the Occident"];
+                "Dorian","adj","authentic; the first Gregorian mode; named after the Dorian Greeks",
+                "Hypodorian","adj","plagal; the second Gregorian mode; relative of the Dorian mode",
+                "Phrygian","adj","authentic; the third Gregorian mode; named after the Phrygians of Anatolia",
+                "Hypophrygian","adj","plagal; the fourth Gregorian mode; relative of the Phrygian mode",
+                "Lydian","adj","authentic; the fifth Gregorian mode; named after the Lydians of Anatolia",
+                "Hypolydian","adj","plagal; the sixth Gregorian mode; relative of the Lydian mode",
+                "Mixolydian","adj","authentic; the seventh Gregorian mode; the prefix -mixo means 'mixed' in Greek, and its root 'Lydian' refers to the Lydian mode",
+                "Hypomixolydian","adj","plagal; the eigth Gregorian mode; relative of the Mixolydian mode",
+                "Medieval","adj","the time period spanning ~500-1500 AD during which the Chrisitan Church dominated cultural and artistic development in the West"];
 var blue_dict_i = 0;
 function blue_text(e,color,node,str,in_out)
 {
