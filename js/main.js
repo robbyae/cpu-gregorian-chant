@@ -12,154 +12,6 @@ gen_btn.addEventListener("click", () => {
     }, 1000);
 });
 
-// GET INDICES OF IMPORTANT TEXT //
-var plagal;
-var green_arr = ["Do","Re","Mi","Fa","Sol","La","Ti","medieval","syllabic","neumatic","melismatic"];
-var green_indices = [];
-var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant","illuminated","Dorian","Hypodorian","Phrygian","Hypophrygian","Lydian","Hypolydian","Mixolydian","Hypomixolydian"];
-var red_indices = [];
-var blue_arr = ["monophonic","mode","form","plainsong","relative","finalis","dominant","ambitus","neume"];
-var blue_indices = [];
-function getIndicesOf(searchStr, str, caseSensitive, active_arr) //https://stackoverflow.com/a/3410557/23386341
-{
-    var searchStrLen = searchStr.length;
-    if (searchStrLen == 0) {
-        return;
-    }
-    var startIndex = 0, index;
-    if (!caseSensitive) {
-        str = str.toLowerCase();
-        searchStr = searchStr.toLowerCase();
-    }
-    while ((index = str.indexOf(searchStr, startIndex)) > -1) {
-        if(active_arr == "green") {
-            if(str.charAt(index+searchStrLen)==" " || str.charAt(index+searchStrLen)=="." || str.charAt(index+searchStrLen)==",")
-            {
-                green_indices.push(index);
-                green_indices.push(index + searchStrLen);
-                startIndex = index + searchStrLen;
-            }
-            else
-            {
-                startIndex = index + searchStrLen;
-            }
-        }
-        else if(active_arr == "red") {
-            red_indices.push(index);
-            red_indices.push(index + searchStrLen);
-            startIndex = index + searchStrLen;
-        }
-        else if(active_arr == "blue") {
-            if(str.charAt(index+searchStrLen)==" " || str.charAt(index+searchStrLen)=="." || str.charAt(index+searchStrLen)=="," || str.charAt(index+searchStrLen)=="s")
-            {
-                blue_indices.push(index);
-                blue_indices.push(index + searchStrLen);
-                startIndex = index + searchStrLen;
-            }
-            // else if(str.charAt(index+searchStrLen)=="s")
-            // {
-            //     blue_indices.push(index);
-            //     blue_indices.push(index + searchStrLen);
-            //     startIndex = index + searchStrLen;
-            //     plural_indices.push(index);
-            // }
-            else
-            {
-                startIndex = index + searchStrLen;
-            }
-        }
-    }
-}
-function find_important()
-{
-    speech = [];
-    green_indices = [];
-    red_indices = [];
-    blue_indices = [];
-    green_index = 0;
-    red_index = 0;
-    blue_index = 0;
-    plural_i = 0;
-    type_speed = 18;
-    speech_text.innerHTML="";
-    type_iterator = 0;
-    perform_clicked = 0;
-
-    speech_text.style.display = "none";
-
-    if(span_status == 1)
-    {
-        span_status = 0;
-    }
-
-// GET ALL OCCURRENCES //
-    // for(let i=0; i<green_arr.length; i++)
-    // {
-    //     getIndicesOf(green_arr[i], txt, 0, "green");
-    // }
-    // for(let i=0; i<red_arr.length; i++)
-    // {
-    //     getIndicesOf(red_arr[i], txt, 0, "red");
-    // }
-    // for(let i=0; i<blue_arr.length; i++)
-    // {
-    //     getIndicesOf(blue_arr[i], txt, 0, "blue");
-    // }
-// GET FIRST OCCURRENCE //
-    for(let i=0; i<green_arr.length; i++)
-    {
-        if(txt.search(green_arr[i]) != -1)
-        {
-            let green_text_i_1 = txt.search(" "+green_arr[i])+1;
-            let next = green_text_i_1 + green_arr[i].length;
-            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
-            {
-                green_indices.push(green_text_i_1);
-                green_indices.push(green_text_i_1 + green_arr[i].length);
-            }
-        }
-    }
-    for(let i=0; i<red_arr.length; i++)
-    {
-        if(txt.search(red_arr[i]) != -1)
-        {
-            let red_text_i_1 = txt.search(" "+red_arr[i])+1;
-            let next = red_text_i_1 + red_arr[i].length;
-            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
-            {
-                red_indices.push(red_text_i_1);
-                red_indices.push(red_text_i_1 + red_arr[i].length);
-            }
-        }
-    }
-    for(let i=0; i<blue_arr.length; i++)
-    {
-        if(txt.search(blue_arr[i]) != -1)
-        {
-            let blue_text_i_1 = txt.search(" "+blue_arr[i])+1;
-            let next = blue_text_i_1 + blue_arr[i].length;
-            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
-            {
-                blue_indices.push(blue_text_i_1);
-                blue_indices.push(blue_text_i_1 + blue_arr[i].length);
-            }
-        }
-    }
-    green_indices = green_indices.sort((a,b) => {return a-b;});
-    red_indices = red_indices.sort((a,b) => {return a-b;});
-    blue_indices = blue_indices.sort((a,b) => {return a-b;});
-
-    if(isTyping == false)
-    {
-        typeWriter();
-        if(monks_closed.style.zIndex == "-1")
-        {
-            speak();
-        }
-    }
-}
-// END GET INDICES OF IMPORTANT TEXT //
-
 // SPEECH BOX //
 var txt;
 var monks_closed = document.getElementById("monks-closed");
@@ -368,6 +220,154 @@ function read_svg_element()
     }
 }
 // END GLYPH INFO //
+
+// GET INDICES OF IMPORTANT TEXT //
+var plagal;
+var green_arr = ["Do","Re","Mi","Fa","Sol","La","Ti","medieval","syllabic","neumatic","melismatic"];
+var green_indices = [];
+var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant","illuminated","Dorian","Hypodorian","Phrygian","Hypophrygian","Lydian","Hypolydian","Mixolydian","Hypomixolydian"];
+var red_indices = [];
+var blue_arr = ["monophonic","mode","form","plainsong","relative","finalis","dominant","ambitus","neume"];
+var blue_indices = [];
+function getIndicesOf(searchStr, str, caseSensitive, active_arr) //https://stackoverflow.com/a/3410557/23386341
+{
+    var searchStrLen = searchStr.length;
+    if (searchStrLen == 0) {
+        return;
+    }
+    var startIndex = 0, index;
+    if (!caseSensitive) {
+        str = str.toLowerCase();
+        searchStr = searchStr.toLowerCase();
+    }
+    while ((index = str.indexOf(searchStr, startIndex)) > -1) {
+        if(active_arr == "green") {
+            if(str.charAt(index+searchStrLen)==" " || str.charAt(index+searchStrLen)=="." || str.charAt(index+searchStrLen)==",")
+            {
+                green_indices.push(index);
+                green_indices.push(index + searchStrLen);
+                startIndex = index + searchStrLen;
+            }
+            else
+            {
+                startIndex = index + searchStrLen;
+            }
+        }
+        else if(active_arr == "red") {
+            red_indices.push(index);
+            red_indices.push(index + searchStrLen);
+            startIndex = index + searchStrLen;
+        }
+        else if(active_arr == "blue") {
+            if(str.charAt(index+searchStrLen)==" " || str.charAt(index+searchStrLen)=="." || str.charAt(index+searchStrLen)=="," || str.charAt(index+searchStrLen)=="s")
+            {
+                blue_indices.push(index);
+                blue_indices.push(index + searchStrLen);
+                startIndex = index + searchStrLen;
+            }
+            // else if(str.charAt(index+searchStrLen)=="s")
+            // {
+            //     blue_indices.push(index);
+            //     blue_indices.push(index + searchStrLen);
+            //     startIndex = index + searchStrLen;
+            //     plural_indices.push(index);
+            // }
+            else
+            {
+                startIndex = index + searchStrLen;
+            }
+        }
+    }
+}
+function find_important()
+{
+    speech = [];
+    green_indices = [];
+    red_indices = [];
+    blue_indices = [];
+    green_index = 0;
+    red_index = 0;
+    blue_index = 0;
+    plural_i = 0;
+    type_speed = 18;
+    speech_text.innerHTML="";
+    type_iterator = 0;
+    perform_clicked = 0;
+
+    speech_text.style.display = "none";
+
+    if(span_status == 1)
+    {
+        span_status = 0;
+    }
+
+// GET ALL OCCURRENCES //
+    // for(let i=0; i<green_arr.length; i++)
+    // {
+    //     getIndicesOf(green_arr[i], txt, 0, "green");
+    // }
+    // for(let i=0; i<red_arr.length; i++)
+    // {
+    //     getIndicesOf(red_arr[i], txt, 0, "red");
+    // }
+    // for(let i=0; i<blue_arr.length; i++)
+    // {
+    //     getIndicesOf(blue_arr[i], txt, 0, "blue");
+    // }
+// GET FIRST OCCURRENCE //
+    for(let i=0; i<green_arr.length; i++)
+    {
+        if(txt.search(green_arr[i]) != -1)
+        {
+            let green_text_i_1 = txt.search(" "+green_arr[i])+1;
+            let next = green_text_i_1 + green_arr[i].length;
+            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
+            {
+                green_indices.push(green_text_i_1);
+                green_indices.push(green_text_i_1 + green_arr[i].length);
+            }
+        }
+    }
+    for(let i=0; i<red_arr.length; i++)
+    {
+        if(txt.search(red_arr[i]) != -1)
+        {
+            let red_text_i_1 = txt.search(" "+red_arr[i])+1;
+            let next = red_text_i_1 + red_arr[i].length;
+            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
+            {
+                red_indices.push(red_text_i_1);
+                red_indices.push(red_text_i_1 + red_arr[i].length);
+            }
+        }
+    }
+    for(let i=0; i<blue_arr.length; i++)
+    {
+        if(txt.search(blue_arr[i]) != -1)
+        {
+            let blue_text_i_1 = txt.search(" "+blue_arr[i])+1;
+            let next = blue_text_i_1 + blue_arr[i].length;
+            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
+            {
+                blue_indices.push(blue_text_i_1);
+                blue_indices.push(blue_text_i_1 + blue_arr[i].length);
+            }
+        }
+    }
+    green_indices = green_indices.sort((a,b) => {return a-b;});
+    red_indices = red_indices.sort((a,b) => {return a-b;});
+    blue_indices = blue_indices.sort((a,b) => {return a-b;});
+
+    if(isTyping == false)
+    {
+        typeWriter();
+        if(monks_closed.style.zIndex == "-1")
+        {
+            speak();
+        }
+    }
+}
+// END GET INDICES OF IMPORTANT TEXT //
 
 // OFFSET TO CENTER TEXT //
 function getOffset(el) // https://stackoverflow.com/a/28222246/23386341
@@ -609,7 +609,7 @@ function enable_sound()
 }
 function welcome_txt()
 {
-    txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or select a mode and form on the left to compose a Grgeorian Chant.';
+    txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or select a mode and form on the left to compose a Gregorian Chant.';
     find_important();
 }
 
