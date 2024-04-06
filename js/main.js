@@ -100,7 +100,6 @@ function winderp(active)
     console.log(active);
     if(window_clicked == 0)
     {
-
         // dict_display.style.display = "none";
         history_display.style.display = "none";
         notation_display.style.display = "none";
@@ -199,7 +198,7 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Hypophrygian","adj","plagal; the fourth Gregorian mode; relative of the Phrygian mode",
                 "Lydian","adj","authentic; the fifth Gregorian mode; named after the Lydians of Anatolia",
                 "Hypolydian","adj","plagal; the sixth Gregorian mode; relative of the Lydian mode",
-                "Mixolydian","adj","authentic; the seventh Gregorian mode; the prefix -mixo means 'mixed' in Greek, and its root 'Lydian' refers to the Lydian mode",
+                "Mixolydian","adj","authentic; the seventh Gregorian mode; its prefix -mixo means 'mixed' in Greek, and its root 'Lydian' refers to the Lydian mode",
                 "Hypomixolydian","adj","plagal; the eigth Gregorian mode; relative of the Mixolydian mode",
                 "Medieval","adj","the time period spanning ~500-1500 AD during which the Chrisitan Church dominated cultural and artistic development in the West"];
 var blue_dict_i = 0;
@@ -215,7 +214,7 @@ function blue_text(e,color,node,str,in_out)
         blue_term.innerHTML = blue_dict[blue_dict_i];
         // blue_form.innerHTML = blue_dict[blue_dict_i+1];
         blue_def.innerHTML = blue_dict[blue_dict_i+2];
-        if(e.clientX >= screen.width/2)
+        if(e.clientX >= 0.45*screen.width)
         {
             blue_div.style.left = e.clientX - 260 + "px";
             node.style.cursor = "url(assets/cursors/cursor-finger.png), auto";
@@ -294,6 +293,9 @@ generate_button.addEventListener("click", () => {
     if(Tone.context.state != "running")
     {
         Tone.start();
+        reverb = new Tone.Reverb({
+            decay: 18,
+        }).toDestination();
     }
     });
 
@@ -308,6 +310,9 @@ perform_button.addEventListener("click", initialize_performance);
 var rest_iterator = 0;
 var perform_btn_clicks = 0;
 var voice;
+var oscillator;
+var breathiness;
+var envelope;
 var reverb;
 var sampler;
 var uncolor = () => {for(let i=0; i<illumination_i; i++){illuminated_chant_elements[i].style.fill = "black";}}
@@ -321,25 +326,39 @@ function initialize_performance(disable_perform)
 
     if(perform_btn_clicks % 2 != 0)
     {
-        voice = new Tone.Synth().toDestination();
-        // voice = new Tone.Sampler({
-        //     urls: {
-        //         C3: "c3.wav",
-        //         D3: "d3.wav",
-        //         E3: "e3.wav",
-        //         F3: "f3.wav",
-        //         G3: "g3.wav",
-        //         A3: "a3.wav",
-        //         B3: "b3.wav",
-        //         C4: "c4.wav"
-        //     },
-        //     release: 1,
-        //     baseUrl: "../assets/samples/",
-        //     onload: () => {perform(voice);}
+            // voice = new Tone.Sampler({
+            //     urls: {
+            //         C3: "c3.wav",
+            //         D3: "d3.wav",
+            //         E3: "e3.wav",
+            //         F3: "f3.wav",
+            //         G3: "g3.wav",
+            //         A3: "a3.wav",
+            //         B3: "b3.wav",
+            //         C4: "c4.wav"
+            //     },
+            //     release: 1,
+            //     baseUrl: "../assets/samples/",
+            //     onload: () => {perform(voice);}
+            // }).toDestination();
+        // voice = new Tone.Synth().toDestination();
+        // reverb = new Tone.Reverb({
+        //     decay: 18,
         // }).toDestination();
-        reverb = new Tone.Reverb({
-            decay: 8,
+        // voice.connect(reverb);
+
+        voice = new Tone.Synth({
+            oscillator: {
+                type: 'fattriangle'
+              },
+              envelope: {
+                attack: 0.25,
+                decay: 0.9,
+                sustain: .7,
+                release: 0.5
+              }
         }).toDestination();
+        voice.volume.value = -14;
         voice.connect(reverb);
     }
 
@@ -357,7 +376,7 @@ function initialize_performance(disable_perform)
         perform_button.disabled = true;
         Tone.Transport.stop();
         voice.dispose();
-        reverb.dispose();
+        // reverb.dispose();
         illuminate_elements = () => {};
         perform_button.innerHTML = "Perform";
         monks_open.style.zIndex = "-2";
