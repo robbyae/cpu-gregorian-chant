@@ -10,18 +10,18 @@ function loaded()
     // document.getElementById("loading").style.display = "none";
     document.getElementById("loading").style.display = "none";
     document.getElementById("enable-sound").style.display = "block";
-
+}
+function enable_sound()
+{
+    document.getElementById("enable-sound").style.display = "none";
+    Tone.start();
+    reverb = new Tone.Reverb({
+        decay: 18,
+    }).toDestination();
+    welcome_txt();
 }
 function welcome_txt()
 {
-    document.getElementById("enable-sound").style.display = "none";
-    if(Tone.context.state != "running")
-    {
-        Tone.start();
-        reverb = new Tone.Reverb({
-            decay: 18,
-        }).toDestination();
-    }
     txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or select a mode and form on the left to compose a Grgeorian Chant.';
     find_important();
 }

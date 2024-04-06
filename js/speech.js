@@ -646,7 +646,7 @@ function actually_speak()
     for(let [index,ltr] of speech.entries())
     {
         audio.src = speech[index];
-        audio.play();
+        // audio.play();
     }
 }
 // END MONK SPEAKING SOUNDS //
