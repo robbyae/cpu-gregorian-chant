@@ -46,14 +46,14 @@ closers_7 = [105,101,106,102] #(c3): i,e,j,f
 closers_8 = [99,102,101,103,100] #(c3): c,f,e,g,d
 
 Finales = []
-finalis_1 = [100,107] #d,k (c4)
-finalis_2 = [102] #f (f3)
-finalis_3 = [101] #e,l (c4)
-finalis_4 = [99,106] #c,j (c3)
-finalis_5 = [100,107] #d,k (c3)
-finalis_6 = [102] #f (c4)
-Finales_7 = [101] #e (c3)
-Finales_8 = [101] #e (c3)
+finales_1 = [100,107] #d,k (c4)
+finales_2 = [102] #f (f3)
+finales_3 = [101] #e,l (c4)
+finales_4 = [99,106] #c,j (c3)
+finales_5 = [100,107] #d,k (c3)
+finales_6 = [102] #f (c4)
+finales_7 = [101] #e (c3)
+finales_8 = [101] #e (c3)
 # c: 99
 # d: 100
 # e: 101
@@ -200,7 +200,7 @@ def generate_song(click):
     mode_int = 1
     openers = openers_1
     closers = closers_1
-    Finales = finalis_1
+    Finales = finales_1
     bigrams_in_use = bigrams_1
     podatus_num = 100
   elif mode[0] == "2":
@@ -208,7 +208,7 @@ def generate_song(click):
     mode_int = 2
     openers = openers_2
     closers = closers_2
-    Finales = finalis_2
+    Finales = finales_2
     bigrams_in_use = bigrams_2
     podatus_num = 102
   elif mode[0] == "3":
@@ -216,7 +216,7 @@ def generate_song(click):
     mode_int = 3
     openers = openers_3
     closers = closers_3
-    Finales = finalis_3
+    Finales = finales_3
     bigrams_in_use = bigrams_3
     podatus_num = 101
   elif mode[0] == "4":
@@ -224,7 +224,7 @@ def generate_song(click):
     mode_int = 4
     openers = openers_4
     closers = closers_4
-    Finales = finalis_4
+    Finales = finales_4
     bigrams_in_use = bigrams_4
     podatus_num = 102
   elif mode[0] == "5":
@@ -232,7 +232,7 @@ def generate_song(click):
     mode_int = 5
     openers = openers_5
     closers = closers_5
-    Finales = finalis_5
+    Finales = finales_5
     bigrams_in_use = bigrams_5
     podatus_num = 100
   elif mode[0] == "6":
@@ -240,7 +240,7 @@ def generate_song(click):
     mode_int = 6
     openers = openers_6
     closers = closers_6
-    Finales = finalis_6
+    Finales = finales_6
     bigrams_in_use = bigrams_6
     podatus_num = 100
   elif mode[0] == "7":
@@ -248,7 +248,7 @@ def generate_song(click):
     mode_int = 7
     openers = openers_7
     closers = closers_7
-    Finales = Finales_7
+    Finales = finales_7
     bigrams_in_use = bigrams_7
     podatus_num = 100
   elif mode[0] == "8":
@@ -256,7 +256,7 @@ def generate_song(click):
     mode_int = 8
     openers = openers_8
     closers = closers_8
-    Finales = Finales_8
+    Finales = finales_8
     bigrams_in_use = bigrams_8
     podatus_num = 100
 

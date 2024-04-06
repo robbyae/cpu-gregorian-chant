@@ -45,16 +45,6 @@ a:hover {
   position: absolute;
 }
 
-/* #loading:before {
-  content:"";
-  background-color:#D9A066;
-  position: absolute;
-  height: 100%;
-  width: 6000px;
-  left: -200px;
-  z-index: -1;
-} */
-
 #loading-text {
   margin-top: 8%;
   font-size: 2em;
@@ -79,6 +69,22 @@ a:hover {
   90%, 100% {
     content: '';
   }
+}
+
+#enable-sound {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  padding-top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Alagard";
+  text-align: center;
+  z-index: 10;
+  display: none;
+}
+#enable-sound-btn {
+  font-size: 2em;
 }
 
 #svg-wrapper {

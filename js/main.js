@@ -9,6 +9,19 @@ function loaded()
 {
     // document.getElementById("loading").style.display = "none";
     document.getElementById("loading").style.display = "none";
+    document.getElementById("enable-sound").style.display = "block";
+
+}
+function welcome_txt()
+{
+    document.getElementById("enable-sound").style.display = "none";
+    if(Tone.context.state != "running")
+    {
+        Tone.start();
+        reverb = new Tone.Reverb({
+            decay: 18,
+        }).toDestination();
+    }
     txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or select a mode and form on the left to compose a Grgeorian Chant.';
     find_important();
 }
@@ -20,6 +33,8 @@ var is_performing = 0;
 var mode_dropdown = document.getElementById("mode-dropdown");
 function reset_mode_and_form()
 {
+    document.getElementById("song-svg").style.display = "none";
+    svg_wrapper.style.cursor = "default";
     resetMode();
     resetForm();
 }
@@ -142,7 +157,6 @@ function winderp(active)
             notation_display.style.display = "none";
             solfege_display.style.display = "none";
             mode_display.style.display = "none";
-            document.getElementById("modes").style.display = "none";
         }
         else
         {
@@ -282,21 +296,14 @@ generate_button.addEventListener("click", () => {
         score.layoutChantLines(ctxt, chantContainer.clientWidth, function() {
           // render the score to svg code
           chantContainer.innerHTML = score.createSvg(ctxt);
+          color_finalis_and_dominant();
         });
       });
     }
     updateChant();
     document.getElementById("song-svg").style.display = "block";
-    document.getElementById("svg-wrapper").style.cursor = "url(assets/cursors/cursor-finger.png), auto";
+    svg_wrapper.style.cursor = "url(assets/cursors/cursor-finger.png), auto";
     }, 500);
-
-    if(Tone.context.state != "running")
-    {
-        Tone.start();
-        reverb = new Tone.Reverb({
-            decay: 18,
-        }).toDestination();
-    }
     });
 
 // PERFORM GABC //
@@ -316,6 +323,30 @@ var envelope;
 var reverb;
 var sampler;
 var uncolor = () => {for(let i=0; i<illumination_i; i++){illuminated_chant_elements[i].style.fill = "black";}}
+function color_finalis_and_dominant()
+{
+    song_tone = pyodideGlobals.get('song_tone');
+    song = song_tone.split(" ");
+    var finales = pyodideGlobals.get('Finales');
+    console.log(finales);
+    let chant_element_arr = document.getElementsByClassName("ChantNotationElement");
+    for(let i=0; i<chant_element_arr.length; i++)
+    {
+        console.log(chant_element_arr[i]);
+        if(chant_element_arr[i].id == "Punctum")
+        {
+            if(song[i]=="G3")
+            {
+                chant_element_arr[i].style.fill = "rgb(36, 36, 142)";
+            }
+            else if(song[i]==finales[0])
+            {
+                chant_element_arr[i].style.fill = "#105719";
+            }
+        }
+    }
+    console.log(song);
+}
 
 function initialize_performance(disable_perform)
 {

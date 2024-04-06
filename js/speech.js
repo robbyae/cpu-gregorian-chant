@@ -22,14 +22,14 @@ monks_closed.style.zIndex = "-1";
 // TITLE INFO //
 document.getElementById("title").addEventListener("click", () => {
     //txt = 'Plainsong, name derived from the Latin "cantus planus", is a medieval style of music sung in Latin and used in liturgies of the Western Church.';
-    loaded();
+    welcome_txt();
 });
 
 // MODE INFO //
 var active_mode;
 document.getElementById("mode-dropdown").addEventListener("click", () => {
     // txt = 'Greogorian Chant uses the diatonic scale and is categorized by eight modes. Modes 1, 3, 5, and 7 are the authentic modes, and modes 2, 4, 6, and 8 are the plagal modes. Each authentic mode has a relative plagal and vice versa. Each mode posesses three defining attributes: a final, a dominant, and an ambitus.';
-    txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but carry different dominants. Click the mode button for more.';
+    txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but carry different dominants.';
     find_important();
 });
 var prev_mode = "";
@@ -41,11 +41,12 @@ var mode_text = ['The Dorian mode is an authentic mode and relative of the Hypod
 'The Hypoydian mode is a plagal mode and relative of the Lydian mode. Its finalis is Fa, and its dominant falls on the third degree, La.',
 'The Mixolydian mode is an authentic mode and relative of the Hypomixolydian mode. Its finalis is Sol, and its dominant falls on the fifth degree, Re.',
 'The Hypomixolydian mode is a plagal mode and relative of the Mixolydian mode. Its finalis is Sol, and its dominant falls on the fourth degree, Do.']
-function mode_info(active_mode, reset)
+function mode_info(active_mode)
 {
-    if(active_mode != prev_mode && reset != 1)
+    if(active_mode != prev_mode)
     {
         document.getElementById("song-svg").style.display = "none";
+        svg_wrapper.style.cursor = "default";
         perform_btn.disabled = true;
     }
     txt = mode_text[active_mode-1];
@@ -66,6 +67,7 @@ function form_info(active_form)
     if(active_form != prev_form)
     {
         document.getElementById("song-svg").style.display = "none";
+        svg_wrapper.style.cursor = "default";
     }
     if(active_form == "Syllabic")
     {
@@ -274,6 +276,7 @@ function getIndicesOf(searchStr, str, caseSensitive, active_arr) //https://stack
 }
 function find_important()
 {
+    speech = [];
     green_indices = [];
     red_indices = [];
     blue_indices = [];
@@ -350,6 +353,9 @@ function find_important()
     red_indices = red_indices.sort((a,b) => {return a-b;});
     blue_indices = blue_indices.sort((a,b) => {return a-b;});
 
+    get_txt_sounds();
+    actually_speak();
+
     if(isTyping == false)
     {
         typeWriter();
@@ -386,6 +392,7 @@ var ghost_text = document.getElementById("ghost-text");
 var red_spans = [];
 var blue_spans = [];
 var green_spans = [];
+var active_letter;
 function typeWriter()
 {
     isTyping = true;
@@ -572,3 +579,74 @@ function speak()
     change_monk_state();
     setTimeout(speak, talk_speed);
 }
+
+// MONK SPEAKING SOUNDS //
+var keys = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','th','sh',' ','.'];
+var key_num = 0;
+var sounds = [];
+function initialize_speech_audio() // https://github.com/equalo-official/animalese-generator/
+{
+    for(let [index,ltr] of keys.entries())
+    {
+        key_num = index+1;
+        if(key_num < 10)
+        {
+            key_num = '0'+key_num.toString();
+        }
+        sounds[ltr] = './assets/sounds/low/sound'+key_num.toString()+'.wav';
+    }
+}
+initialize_speech_audio();
+var isAlpha = function(ch) // https://stackoverflow.com/a/40120933/23386341
+{
+    return /^[A-Z]$/i.test(ch);
+}
+var speech = [];
+function get_txt_sounds()
+{
+    for(let i=0; i<txt.length; i++)
+    {
+        if(txt[i]=="s" && txt[i+1]=="h")
+        {
+            speech.push(sounds["sh"]);
+            continue;
+        }
+        else if(txt[i]=="t" && txt[i+1]=="h")
+        {
+            speech.push(sounds["th"]);
+            continue;
+        }
+        else if(txt[i]=="h" && (txt[i-1]=="s" || txt[i-1]=="t"))
+        {
+            // skip;
+            continue;
+        }
+        else if(txt[i]=="," || txt[i]=="?")
+        {
+            speech.push(sounds["."]);
+            continue;
+        }
+        else if(txt[i]==txt[i-1])
+        {
+            // skip;
+            continue;
+        }
+        if(isAlpha(txt[i])!=false && txt[i]!=".")
+        {
+            // skip;
+            continue;
+        }
+        speech.push(sounds[txt[i]])
+    }
+    console.log(speech);
+}
+var audio = new Audio();
+function actually_speak()
+{
+    for(let [index,ltr] of speech.entries())
+    {
+        audio.src = speech[index];
+        audio.play();
+    }
+}
+// END MONK SPEAKING SOUNDS //
