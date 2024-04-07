@@ -74,11 +74,9 @@
       <br>
       <button class="btn btn-secondary right-btn" id="notation-button">Notation</button>
       <br>
+      <button class="btn btn-secondary right-btn" id="mode-button">Modes</button>  
+      <br>
       <button class="btn btn-secondary right-btn" id="history-button">History</button>
-      <br>
-      <button class="btn btn-secondary right-btn" id="mode-button">Modes</button>
-      <br>
-      <button class="btn btn-secondary right-btn" id="about-button">About</button>    
     </div>
     </div>
     <div id="blue-text-div">
@@ -108,16 +106,18 @@
       </div>
       <div id="history">
         <h3 class="info-title">~ History of Gregorian Chant ~</h3>
-        <p></p>
-      </div>
-      <div id="notation">
-        <h3 class="info-title">~ Gregorian Notation ~</h3>
         <p class="indent">For centuries, the method of chant transmission was oral. This presented problems, however, as the lack of a musical notation left much room for interpretation and, in turn, melodic corruption. In an attempt to standardize the repertoire and unify the liturgical practices of the Christian world, notation was invented. The date of invention is unknown, but the earliest surviving tomes of notated chants date to the late ninth century. Its earliest manifestation presented itself in the form of <i>neumatic notation</i>, a style in which symbols called neumes appear above words, denoting the number of syllables to sing and the melodic direction of the song. These early neumes, however, did not specify the exact pitches or rhythms to be sung, and as such served only as a memory aid to those already familiar with the melody. [1]</p>
         <div class="img-sub">
           <img id="neumatic-notation-img" src="assets/img/Graz, Universitätsbibliothek, Ms 748.png" alt="Graz, Universitätsbibliothek, Ms 748; Gradual from the Bologna region from around 890/900"/>
           <a href="https://unipub.uni-graz.at/urn:nbn:at:at-ubg:2-26249" target="_blank" class="info-subtitle italic">Neumatic Notation from a Gradual of the Bologna region, c. 890/900<br>Graz, Universitätsbibliothek, Ms. 748</a> <!--https://unipub.uni-graz.at/obvugrscript/content/pageview/5746911-->
         </div>
-        <p class="indent">Gregorian notation materialized to near completion during the first half of the eleventh century with the invention of the four-line staff, an innovation ascribed to the Benedictine monk, Guido of Arezzo (Italian: <i>Guido d'Arezzo</i>). The four-line staff enabled the notation of specific pitches and rhythms.
+        <div class="citations">
+          <p>[1] <cite id="notation-1">Burkholder, Grout, & Palisca, "A History of Western Music" 2006, 34-35</cite></p>
+        </div>
+      </div>
+      <div id="notation">
+        <h3 class="info-title">~ Gregorian Notation ~</h3>
+        <p class="indent">Gregorian notation materialized during the first half of the eleventh century with the invention of the four-line staff, an innovation ascribed to the Benedictine monk, Guido of Arezzo (Italian: <i>Guido d'Arezzo</i>). The four-line staff enabled the notation of specific pitches and rhythms.
         Two movable clefs, the <i>Do</i> and <i>Fa</i> clefs are used to determine the placement of their respective pitches. These may be placed on different lines of the staff to change the singing range.</p>
         <div id="clefs-wrapper">
           <div class="clefs-and-txt">
@@ -129,7 +129,7 @@
             <i class="info-subtitle">Fa Clef</i>
           </div>
         </div>
-        <p class="indent">Gregorian notation includes a variety of glyphs equal in rhythmic value but separate in quality. There is much speculation on the perfomative intentions behind these glyphs, but their exact meanings is not decidedly known.</p>
+        <p class="indent">Gregorian notation includes a variety of glyphs equal in rhythmic value but separate in quality. There is much speculation on the perfomative intentions behind these glyphs, but their exact meanings are not decidedly known. The punctum is the only glyph that may appear alone, with all others serving neumatic function. [1]</p>
         <div class="img-sub">
           <img id="notes-img" src="assets/img/notes.png" alt="Gregorian notes"/>
         </div>
@@ -138,27 +138,24 @@
           <img id="neume-img" src="assets/img/neume.png" alt="a neume"/>
           <i class="info-subtitle">Neume: Clivis</i>
         </div>
-        <p class="indent">Gregorian Notation is not defined by time signatures, rather the length of the sections is dependent on the textual content and neumatic form. Vertical bars of various lengths appear in chants to separate phrases and allow the singer to breathe. These bars are very thoughtfully placed to ensure the lyrical content remains uninterrupted. [2]</p>
+        <p class="indent">Gregorian notation is not defined by time signatures, rather the length of the sections is dependent on the textual content and neumatic form. Vertical bars of various lengths appear in chants to separate phrases and allow the singer to breathe. These bars are thoughtfully placed such that the lyrical content remains uninterrupted. [1]</p>
         <div class="citations">
-          <p>[1] <cite id="notation-1">Burkholder, Grout, & Palisca, "A History of Western Music" 2006, 34-35</cite></p>
-          <p>[2] <cite id="notation-2">Goodchild, "Gregorian Chant for Church and School" 1944, 6,7,11,15</cite></p>
+          <p>[1] <cite>Goodchild, "Gregorian Chant for Church and School" 1944, 6,7,11,15</cite></p>
         </div>
-      </div>
-      <div id="solfege-info">
-        <h3 class="info-title">~ Solfege ~</h3>
-        <p>Plainsong is discussed in Solfège, a system of solmization believed to have been invented by Guido d'Arezzo. A possible arrangement of pitches is demonstrated on the staff below.</p>
-        <img id="solfege-staff" src="assets/img/solfege-staff.png" alt="Solfege Staff"/>
-        <p>Note that the locations of these pitches will vary depending on the clef used and its placement on the staff.</p>
       </div>
       <div id="modes">
         <h3 class="info-title">~ Modes ~</h3>
-        <p>Like our modern musical alphabet, the Gregorian modal system uses the diatonic scale. In modern music, two modes are commonly used. The Ionian (major) and Aeolian (minor).</p>
-        <img id="modern-modes-img" src="assets/img/modern-modes.png" alt="modern modes"/>
-        <p>There are eight Gregorian modes, each defined by a <i>finalis</i> and organized in two categories: authentic and plagal. Each authentic mode has a relative plagal and vice versa. Relative modes share the same finalis.</p>
+        <p class="indent">Like our modern musical alphabet, the Gregorian modal system uses the diatonic scale. The notes are almost always natural, but one accidental, the flat, appears occasionally. The flat always falls on the seventh degree, <i>Ti</i>.</p>
+        <div class="img-sub">
+          <img id="modern-modes-img" src="assets/img/modern-modes.png" alt="modern modes"/>
+
+          <img id="solfege-staff" src="assets/img/solfege-staff.png" alt="Solfege Staff"/>
+          <p class="info-subtitle italic">Note that the locations of these pitches will vary depending on the clef used and its placement on the staff.</p>
+        </div>        
+        <!-- <p class="indent">In modern music, two modes are commonly used. The Ionian (major) and Aeolian (minor).</p> -->
+        <p class="indent">There are eight Gregorian modes, each defined by a <i>finalis</i> and organized in two categories: authentic and plagal. Each authentic mode has a relative plagal and vice versa. Relative modes share the same finalis.</p>
           <img id="gregorian-modes-img" src="assets/img/gregorian-modes.png" alt="gregorian modes"/>
           <p class="info-subtitle"><i>Finales are underlined. Dominants are encircled.</i></p>
-      </div>
-      <div id="about">
       </div>
   </div>
 </body>

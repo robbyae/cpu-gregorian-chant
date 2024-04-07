@@ -31,7 +31,7 @@ a {
 }
 
 a:hover {
-  color:#B40101;
+  color:#a50202;
   cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 
@@ -134,6 +134,7 @@ a:hover {
 
 .ChantScore {
   margin: .5% 0;
+  background-color: #ddd0b9;
 }
 
 .ChantNotationElement {
@@ -220,7 +221,7 @@ body {
   color: white;
   background-color: #402D2B;
   border-color: #402D2B;
-  font-size: 16px;
+  font-size: 1.3vw;
   margin: .35rem 0;
 }
 
@@ -240,7 +241,7 @@ body {
 .dropdown-item {
   font-family: "Alagard";
   cursor: url(../assets/cursors/cursor-finger.png), auto;
-  font-size: 16px;
+  font-size: 1.3vw;
 }
 
 #monks-closed {
@@ -270,7 +271,7 @@ body {
 
 #speech-box {
   font-family: "Alagard";
-  font-size: 16px;
+  font-size: 1.25vw;
   position: absolute;
   height: 22%;
   top: 2%;
@@ -298,7 +299,7 @@ body {
 
 #ghost-box {
   font-family: "Alagard";
-  font-size: 16px;
+  font-size: 1.25vw;
   position: absolute;
   height: 22%;
   top: 2%;
@@ -427,7 +428,7 @@ cite {
   font-size: 1.2rem;
 }
 #x:hover {
-  color:#B40101;
+  color:#a50202;
   cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 .info-title {
@@ -478,7 +479,7 @@ cite {
 }
 #solfege-staff {
   display: block;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
 }
 #modes {
@@ -486,12 +487,12 @@ cite {
 }
 #modern-modes-img {
   display: block;
-  width: 40%;
+  width: 50%;
   margin: 0 auto;
 }
 #gregorian-modes-img {
   display: block;
-  width: 40%;
+  width: 60%;
   margin: 0 auto;
 }
 #neumatic-notation-img {

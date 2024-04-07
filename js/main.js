@@ -46,7 +46,8 @@ function mode_info(active_mode)
 {
     if(active_mode != prev_mode)
     {
-        document.getElementById("song-svg").style.display = "none";
+        song_svg.style.display = "none";
+        svg_wrapper.style.height = "30%";
         svg_wrapper.style.cursor = "default";
         perform_btn.disabled = true;
     }
@@ -68,7 +69,8 @@ function form_info(active_form)
 {
     if(active_form != prev_form)
     {
-        document.getElementById("song-svg").style.display = "none";
+        song_svg.style.display = "none";
+        svg_wrapper.style.height = "30%";
         svg_wrapper.style.cursor = "default";
     }
     if(active_form == "Syllabic")
@@ -178,6 +180,22 @@ function read_svg_element()
             find_important();
         });
     }
+    var torculus_resupinus = document.getElementsByClassName("ChantNotationElement TorculusResupinus");
+    for(let i=0; i<torculus_resupinus.length; i++)
+    {
+        torculus_resupinus[i].addEventListener("click", () => {
+            txt = "Torculus Resupinus: A neume of four notes that begins low and travels up, down, and back up.";//Guide to Neumes//
+            find_important();
+        });
+    }
+    var porrectus_flexus = document.getElementsByClassName("ChantNotationElement PorrectusFlexus");
+    for(let i=0; i<porrectus_flexus.length; i++)
+    {
+        porrectus_flexus[i].addEventListener("click", () => {
+            txt = "Porrectus Flexus: A neume of four notes. The same as a porrectus but with a low note at the end.";//Guide to Neumes//
+            find_important();
+        });
+    }
     var quarterBar = document.getElementsByClassName("ChantNotationElement QuarterBar");
     for(let i=0; i<quarterBar.length; i++)
     {
@@ -198,7 +216,7 @@ function read_svg_element()
     for(let i=0; i<accidental.length; i++)
     {
         accidental[i].addEventListener("click", () => {
-            txt = 'Flat: The only accidental used in plainsong is the flat, which lowers the value of the affected note by one semitone. The flat is always placed on the seventh degree, Ti.';//Goodchild,29//
+            txt = 'Flat: The only accidental used in Gregorian Chant is the flat, which lowers the value of the affected note by one semitone. The flat always falls on the seventh degree, Ti.';//Goodchild,29//
             find_important();
         });
     }
@@ -225,7 +243,7 @@ function read_svg_element()
 var plagal;
 var green_arr = ["Do","Re","Mi","Fa","Sol","La","Ti","medieval","syllabic","neumatic","melismatic"];
 var green_indices = [];
-var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant","illuminated","Dorian","Hypodorian","Phrygian","Hypophrygian","Lydian","Hypolydian","Mixolydian","Hypomixolydian"];
+var red_arr = ["plagal","authentic","diatonic","click","CPU","Gregorian Chant","illuminated","Dorian","Hypodorian","Phrygian","Hypophrygian","Lydian","Hypolydian","Mixolydian","Hypomixolydian"];
 var red_indices = [];
 var blue_arr = ["monophonic","mode","form","plainsong","relative","finalis","dominant","ambitus","neume"];
 var blue_indices = [];
@@ -610,7 +628,6 @@ function enable_sound()
     form_dropdown.disabled = false;
     history_btn.disabled = false;
     notation_btn.disabled = false;
-    about_btn.disabled = false;
     mode_btn.disabled = false;
     bib_btn.disabled = false;
     Tone.start();
@@ -618,7 +635,7 @@ function enable_sound()
 }
 function welcome_txt()
 {
-    txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or select a mode and form on the left to compose a Gregorian Chant.';
+    txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or choose a mode and form on the left to compose a Gregorian Chant.';
     find_important();
 }
 
@@ -630,8 +647,9 @@ var mode_dropdown = document.getElementById("mode-dropdown");
 mode_dropdown.disabled = true;
 function reset_mode_and_form()
 {
-    document.getElementById("song-svg").style.display = "none";
+    song_svg.style.display = "none";
     svg_wrapper.style.cursor = "default";
+    svg_wrapper.style.height = "30%";
     resetMode();
     resetForm();
 }
@@ -641,6 +659,8 @@ function resetMode()
     mode_selected = 0;
     gen_btn.disabled = true;
     perform_button.disabled = true;
+    perform_button.style.backgroundColor = "#373c3f";
+    perform_button.style.borderColor = "#373c3f";
 }
 function showMode(item)
 {
@@ -666,6 +686,8 @@ function resetForm()
     form_selected = 0;
     gen_btn.disabled = true;
     perform_button.disabled = true;
+    perform_button.style.backgroundColor = "#373c3f";
+    perform_button.style.borderColor = "#373c3f";
 }
 function showForm(item)
 {
@@ -690,19 +712,15 @@ var x = document.getElementById("x");
 // var dict_btn = document.getElementById("dictionary-button");
 var history_btn = document.getElementById("history-button");
 var notation_btn = document.getElementById("notation-button");
-var about_btn = document.getElementById("about-button");
 var mode_btn = document.getElementById("mode-button");
 var bib_btn = document.getElementById("bibliography-button");
 history_btn.disabled = true;
 notation_btn.disabled = true;
-about_btn.disabled = true;
 mode_btn.disabled = true;
 bib_btn.disabled = true;
 // var dict_display = document.getElementById("dictionary");
 var history_display = document.getElementById("history");
 var notation_display = document.getElementById("notation");
-var solfege_display = document.getElementById("solfege-info");
-var about_display = document.getElementById("about");
 var info_window = document.getElementById("info-window");
 var mode_display = document.getElementById("modes");
 var window_clicked = 0;
@@ -710,7 +728,6 @@ x.addEventListener("click", () => winderp("x"));
 // dict_btn.addEventListener("click", () => winderp("dict"));
 history_btn.addEventListener("click", () => winderp("history"));
 notation_btn.addEventListener("click", () => winderp("notation"));
-about_btn.addEventListener("click", () => winderp("about"));
 mode_btn.addEventListener("click", () => winderp("modes"));
 var svg_wrapper = document.getElementById("svg-wrapper");
 var prev_active;
@@ -722,8 +739,6 @@ function winderp(active)
         // dict_display.style.display = "none";
         history_display.style.display = "none";
         notation_display.style.display = "none";
-        solfege_display.style.display = "none";
-        about_display.style.display = "none";
         document.getElementById("body-div").removeEventListener("click", hide_info);
         info_window.style.display = "block";
         x.style.display = "block";
@@ -733,12 +748,7 @@ function winderp(active)
         {
             notation_display.style.display = "block";
         }
-        else if(active=="solfege"){solfege_display.style.display = "block";}
         else if(active=="modes" || active=="Modes"){mode_display.style.display = "block";}
-        else if(active=="about")
-        {
-            about_display.style.display = "block";
-        }
         svg_wrapper.style.height = info_window.offsetHeight - 400 + "px";
         window_clicked = 1;
         prev_active = active;
@@ -751,7 +761,6 @@ function winderp(active)
     else
     {
         window_clicked = 0;
-        svg_wrapper.style.height = "30%";
         if(active == prev_active || active == "x")
         {
             info_window.style.display = "none";
@@ -759,7 +768,6 @@ function winderp(active)
             // dict_display.style.display = "none";
             history_display.style.display = "none";
             notation_display.style.display = "none";
-            solfege_display.style.display = "none";
             mode_display.style.display = "none";
         }
         else
@@ -770,7 +778,9 @@ function winderp(active)
 }
 function hide_info()
 {
-    svg_wrapper.style.height = "30%";
+    if(song_svg.style.display == "none"){svg_wrapper.style.height = "30%";}
+    else{svg_wrapper.style.height = "40%";}
+    window.scrollTo(0, 0);
     x.style.display = "none";
     info_window.style.display = "none";
     // dict_display.style.display = "none";
@@ -788,6 +798,7 @@ var blue_div_text = document.getElementById("blue-div-text");
 var blue_term = document.getElementById("term");
 var blue_def = document.getElementById("def");
 var blue_dict = ["Gregorian Chant","n","the central cultural and musical practice of Western plainsong",
+                "CPU","n","central processing unit; executes instructions of a computer program",
                 "Hover","v","to float over an object without clicking",
                 "Illuminated","adj","ornamented with painted decoration",
                 "Monophonic","adj","characterized by a single unaccompanied voice",
@@ -803,7 +814,7 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Melismatic","adj","a song rife with neumes in which many notes are sung to a single syllable",
                 "Form","n","the structure of a musical composition",
                 "Neume","n","a group of notes sung to a single syllable",
-                "Plainsong","n","the body of monophonic chants used in liturgies of the Western church",
+                "Plainsong","n","the body of monophonic chants used in liturgies of the Western church; name derived from Latin 'cantus planus'",
                 "Do","n","originally Ut, the first degree of the diatonic scale",
                 "Re","n","the second degree of the diatonic scale",
                 "Mi","n","the third degree of the diatonic scale",
@@ -871,9 +882,13 @@ function info_popup()
 }
 
 // RENDER GABC //
+var song_svg = document.getElementById("song-svg");
 var generate_button = document.getElementById("generate-button");
 generate_button.addEventListener("click", () => {
     setTimeout(() => {
+    perform_button.style.backgroundColor = "#105719";
+    perform_button.style.borderColor = "#105719";
+
     gabc = pyodideGlobals.get('song_gabc')
 
     var ctxt = new exsurge.ChantContext();
@@ -883,7 +898,6 @@ generate_button.addEventListener("click", () => {
     ctxt.annotationTextColor = '#d00';
 
     var score;
-    var chantContainer = document.getElementById('song-svg');
 
     var updateChant = function() {
       if (score) {
@@ -899,25 +913,17 @@ generate_button.addEventListener("click", () => {
     var layoutChant = function() {
       // perform layout on the chant
       score.performLayoutAsync(ctxt, function() {
-        score.layoutChantLines(ctxt, chantContainer.clientWidth, function() {
+        score.layoutChantLines(ctxt, song_svg.clientWidth, function() {
           // render the score to svg code
-          chantContainer.innerHTML = score.createSvg(ctxt);
-          let score_line_count = document.getElementsByClassName("chantLine").length;
-          if(score_line_count > 2)
-          {
-            svg_wrapper.style.height = "35%"
-          }
-          else
-          {
-            svg_wrapper.style.height = "30%";
-          }
+          song_svg.innerHTML = score.createSvg(ctxt);
+          svg_wrapper.style.height = "40%";
           color_finalis_and_dominant();
         });
       });
     }
     updateChant();
-    document.getElementById("song-svg").style.display = "block";
-    svg_wrapper.style.cursor = "url(assets/cursors/cursor-finger.png), auto";
+    song_svg.style.display = "block";
+    song_svg.style.cursor = "url(assets/cursors/cursor-finger.png), auto";
     }, 500);
     });
 // END RENDER GABC //
@@ -993,6 +999,8 @@ function initialize_performance(disable_perform)
         perform(voice);
         generate_button.disabled = true;
         perform_button.innerHTML = "Stop";
+        perform_button.style.backgroundColor = "#a50202";
+        perform_button.style.borderColor = "#a50202";
     }
     else if(perform_button.innerHTML == "Stop")
     {
@@ -1004,6 +1012,8 @@ function initialize_performance(disable_perform)
         // reverb.dispose();
         illuminate_elements = () => {};
         perform_button.innerHTML = "Perform";
+        perform_button.style.backgroundColor = "#373c3f";
+        perform_button.style.borderColor = "#373c3f";
         monks_open.style.zIndex = "-2";
         monks_closed_noeyes.style.zIndex = "-1";
         setTimeout(() => {
@@ -1015,6 +1025,8 @@ function initialize_performance(disable_perform)
             else
             {
                 perform_button.disabled = false;
+                perform_button.style.backgroundColor = "#105719";
+                perform_button.style.borderColor = "#105719";
                 monks_closed.style.zIndex = "-1";
                 monks_open.style.zIndex = "-2";
                 monks_closed_noeyes.style.zIndex = "-3";
