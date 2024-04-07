@@ -597,6 +597,8 @@ function loaded()
     // document.getElementById("loading").style.display = "none";
     document.getElementById("loading").style.display = "none";
     document.getElementById("enable-sound").style.display = "block";
+    monks_closed_noeyes.style.zIndex = "-3";
+    monks_closed.style.zIndex = "-1";
     reverb = new Tone.Reverb({
         decay: 18,
     }).toDestination();
@@ -604,6 +606,13 @@ function loaded()
 function enable_sound()
 {
     document.getElementById("enable-sound").style.display = "none";
+    mode_dropdown.disabled = false;
+    form_dropdown.disabled = false;
+    history_btn.disabled = false;
+    notation_btn.disabled = false;
+    about_btn.disabled = false;
+    mode_btn.disabled = false;
+    bib_btn.disabled = false;
     Tone.start();
     welcome_txt();
 }
@@ -618,6 +627,7 @@ var mode_selected = 0;
 var form_selected = 0;
 var is_performing = 0;
 var mode_dropdown = document.getElementById("mode-dropdown");
+mode_dropdown.disabled = true;
 function reset_mode_and_form()
 {
     document.getElementById("song-svg").style.display = "none";
@@ -649,6 +659,7 @@ function showMode(item)
     }
 }
 var form_dropdown = document.getElementById("form-dropdown");
+form_dropdown.disabled = true;
 function resetForm()
 {
     form_dropdown.innerHTML = "Form";
@@ -680,8 +691,13 @@ var x = document.getElementById("x");
 var history_btn = document.getElementById("history-button");
 var notation_btn = document.getElementById("notation-button");
 var about_btn = document.getElementById("about-button");
-about_btn.style.display = "none";
 var mode_btn = document.getElementById("mode-button");
+var bib_btn = document.getElementById("bibliography-button");
+history_btn.disabled = true;
+notation_btn.disabled = true;
+about_btn.disabled = true;
+mode_btn.disabled = true;
+bib_btn.disabled = true;
 // var dict_display = document.getElementById("dictionary");
 var history_display = document.getElementById("history");
 var notation_display = document.getElementById("notation");
@@ -886,6 +902,15 @@ generate_button.addEventListener("click", () => {
         score.layoutChantLines(ctxt, chantContainer.clientWidth, function() {
           // render the score to svg code
           chantContainer.innerHTML = score.createSvg(ctxt);
+          let score_line_count = document.getElementsByClassName("chantLine").length;
+          if(score_line_count > 2)
+          {
+            svg_wrapper.style.height = "35%"
+          }
+          else
+          {
+            svg_wrapper.style.height = "30%";
+          }
           color_finalis_and_dominant();
         });
       });
