@@ -144,7 +144,7 @@ function read_svg_element()
     for(let i=0; i<podatus.length; i++)
     {
         podatus[i].addEventListener("click", () => {
-            txt = "Podatus: A neume of two notes in which the first ascends to the second.";//Guide to Neumes//
+            txt = "Podatus: A two-note neume in which the first ascends to the second.";//Guide to Neumes//
             find_important();
         });
     }
@@ -152,7 +152,7 @@ function read_svg_element()
     for(let i=0; i<clivis.length; i++)
     {
         clivis[i].addEventListener("click", () => {
-            txt = "Clivis: A neume of two notes in which the first descends to the second.";//Guide to Neumes//
+            txt = "Clivis: A two-note neume in which the first descends to the second.";//Guide to Neumes//
             find_important();
         });
     }
@@ -176,7 +176,7 @@ function read_svg_element()
     for(let i=0; i<torculus.length; i++)
     {
         torculus[i].addEventListener("click", () => {
-            txt = "Torculus: A neume of three notes. The first ascends to the second, which descends to the third.";//Guide to Neumes//
+            txt = "Torculus: A three-note neume of which the first ascends to the second, which descends to the third.";//Guide to Neumes//
             find_important();
         });
     }
@@ -184,7 +184,7 @@ function read_svg_element()
     for(let i=0; i<torculus_resupinus.length; i++)
     {
         torculus_resupinus[i].addEventListener("click", () => {
-            txt = "Torculus Resupinus: A neume of four notes that begins low and travels up, down, and back up.";//Guide to Neumes//
+            txt = "Torculus Resupinus: A four-note neume that begins low and travels up, down, and back up.";//Guide to Neumes//
             find_important();
         });
     }
@@ -192,7 +192,23 @@ function read_svg_element()
     for(let i=0; i<porrectus_flexus.length; i++)
     {
         porrectus_flexus[i].addEventListener("click", () => {
-            txt = "Porrectus Flexus: A neume of four notes. The same as a porrectus but with a low note at the end.";//Guide to Neumes//
+            txt = "Porrectus Flexus: A four-note neume that is the same as a porrectus but with a low note at the end.";//Guide to Neumes//
+            find_important();
+        });
+    }
+    var scandicus_flexus = document.getElementsByClassName("ChantNotationElement ScandicusFlexus");
+    for(let i=0; i<scandicus_flexus.length; i++)
+    {
+        scandicus_flexus[i].addEventListener("click", () => {
+            txt = "Scandicus Flexus: A four-note neume of which the first three ascend and the last descends.";//Guide to Neumes//
+            find_important();
+        });
+    }
+    var distropha = document.getElementsByClassName("ChantNotationElement Distropha");
+    for(let i=0; i<distropha.length; i++)
+    {
+        distropha[i].addEventListener("click", () => {
+            txt = "Distropha: A two-note neume of which both elements have the same tonal value.";//Guide to Neumes//
             find_important();
         });
     }
@@ -224,7 +240,7 @@ function read_svg_element()
     for(let i=0; i<scandicus.length; i++)
     {
         scandicus[i].addEventListener("click", () => {
-            txt = 'Scandicus: An ascending neume of three notes. The first rises to the second, which rises to the third.';
+            txt = 'Scandicus: An ascending three-note neume of which the first rises to the second, which rises to the third.';
             find_important();
         });
     }
@@ -339,7 +355,7 @@ function find_important()
         {
             let green_text_i_1 = txt.search(" "+green_arr[i])+1;
             let next = green_text_i_1 + green_arr[i].length;
-            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)=="," || txt.charAt(next)=="s")
+            if(txt.charAt(next)==" " || txt.charAt(next)=="." || txt.charAt(next)==",") // || txt.charAt(next)=="s"
             {
                 green_indices.push(green_text_i_1);
                 green_indices.push(green_text_i_1 + green_arr[i].length);
@@ -568,7 +584,7 @@ document.getElementById("perform-button").addEventListener("click", () => {
 });
 function change_monk_state()
 {
-    if(talk_speed != 500)
+    if(talk_speed!=500)
     {
         [open_z, closed_z] = [closed_z, open_z];
         monks_open.style.zIndex = open_z;
@@ -596,10 +612,23 @@ function speak()
             monks_closed.style.zIndex = "-1";
             monks_closed_noeyes.style.zIndex = "-3";
         }, 250);
+        talk_speed = 100;
         return;
     }
-    change_monk_state();
+    if((talk_speed==250 || talk_speed==200) && monks_closed_noeyes.style.zIndex!=1)
+    {
+        monks_closed_noeyes.style.zIndex = "2";
+        monks_open.style.zIndex = "1";
+    }
+    else
+    {
+        change_monk_state();
+    }
     setTimeout(speak, talk_speed);
+}
+function speak_sound()
+{
+    speech_tone.triggerAttackRelease("C3", "16n");
 }
 // END MONK TALK EFFECT //
 
@@ -620,6 +649,20 @@ function loaded()
     reverb = new Tone.Reverb({
         decay: 18,
     }).toDestination();
+    speech_tone = new Tone.Synth({
+        oscillator: {
+            type: 'fattriangle',
+            spread: 20
+          },
+          envelope: {
+            attack: 0.25,
+            decay: 0.9,
+            sustain: .7,
+            release: 0.9
+          }
+    }).toDestination();
+    speech_tone.volume.value = -14;
+    speech_tone.connect(reverb);
 }
 function enable_sound()
 {
@@ -632,6 +675,7 @@ function enable_sound()
     bib_btn.disabled = false;
     Tone.start();
     welcome_txt();
+    speak_sound();
 }
 function welcome_txt()
 {
@@ -723,12 +767,14 @@ var history_display = document.getElementById("history");
 var notation_display = document.getElementById("notation");
 var info_window = document.getElementById("info-window");
 var mode_display = document.getElementById("modes");
+var bib_display = document.getElementById("bibliography");
 var window_clicked = 0;
 x.addEventListener("click", () => winderp("x"));
 // dict_btn.addEventListener("click", () => winderp("dict"));
 history_btn.addEventListener("click", () => winderp("history"));
 notation_btn.addEventListener("click", () => winderp("notation"));
 mode_btn.addEventListener("click", () => winderp("modes"));
+bib_btn.addEventListener("click", () => winderp("bibliography"));
 var svg_wrapper = document.getElementById("svg-wrapper");
 var prev_active;
 function winderp(active)
@@ -744,11 +790,9 @@ function winderp(active)
         x.style.display = "block";
         // if(active=="dict"){dict_display.style.display = "block";}
         if(active=="history"){history_display.style.display = "block";}
-        else if(active=="notation")
-        {
-            notation_display.style.display = "block";
-        }
-        else if(active=="modes" || active=="Modes"){mode_display.style.display = "block";}
+        else if(active=="notation"){notation_display.style.display = "block";}
+        else if(active=="modes"){mode_display.style.display = "block";}
+        else if(active=="bibliography"){bib_display.style.display = "block";}
         svg_wrapper.style.height = info_window.offsetHeight - 400 + "px";
         window_clicked = 1;
         prev_active = active;
@@ -769,6 +813,7 @@ function winderp(active)
             history_display.style.display = "none";
             notation_display.style.display = "none";
             mode_display.style.display = "none";
+            bib_display.style.display = "none";
         }
         else
         {
@@ -943,6 +988,7 @@ var oscillator;
 var breathiness;
 var envelope;
 var reverb;
+var speech_tone;
 var sampler;
 var uncolor = () => {for(let i=0; i<illumination_i; i++){illuminated_chant_elements[i].style.fill = "black";}}
 function color_finalis_and_dominant()
@@ -981,13 +1027,14 @@ function initialize_performance(disable_perform)
     {
         voice = new Tone.Synth({
             oscillator: {
-                type: 'fattriangle'
+                type: 'fattriangle',
+                spread: 20
               },
               envelope: {
                 attack: 0.25,
                 decay: 0.9,
                 sustain: .7,
-                release: 0.5
+                release: 0.9
               }
         }).toDestination();
         voice.volume.value = -14;
