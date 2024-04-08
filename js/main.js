@@ -208,7 +208,15 @@ function read_svg_element()
     for(let i=0; i<distropha.length; i++)
     {
         distropha[i].addEventListener("click", () => {
-            txt = "Distropha: A two-note neume of which both elements have the same tonal value.";//Guide to Neumes//
+            txt = "Distropha: A two-note neume of which both notes have the same tonal value.";//Guide to Neumes//
+            find_important();
+        });
+    }
+    var tristropha = document.getElementsByClassName("ChantNotationElement Tristropha");
+    for(let i=0; i<tristropha.length; i++)
+    {
+        tristropha[i].addEventListener("click", () => {
+            txt = "Tristropha: A three-note neume of which all notes have the same tonal value.";//Guide to Neumes//
             find_important();
         });
     }
@@ -626,10 +634,6 @@ function speak()
     }
     setTimeout(speak, talk_speed);
 }
-function speak_sound()
-{
-    speech_tone.triggerAttackRelease("C3", "16n");
-}
 // END MONK TALK EFFECT //
 
 // PYSCRIPT GLOBAL VARIABLES //
@@ -649,20 +653,35 @@ function loaded()
     reverb = new Tone.Reverb({
         decay: 18,
     }).toDestination();
-    speech_tone = new Tone.Synth({
-        oscillator: {
-            type: 'fattriangle',
-            spread: 20
-          },
-          envelope: {
-            attack: 0.25,
-            decay: 0.9,
-            sustain: .7,
-            release: 0.9
-          }
-    }).toDestination();
-    speech_tone.volume.value = -14;
-    speech_tone.connect(reverb);
+    // speech_tone = new Tone.Synth({
+    //     oscillator: {
+    //         type: 'sine',
+    //         spread: 20
+    //       },
+    //       envelope: {
+    //         attack: 0.25,
+    //         decay: 0.9,
+    //         sustain: .7,
+    //         release: 0.9
+    //       }
+    // }).toDestination();
+    // speech_tone = new Tone.Sampler({
+    //     urls: {
+    //         C1: "rest.wav",
+    //         C4: "C4.wav"
+    //     },
+    //     release: 1,
+    //     baseUrl: "../assets/samples/",
+    //     attack: 0.25,
+    //     release: 0.35,
+    //     curve: "linear",
+    // }).toDestination();
+    // speech_tone = new Tone.Player("../assets/samples/test.wav").toDestination();
+    // speech_tone.autostart = true;
+    // speech_tone.loop = true;
+    // speech_tone.release = 0.25;
+    // speech_tone.volume.value = -14;
+    // speech_tone.connect(reverb);
 }
 function enable_sound()
 {
@@ -675,7 +694,6 @@ function enable_sound()
     bib_btn.disabled = false;
     Tone.start();
     welcome_txt();
-    speak_sound();
 }
 function welcome_txt()
 {
@@ -779,7 +797,6 @@ var svg_wrapper = document.getElementById("svg-wrapper");
 var prev_active;
 function winderp(active)
 {
-    console.log(active);
     if(window_clicked == 0)
     {
         // dict_display.style.display = "none";
@@ -832,6 +849,7 @@ function hide_info()
     history_display.style.display = "none";
     notation_display.style.display = "none";
     mode_display.style.display = "none";
+    bib_display.style.display = "none";
     document.getElementById("body-div").removeEventListener("click", hide_info);
     window_clicked = 0;
 }
@@ -989,18 +1007,17 @@ var breathiness;
 var envelope;
 var reverb;
 var speech_tone;
-var sampler;
 var uncolor = () => {for(let i=0; i<illumination_i; i++){illuminated_chant_elements[i].style.fill = "black";}}
 function color_finalis_and_dominant()
 {
     song_tone = pyodideGlobals.get('song_tone');
     song = song_tone.split(" ");
     var finales = pyodideGlobals.get('Finales');
-    console.log(finales);
+    // console.log(finales);
     let chant_element_arr = document.getElementsByClassName("ChantNotationElement");
     for(let i=0; i<chant_element_arr.length; i++)
     {
-        console.log(chant_element_arr[i]);
+        // console.log(chant_element_arr[i]);
         if(chant_element_arr[i].id == "Punctum")
         {
             if(song[i]=="G3")
@@ -1013,7 +1030,7 @@ function color_finalis_and_dominant()
             }
         }
     }
-    console.log(song);
+    // console.log(song);
 }
 
 function initialize_performance(disable_perform)
@@ -1025,25 +1042,37 @@ function initialize_performance(disable_perform)
 
     if(perform_btn_clicks % 2 != 0)
     {
-        voice = new Tone.Synth({
-            oscillator: {
-                type: 'fattriangle',
-                spread: 20
-              },
-              envelope: {
-                attack: 0.25,
-                decay: 0.9,
-                sustain: .7,
-                release: 0.9
-              }
+        // voice = new Tone.Synth({
+        //     oscillator: {
+        //         type: 'fattriangle',
+        //         spread: 20
+        //       },
+        //       envelope: {
+        //         attack: 0.25,
+        //         decay: 0.9,
+        //         sustain: .7,
+        //         release: 0.9
+        //       }
+        // }).toDestination();
+        voice = new Tone.Sampler({
+            urls: {
+                C1: "rest.wav",
+                C4: "C4.wav"
+            },
+            release: 1,
+            baseUrl: "../assets/samples/",
+            attack: 0.25,
+            release: 0.35,
+            curve: "linear",
+            onload: () => {perform(voice);}
         }).toDestination();
-        voice.volume.value = -14;
+        // voice.volume.value = -14;
         voice.connect(reverb);
     }
     if(perform_button.innerHTML == "Perform")
     {
         is_performing = 1;
-        perform(voice);
+        // perform(voice);
         generate_button.disabled = true;
         perform_button.innerHTML = "Stop";
         perform_button.style.backgroundColor = "#a50202";
@@ -1144,7 +1173,7 @@ function perform(voice)
                 value = "4n";
                 time_total += Tone.Time(prev_value).toSeconds();
                 rest_time.push(Math.round((time + time_total) * 100) / 100);
-                voice.triggerAttackRelease("0", value, time + time_total);
+                voice.triggerAttackRelease("C1", value, time + time_total);
                 time_arr.push(value);
                 prev_value = "4n";
             }), "id";
@@ -1196,7 +1225,7 @@ function perform(voice)
             setTimeout(illuminate_elements, (2*time_seconds)-(time_subtractor));
             return;
         }
-        else if(active_element[active_element_i]=="Climacus" || active_element[active_element_i]=="Scandicus" || active_element[active_element_i]=="Torculus" || active_element[active_element_i]=="Porrectus")
+        else if(active_element[active_element_i]=="Climacus" || active_element[active_element_i]=="Scandicus" || active_element[active_element_i]=="Torculus" || active_element[active_element_i]=="Porrectus" || active_element[active_element_i]=="Tristropha")
         {
             illuminated_chant_elements[illumination_i].style.fill = "#B40101";
             illumination_i++;
