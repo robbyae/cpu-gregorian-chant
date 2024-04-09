@@ -781,6 +781,8 @@ function winderp(active)
         // dict_display.style.display = "none";
         history_display.style.display = "none";
         notation_display.style.display = "none";
+        mode_display.style.display = "none";
+        bib_display.style.display = "none";
         document.getElementById("body-div").removeEventListener("click", hide_info);
         info_window.style.display = "block";
         x.style.display = "block";
@@ -1280,7 +1282,7 @@ var synth = new Animalese('../assets/samples/animalese.wav', function() {});
 
 function generateWav()
 {
-    return synth.Animalese(txt,false,0.65).dataURI;
+    return synth.Animalese(txt,false,1.0).dataURI;
 }
 
 var animalese;
