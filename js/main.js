@@ -31,9 +31,11 @@ document.getElementById("title").addEventListener("click", () => {
 var active_mode;
 document.getElementById("mode-dropdown").addEventListener("click", () => {
     // txt = 'Greogorian Chant uses the diatonic scale and is categorized by eight modes. Modes 1, 3, 5, and 7 are the authentic modes, and modes 2, 4, 6, and 8 are the plagal modes. Each authentic mode has a relative plagal and vice versa. Each mode posesses three defining attributes: a final, a dominant, and an ambitus.';
-    txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but carry different dominants.';
-    if(txt != prev_txt){find_important();}
-
+    if(document.getElementById("mode-dropdown").innerHTML == "Mode")
+    {
+        txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but carry different dominants.';
+        if(txt != prev_txt){find_important();}
+    }
 });
 var prev_mode = "";
 var mode_text = ['The Dorian mode is an authentic mode and relative of the Hypodorian mode. Its finalis is Re, and its dominant falls on the fifth degree, La.',
@@ -65,8 +67,11 @@ function mode_info(active_mode)
 // FORM INFO //
 var active_form;
 document.getElementById("form-dropdown").addEventListener("click", () => {
-    txt = "Gregorian Chant manifests in three forms: syllabic, neumatic, and melismatic. Select the form you want us to sing.";
-    if(txt != prev_txt){find_important();}
+    if(document.getElementById("form-dropdown").innerHTML == "Form")
+    {
+        txt = "Gregorian Chant manifests in three forms: syllabic, neumatic, and melismatic. Select the form you want us to sing.";
+        if(txt != prev_txt){find_important();}
+    }
 });
 var prev_form = "";
 function form_info(active_form)
