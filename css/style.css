@@ -199,6 +199,7 @@ body {
   left: 0.6vw;
   margin: 1% 0.5%;
   width: 30%;
+  z-index: 3;
 }
 
 #title {
@@ -206,6 +207,8 @@ body {
   font-family: "Alagard";
   color: black;
   margin: 0;
+  position: relative;
+  z-index: 6;
   cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 
@@ -242,6 +245,7 @@ body {
   font-family: "Alagard";
   cursor: url(../assets/cursors/cursor-finger.png), auto;
   font-size: 1.3vw;
+  z-index: 4;
 }
 
 #monks-closed {
@@ -273,14 +277,14 @@ body {
   font-family: "Alagard";
   font-size: 1.25vw;
   position: absolute;
-  height: 22%;
-  top: 2%;
+  height: 2%;
+  top: 22%;
   left: 24%;
   right: 24%;
   display: flex;
   align-items: flex-end;
   margin: 6px 6px;
-  z-index: 4;
+  z-index: 5;
 }
 
 #speech-text {
@@ -295,6 +299,7 @@ body {
   padding: 6px 14px;
   display: none;
   transition: color 0.10s;
+  z-index: 8;
 }
 
 #ghost-box {
