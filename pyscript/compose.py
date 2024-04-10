@@ -11,7 +11,7 @@ from pyodide.ffi import create_proxy
 bigrams_1 = [
   'd f g f e d h g e g f e d h j k h g h g h g f e d f g d e d c e f e d a c d f g e c f e d e c d f h g h f g f e d g f g h g f g f e d h j k h g h j g f e d c f e g h f g f e d e d f e c d f c d h ixi h g f g h g f g d g h g f e f g f e d c d e c d f e f g e g f e c d f h g h j i g f g h g f g f d f e d e d f g f e f g h f e d d h g f f g h g ixi h h j k j h g h ixi j ixi g f d f g f e f d d h g h ixi g h j k j k h j g h ixi j ixi h j k m k j k h j g f h g h d f g h ixi g f g h f e d f g h j g f g h j g f g h k j k g h ixi j k j i h ixi j i h i g f h d f g f e d f g f e f d h g f g h j g f g h k j k g h ixi j k j ixi h ixi j h i g f h g ixi h f g f e d e f d h ixi j h i g f h g ixi h k j k g h j k j ixi h g h g h f h ixi j ixi h g h g h d f g f e d e f d h g f h ixi j h g ixi h k j k ixi h g h j k m l k j k h ixi g f e f d f g d f e d c f g h j h i g f g h f e c f g c d f g f e d'] #(c4)
 bigrams_2 = [
-  'f i h g h i h g f g h g f e f g h g f i h g h i h g f g h g f e g f g f g f e f e f g h g f g h i h g h f g f e f g h g f g f e e f f e g h g f i h g h i h g f g h g f e f g g f h h g e f i h g h i h g f g h g f e g e g h g f i h g i g f g h g f e g h g f g e f e g h g f e f e g h g f g e f e g h g f e g e f e g h g f i h g h i h f g h g f e g h g f i h g h i h f g h g f e g h g f e f e g h g f e f e g h g f g e f g e f e g i j i g i e f g h g f e g h f e f c e f f e g g f g h i i j i h g f g g f f g h g f e f j i h f f i i j i h g e f g f e g h i h g h g f f j i j j f e g f h f e f e f g f g h i i h g f j j i j kxk j i i j i h g f g h i f g e f j i j j f e g f h h f e f h g h i g f h g h f g f e f f h f e'] #(f3)
+  'f i h g h i h g f g h g f e f g h g f i h g h i h g f g h g f e g f g f g f e f g h g f g h i h g h f g f e f g h g f g f e e f g h g f i h g h i h g f g h g f e f g g f h h g e f i h g h i h g f g h g f e g e g h g f i h g i g f g h g f e g h g f g e f e g h g f e g h g f g e f e g h g f e g e f e g h g f i h g h i h f g h g f e g h g f i h g h i h f g h g f e g h g f e g h g f e g h g f g e f g e f e g i j i g i e f g h g f e g h f e f c e f f e g g f g h i i j i h g f g g f f g h g f e f j i h f f i i j i h g e f g f e g h i h g h g f f j i j j f e g f h f e g f g h i i h g f j j i j kxk j i i j i h g f g h i f g e f j i j j f e g f h h f e f h g h i g f h g h f g f h f e'] #(f3)
 bigrams_3 = [
   'e f e d g h j j k i h j i g h j i h g h g h i g e h d e g e g h g h i g h g f e d e f e d g h i i j i h j i g h j i h g h g h i g g e h d e g e g h g h i g h g f e d e'] #(c4)
 bigrams_4 = [
@@ -46,11 +46,11 @@ closers_7 = [105,101,106,102] #(c3): i,e,j,f
 closers_8 = [99,102,101,103,100] #(c3): c,f,e,g,d
 
 Finales = []
-finalis_1 = [100,107] #d,k (c4)
+finalis_1 = [100] #d,k (c4)
 finalis_2 = [102] #f (f3)
 finalis_3 = [101] #e,l (c4)
-finalis_4 = [99,106] #c,j (c3)
-finalis_5 = [100,107] #d,k (c3)
+finalis_4 = [106] #c,j (c3)
+finalis_5 = [100] #d,k (c3)
 finalis_6 = [102] #f (c4)
 Finales_7 = [101] #e (c3)
 Finales_8 = [101] #e (c3)
@@ -64,6 +64,15 @@ Finales_8 = [101] #e (c3)
 # j: 106
 # k: 107
 # l: 108
+
+# finalis_1 = [100] #d,k (c4)
+# finalis_2 = [102] #f (f3)
+# finalis_3 = [101] #e,l (c4)
+# finalis_4 = [99,106] #c,j (c3)
+# finalis_5 = [100,107] #d,k (c3)
+# finalis_6 = [102] #f (c4)
+# Finales_7 = [101] #e (c3)
+# Finales_8 = [101] #e (c3)
 
 mode = ""
 mode_int = 0

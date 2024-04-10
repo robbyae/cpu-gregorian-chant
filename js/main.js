@@ -14,6 +14,7 @@ gen_btn.addEventListener("click", () => {
 
 // SPEECH BOX //
 var txt;
+var prev_txt;
 var monks_closed = document.getElementById("monks-closed");
 var monks_closed_noeyes = document.getElementById("monks-closed-noeyes");
 var monks_open = document.getElementById("monks-open");
@@ -31,7 +32,8 @@ var active_mode;
 document.getElementById("mode-dropdown").addEventListener("click", () => {
     // txt = 'Greogorian Chant uses the diatonic scale and is categorized by eight modes. Modes 1, 3, 5, and 7 are the authentic modes, and modes 2, 4, 6, and 8 are the plagal modes. Each authentic mode has a relative plagal and vice versa. Each mode posesses three defining attributes: a final, a dominant, and an ambitus.';
     txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but carry different dominants.';
-    find_important();
+    if(txt != prev_txt){find_important();}
+
 });
 var prev_mode = "";
 var mode_text = ['The Dorian mode is an authentic mode and relative of the Hypodorian mode. Its finalis is Re, and its dominant falls on the fifth degree, La.',
@@ -49,11 +51,13 @@ function mode_info(active_mode)
         song_svg.style.display = "none";
         svg_wrapper.style.height = "30%";
         svg_wrapper.style.cursor = "default";
+        perform_button.style.backgroundColor = "#373c3f";
+        perform_button.style.borderColor = "#373c3f";
         perform_btn.disabled = true;
     }
     txt = mode_text[active_mode-1];
     prev_mode = active_mode;
-    find_important();
+    if(txt != prev_txt){find_important();}
     return txt;
 }
 // END MODE INFO //
@@ -62,7 +66,7 @@ function mode_info(active_mode)
 var active_form;
 document.getElementById("form-dropdown").addEventListener("click", () => {
     txt = "Gregorian Chant manifests in three forms: syllabic, neumatic, and melismatic. Select the form you want us to sing.";
-    find_important();
+    if(txt != prev_txt){find_important();}
 });
 var prev_form = "";
 function form_info(active_form)
@@ -72,6 +76,9 @@ function form_info(active_form)
         song_svg.style.display = "none";
         svg_wrapper.style.height = "30%";
         svg_wrapper.style.cursor = "default";
+        perform_button.style.backgroundColor = "#373c3f";
+        perform_button.style.borderColor = "#373c3f";
+        perform_btn.disabled = true;
     }
     if(active_form == "Syllabic")
     {
@@ -88,15 +95,16 @@ function form_info(active_form)
         txt = 'A melismatic song is one rife with neumes. There may be many notes to one syllable.';
         prev_form = active_form;
     }
-    find_important();
+    if(txt != prev_txt){find_important();}
     return txt;
 }
 // END FORM INFO //
 
 // GENERATE MESSAGE //
 document.getElementById("generate-button").addEventListener("click", () => {
-    txt = "Click the chant elements you wish to learn about.";
-    find_important();
+    // txt = "Hover over the chant elements you wish to learn about.";
+    // find_important();
+    mode_info(active_mode,0);
 });
 // END GENERATE MESSAGE //
 
@@ -107,157 +115,204 @@ function read_svg_element()
     active_mode = mode_text[0].innerHTML[7];
     for(let i=0; i<mode_text.length; i++)
     {
-        mode_text[i].addEventListener("click", () => {
-            mode_info(active_mode, 0);
+        mode_text[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",mode_text[i],"Mode",1);
+        });
+        mode_text[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",mode_text[i],"Mode",0);
         });
     }
     var doClef = document.getElementsByClassName("ChantNotationElement DoClef");
     for(let i=0; i<doClef.length; i++)
     {
-        doClef[i].addEventListener("click", () => {
-            txt = 'Do Clef: A clef that defines the placement of Do on the staff. The Do Clef may be placed on any of the top three staff lines.';//Guide to Neumes//
-            find_important();
+        doClef[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",doClef[i],"Do Clef",1);
+        });
+        doClef[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",doClef[i],"Do Clef",0);
         });
     }
     var faClef = document.getElementsByClassName("ChantNotationElement FaClef");
     for(let i=0; i<faClef.length; i++)
     {
-        faClef[i].addEventListener("click", () => {
-            txt = 'Fa Clef: A clef that defines the placement of "Fa" on the staff. The Fa Clef may be placed on the second or third staff line.';//Guide to Neumes//
-            find_important();
+        faClef[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",faClef[i],"Fa Clef",1);
+        });
+        faClef[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",faClef[i],"Fa Clef",0);
         });
     }
     var punctum = document.getElementsByClassName("ChantNotationElement Punctum");
     for(let i=0; i<punctum.length; i++)
     {
-        punctum[i].addEventListener("click", () => {
-            txt = 'Punctum: A single note with a value of one beat.';//Guide to Neumes//
-            let last_child = punctum[i].lastChild;
-            if(last_child.attributes[0].nodeValue == "#Mora")
-            {
-                txt='Punctum Mora: A punctum with a mora, or dot, placed behind a note. The mora doubles the value of the note.';//Goodchild,24//
-            }
-            find_important();
-        });
+        let last_child = punctum[i].lastChild;
+        if(last_child.attributes[0].nodeValue == "#Mora")
+        {
+            punctum[i].addEventListener("mousemove", (e) => {
+                blue_text(e,"#a50202",punctum[i],"Punctum Mora",1);
+            });
+            punctum[i].addEventListener("mouseleave", (e) => {
+                blue_text(e,"#a50202",punctum[i],"Punctum Mora",0);
+            });
+        }
+        else
+        {
+            punctum[i].addEventListener("mousemove", (e) => {
+                blue_text(e,"#a50202",punctum[i],"Punctum",1);
+            });
+            punctum[i].addEventListener("mouseleave", (e) => {
+                blue_text(e,"#a50202",punctum[i],"Punctum",0);
+            });
+        }
     }
     var podatus = document.getElementsByClassName("ChantNotationElement Podatus");
     for(let i=0; i<podatus.length; i++)
     {
-        podatus[i].addEventListener("click", () => {
-            txt = "Podatus: A two-note neume in which the first ascends to the second.";//Guide to Neumes//
-            find_important();
+        podatus[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",podatus[i],"Podatus",1);
+        });
+        podatus[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",podatus[i],"Podatus",0);
         });
     }
     var clivis = document.getElementsByClassName("ChantNotationElement Clivis");
     for(let i=0; i<clivis.length; i++)
     {
-        clivis[i].addEventListener("click", () => {
-            txt = "Clivis: A two-note neume in which the first descends to the second.";//Guide to Neumes//
-            find_important();
+        clivis[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",clivis[i],"Clivis",1);
+        });
+        clivis[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",clivis[i],"Clivis",0);
         });
     }
     var porrectus = document.getElementsByClassName("ChantNotationElement Porrectus");
     for(let i=0; i<porrectus.length; i++)
     {
-        porrectus[i].addEventListener("click", () => {
-            txt = "Porrectus: A three-note neume that descends to the second note and ascends to the third. The arched line constitutes two notes.";//Guide to Neumes//
-            find_important();
+        porrectus[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",porrectus[i],"Porrectus",1);
+        });
+        porrectus[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",porrectus[i],"Porrectus",0);
         });
     }
     var climacus = document.getElementsByClassName("ChantNotationElement Climacus");
     for(let i=0; i<climacus.length; i++)
     {
-        climacus[i].addEventListener("click", () => {
-            txt = "Climacus: A descending neume comprised of a virga and two or more rhombi. Each note has a value of one beat.";//Guide to Neumes//
-            find_important();
+        climacus[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",climacus[i],"Climacus",1);
+        });
+        climacus[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",climacus[i],"Climacus",0);
         });
     }
     var torculus = document.getElementsByClassName("ChantNotationElement Torculus");
     for(let i=0; i<torculus.length; i++)
     {
-        torculus[i].addEventListener("click", () => {
-            txt = "Torculus: A three-note neume of which the first ascends to the second, which descends to the third.";//Guide to Neumes//
-            find_important();
+        torculus[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",torculus[i],"Torculus",1);
+        });
+        torculus[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",torculus[i],"Torculus",0);
         });
     }
     var torculus_resupinus = document.getElementsByClassName("ChantNotationElement TorculusResupinus");
     for(let i=0; i<torculus_resupinus.length; i++)
     {
-        torculus_resupinus[i].addEventListener("click", () => {
-            txt = "Torculus Resupinus: A four-note neume that begins low and travels up, down, and back up.";//Guide to Neumes//
-            find_important();
+        torculus_resupinus[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",torculus_resupinus[i],"Torculus Resupinus",1);
+        });
+        torculus_resupinus[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",torculus_resupinus[i],"Torculus Resupinus",0);
         });
     }
     var porrectus_flexus = document.getElementsByClassName("ChantNotationElement PorrectusFlexus");
     for(let i=0; i<porrectus_flexus.length; i++)
     {
-        porrectus_flexus[i].addEventListener("click", () => {
-            txt = "Porrectus Flexus: A four-note neume that is the same as a porrectus but with a low note at the end.";//Guide to Neumes//
-            find_important();
+        porrectus_flexus[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",porrectus_flexus[i],"Porrectus Flexus",1);
+        });
+        porrectus_flexus[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",porrectus_flexus[i],"Porrectus Flexus",0);
         });
     }
     var scandicus_flexus = document.getElementsByClassName("ChantNotationElement ScandicusFlexus");
     for(let i=0; i<scandicus_flexus.length; i++)
     {
-        scandicus_flexus[i].addEventListener("click", () => {
-            txt = "Scandicus Flexus: A four-note neume of which the first three ascend and the last descends.";//Guide to Neumes//
-            find_important();
+        scandicus_flexus[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",scandicus_flexus[i],"Scandicus Flexus",1);
+        });
+        scandicus_flexus[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",scandicus_flexus[i],"Scandicus Flexus",0);
         });
     }
     var distropha = document.getElementsByClassName("ChantNotationElement Distropha");
     for(let i=0; i<distropha.length; i++)
     {
-        distropha[i].addEventListener("click", () => {
-            txt = "Distropha: A two-note neume of which both notes have the same tonal value.";//Guide to Neumes//
-            find_important();
+        distropha[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",distropha[i],"Distropha",1);
+        });
+        distropha[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",distropha[i],"Distropha",0);
         });
     }
     var tristropha = document.getElementsByClassName("ChantNotationElement Tristropha");
     for(let i=0; i<tristropha.length; i++)
     {
-        tristropha[i].addEventListener("click", () => {
-            txt = "Tristropha: A three-note neume of which all notes have the same tonal value.";//Guide to Neumes//
-            find_important();
+        tristropha[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",tristropha[i],"Tristropha",1);
+        });
+        tristropha[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",tristropha[i],"Tristropha",0);
         });
     }
     var quarterBar = document.getElementsByClassName("ChantNotationElement QuarterBar");
     for(let i=0; i<quarterBar.length; i++)
     {
-        quarterBar[i].addEventListener("click", () => {
-            txt = "Quarter Bar: The Quarter Bar notates a brief rest.";//Goodchild,11//
-            find_important();
+        quarterBar[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",quarterBar[i],"Quarter Bar",1);
+        });
+        quarterBar[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",quarterBar[i],"Quarter Bar",0);
         });
     }
     var doubleBar = document.getElementsByClassName("ChantNotationElement DoubleBar");
     for(let i=0; i<doubleBar.length; i++)
     {
-        doubleBar[i].addEventListener("click", () => {
-            txt = "Double Bar: The Double Bar notates the end of a section.";//Goodchild,11//
-            find_important();
+        doubleBar[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",doubleBar[i],"Double Bar",1);
+        });
+        doubleBar[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",doubleBar[i],"Double Bar",0);
         });
     }
     var accidental = document.getElementsByClassName("ChantNotationElement Accidental");
     for(let i=0; i<accidental.length; i++)
     {
-        accidental[i].addEventListener("click", () => {
-            txt = 'Flat: The only accidental used in Gregorian Chant is the flat, which lowers the value of the affected note by one semitone. The flat always falls on the seventh degree, Ti.';//Goodchild,29//
-            find_important();
+        accidental[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",accidental[i],"Flat",1);
+        });
+        accidental[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",accidental[i],"Flat",0);
         });
     }
     var scandicus = document.getElementsByClassName("ChantNotationElement Scandicus");
     for(let i=0; i<scandicus.length; i++)
     {
-        scandicus[i].addEventListener("click", () => {
-            txt = 'Scandicus: An ascending three-note neume of which the first rises to the second, which rises to the third.';
-            find_important();
+        scandicus[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",scandicus[i],"Scandicus",1);
+        });
+        scandicus[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",scandicus[i],"Scandicus",0);
         });
     }
     var custos = document.getElementsByClassName("ChantNotationElement Custos");
     for(let i=0; i<custos.length; i++)
     {
-        custos[i].addEventListener("click", () => {
-            txt = 'Custos: A note fragment at the end of the staff, indicating the first note of the next line.';//Guide to Neumes//
-            find_important();
+        custos[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",custos[i],"Custos",1);
+        });
+        custos[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",custos[i],"Custos",0);
         });
     }
 }
@@ -399,15 +454,18 @@ function find_important()
     green_indices = green_indices.sort((a,b) => {return a-b;});
     red_indices = red_indices.sort((a,b) => {return a-b;});
     blue_indices = blue_indices.sort((a,b) => {return a-b;});
-
+    
+    console.log(monks_closed.style.zIndex);
+    console.log(isTyping);
     if(isTyping == false)
     {
         typeWriter();
-        if(monks_closed.style.zIndex == "-1")
-        {
-            speak();
-        }
     }
+    if(is_talking == 0)
+    {
+        speak();
+    }
+    prev_txt = txt;
 }
 // END GET INDICES OF IMPORTANT TEXT //
 
@@ -576,6 +634,7 @@ function typeWriter()
     else
     {
         done_talking = 1;
+        is_talking = 0;
         isTyping = false;
     }
 }
@@ -586,6 +645,7 @@ var open_z = "2";
 var closed_z = "1";
 var talk_speed = 100;
 var done_talking;
+var is_talking = 0;
 var perform_clicked = 0;
 document.getElementById("perform-button").addEventListener("click", () => {
     perform_clicked = 1;
@@ -605,11 +665,14 @@ function change_monk_state()
 }
 function speak()
 {
+    is_talking = 1;
+
     if(perform_clicked == 1)
     {
         monks_open.style.zIndex = "-2";
         monks_closed_noeyes.style.zIndex = "0";
         monks_closed_noeyes.style.zIndex = "-3";
+        is_talking = 0;
         return;
     }
     if(done_talking == 1)
@@ -621,6 +684,7 @@ function speak()
             monks_closed_noeyes.style.zIndex = "-3";
         }, 250);
         talk_speed = 100;
+        is_talking = 0;
         return;
     }
     if((talk_speed==250 || talk_speed==200) && monks_closed_noeyes.style.zIndex!=1)
@@ -669,7 +733,7 @@ function enable_sound()
 function welcome_txt()
 {
     txt = 'Welcome to CPU Gregorian Chant, a generative music application of medieval church song! Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church. Hover over our illuminated words for more information, select a button on the right for an article, or choose a mode and form on the left to compose a Gregorian Chant.';
-    find_important();
+    if(txt != prev_txt){find_important();}
 }
 
 // BUTTONS //
@@ -845,7 +909,7 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Mode","n","a musical scale and its characteristic melodic and harmonic qualities",
                 "Relative","adj","a mode that shares a finalis with another but holds its own dominant",
                 "Authentic","adj","characterized by a melody that moves primarily above the finalis",
-                "Plagal","adj","characterized by a melody that moves primarily below the finalis; has the prefix -hypo, Greek for 'under'",
+                "Plagal","adj","a mode relative to an authentic, sharing the same finalis but holding a different dominant; has the prefix -hypo, Greek for 'under'",
                 "Finalis","n","a mode's primary tone and the final tone of the melody",
                 "Dominant","n","the note of secondmost importance in a mode, strongly influencing its melodic qualities",
                 "Ambitus","n","the range of tones in a mode",
@@ -870,7 +934,26 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Hypolydian","adj","plagal; the sixth Gregorian mode; relative of the Lydian mode",
                 "Mixolydian","adj","authentic; the seventh Gregorian mode; its prefix -mixo means 'mixed' in Greek, and its root 'Lydian' refers to the Lydian mode",
                 "Hypomixolydian","adj","plagal; the eigth Gregorian mode; relative of the Mixolydian mode",
-                "Medieval","adj","the time period spanning ~500-1500 AD during which the Chrisitan Church dominated cultural and artistic development in the West"];
+                "Medieval","adj","the time period spanning ~500-1500 AD during which the Chrisitan Church dominated cultural and artistic development in the West",
+                "Do Clef","n","a clef that defines the placement of Do on the staff; may be placed on any of the top three staff lines",
+                "Fa Clef","n","a clef that defines the placement of Fa on the staff; may be placed on the second or third staff line",
+                "Punctum","n","a single note with a value of one beat",
+                "Punctum Mora","n","a punctum with a mora, or dot, placed behind a note; the mora doubles the value of the note",
+                "Podatus","n","a two-note neume in which the first ascends to the second",
+                "Clivis","n","a two-note neume in which the first descends to the second",
+                "Porrectus","n","a three-note neume that descends to the second note and ascends to the third; the arched line constitutes two notes",
+                "Climacus","n","a descending neume comprised of a virga and two or more rhombi; each note has a value of one beat",
+                "Torculus","n","a three-note neume where the first ascends to the second, which descends to the third",
+                "Torculus Resupinus","n","a four-note neume that begins low and travels up, down, and back up",
+                "Porrectus Flexus","n","a four-note neume that is a porrectus with a low note at the end",
+                "Scandicus Flexus","n","a four-note neume of which the first three ascend and the last descends.",
+                "Distropha","n","a two-note neume of which both notes share the same tonal value",
+                "Tristropha","n","a three-note neume of which all notes share the same tonal value",
+                "Quarter Bar","n","notates a brief rest",
+                "Double Bar","n","notates the end of a section",
+                "Flat","n","lowers the value of the affected note by one semitone; the only accidental in plainsong;always falls on the seventh degree, Ti",
+                "Scandicus","n","an ascending three-note neume of which the first note rises to the second, which rises to the third",
+                "Custos","n","a note fragment at the end of the staff, indicating the first note of the next line"];
 var blue_dict_i = 0;
 function blue_text(e,color,node,str,in_out)
 {
@@ -916,7 +999,7 @@ function info_popup()
             type_iterator = 0;
             perform_clicked = 0;
             txt = mode_info(active_mode);
-            find_important();
+            if(txt != prev_txt){find_important();}
         });
     }
 }
@@ -957,7 +1040,7 @@ generate_button.addEventListener("click", () => {
           // render the score to svg code
           song_svg.innerHTML = score.createSvg(ctxt);
           svg_wrapper.style.height = "40%";
-          color_finalis_and_dominant();
+        //   color_finalis_and_dominant();
         });
       });
     }
