@@ -405,7 +405,6 @@ function find_important()
         typeWriter();
         if(monks_closed.style.zIndex == "-1")
         {
-            play_animalese();
             speak();
         }
     }
@@ -615,8 +614,6 @@ function speak()
     }
     if(done_talking == 1)
     {
-        animalese.pause();
-        animalese.currentTime = 0;
         monks_open.style.zIndex = "-2";
         monks_closed_noeyes.style.zIndex = "0";
         setTimeout(() => {
@@ -777,7 +774,6 @@ function winderp(active)
 {
     if(window_clicked == 0)
     {
-        animalese.volume = 0;
         // dict_display.style.display = "none";
         history_display.style.display = "none";
         notation_display.style.display = "none";
@@ -821,7 +817,6 @@ function winderp(active)
 }
 function hide_info()
 {
-    animalese.volume = 0.35;
     if(song_svg.style.display == "none"){svg_wrapper.style.height = "30%";}
     else{svg_wrapper.style.height = "40%";}
     window.scrollTo(0, 0);
@@ -1077,7 +1072,6 @@ function initialize_performance(disable_perform)
         setTimeout(() => {
             if(disable_perform==true)
             {
-                play_animalese();
                 perform_button.disabled = true;
                 speak();
             }
@@ -1103,8 +1097,6 @@ var time_arr = [];
 var illuminate_elements;
 function perform(voice)
 {
-    animalese.pause();
-    animalese.currentTime = 0;
     sing_z = "-2";
     rest_z = "-1";
     rest_iterator = 0;
@@ -1255,42 +1247,3 @@ function monk_sing_state()
     monks_open.style.zIndex = sing_z;
     monks_closed_noeyes.style.zIndex = rest_z;
 }
-
-// MONK ANIMALESE //
-function dataURItoBlob(dataURI)
-{
-    // convert base64/URLEncoded data component to raw binary data held in a string
-    var byteString;
-    if (dataURI.split(',')[0].indexOf('base64') >= 0)
-    byteString = atob(dataURI.split(',')[1]);
-    else
-    byteString = unescape(dataURI.split(',')[1]);
-
-    // separate out the mime component
-    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0]
-
-    // write the bytes of the string to a typed array
-    var ia = new Uint8Array(byteString.length);
-    for (var i = 0; i < byteString.length; i++) {
-    ia[i] = byteString.charCodeAt(i);
-    }
-
-    return new Blob([ia], {type:mimeString});
-}
-
-var synth = new Animalese('../assets/samples/animalese.wav', function() {});
-
-function generateWav()
-{
-    return synth.Animalese(txt,false,1.0).dataURI;
-}
-
-var animalese;
-function play_animalese() {
-    animalese = new Audio();
-    animalese.src = generateWav();
-    animalese.volume = 0.35;
-    animalese.playbackRate = 1.4;
-    animalese.play();
-}
-  
