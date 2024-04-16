@@ -972,9 +972,9 @@ function blue_text(e,color,node,str,in_out)
         blue_term.innerHTML = blue_dict[blue_dict_i];
         // blue_form.innerHTML = blue_dict[blue_dict_i+1];
         blue_def.innerHTML = blue_dict[blue_dict_i+2];
-        if(e.clientX >= 0.45*screen.width)
+        if(e.clientX >= 0.30*screen.width)
         {
-            blue_div.style.left = e.clientX - 260 + "px";
+            blue_div.style.left = e.clientX - (screen.width*0.20) - 10 + "px";
             node.style.cursor = "url(assets/cursors/cursor-finger.png), auto";
         }
         else

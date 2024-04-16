@@ -47,7 +47,7 @@ a:hover {
 
 #loading-text {
   margin-top: 6.5%;
-  font-size: 2em;
+  font-size: 2rem;
 }
 
 #loading-text:after {
@@ -344,12 +344,13 @@ body {
   font-family: "Alagard";
   position: relative;
   display: none;
+  font-size: 1.25vw;
   background-color: #ddd0b9;
   border-color: #402D2B;
   border-style: solid;
   border-width: 6px;
   z-index: 5;
-  max-width: 250px;
+  max-width: 20%; /*250px*/
   padding: 6px;
 }
 #blue-div-text {
