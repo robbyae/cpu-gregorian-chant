@@ -112,6 +112,7 @@ def generate_sequence(active_mode:int=None, data:list=None, openers:list=None, c
   melismatic_neume = ""
   neume_number = ""
   note_num = ""
+  mora = ""
 
   for n in range(sectionelles):
     secelle_length = random.randint(3,10)
@@ -124,6 +125,11 @@ def generate_sequence(active_mode:int=None, data:list=None, openers:list=None, c
 
     for x in range(secelle_length):
     # determine if next is neume/podatus
+      if random.randint(0,100) < 40:
+        mora = "."
+      else:
+        mora = ""
+      print(mora)
       if random.randint(0,100) < neume_chance:
         neume_or_podatus = random.randint(0,10)
         curr_note = notes[len(notes)-1]
@@ -139,7 +145,7 @@ def generate_sequence(active_mode:int=None, data:list=None, openers:list=None, c
           song_gabc += ")"
           notes.append(next_note)
           notes.append(chr(note_num - 1))
-          notes.append(chr(note_num - 2))
+          notes.append(chr(note_num - 2) + mora)
       # is neume
         else:
           curr_note = notes[len(notes)-1]
@@ -156,13 +162,13 @@ def generate_sequence(active_mode:int=None, data:list=None, openers:list=None, c
             next_note = predict_next_state(notes[len(notes)-1], data)
             if curr_note == next_note:
               next_note = predict_next_state(curr_note, data)
-            notes.append(next_note)
-            song_gabc += next_note
+            notes.append(next_note + mora)
+            song_gabc += next_note + mora
           song_gabc += ")"
       # default
       next_note = predict_next_state(notes[len(notes)-1], data)
       notes.append(next_note)
-      song_gabc += "(" + next_note + ")"
+      song_gabc += "(" + next_note + mora + ")"
       curr_note = next_note
     # write closing note
     if(curr_note == "ixi"):

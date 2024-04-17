@@ -460,8 +460,6 @@ function find_important()
     red_indices = red_indices.sort((a,b) => {return a-b;});
     blue_indices = blue_indices.sort((a,b) => {return a-b;});
     
-    console.log(monks_closed.style.zIndex);
-    console.log(isTyping);
     if(isTyping == false)
     {
         typeWriter();
