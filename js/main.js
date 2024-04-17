@@ -956,7 +956,7 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Tristropha","n","a three-note neume of which all notes share the same tonal value",
                 "Quarter Bar","n","notates a brief rest",
                 "Double Bar","n","notates the end of a section",
-                "Flat","n","lowers the value of the affected note by one semitone; the only accidental in plainsong;always falls on the seventh degree, Ti",
+                "Flat","n","lowers the value of the affected note by one semitone; the only accidental in plainsong; always falls on the seventh degree, Ti",
                 "Scandicus","n","an ascending three-note neume of which the first note rises to the second, which rises to the third",
                 "Custos","n","a note fragment at the end of the staff, indicating the first note of the next line"];
 var blue_dict_i = 0;
