@@ -1043,7 +1043,7 @@ generate_button.addEventListener("click", () => {
           // render the score to svg code
           song_svg.innerHTML = score.createSvg(ctxt);
           svg_wrapper.style.height = "40%";
-        //   color_finalis_and_dominant();
+          // color_finalis_and_dominant();
         });
       });
     }
@@ -1078,6 +1078,7 @@ function color_finalis_and_dominant()
     song_tone = pyodideGlobals.get('song_tone');
     song = song_tone.split(" ");
     let chant_element_arr = document.getElementsByClassName("ChantNotationElement");
+    console.log(song);
     console.log(chant_element_arr);
     for(let i=0; i<chant_element_arr.length; i++)
     {
