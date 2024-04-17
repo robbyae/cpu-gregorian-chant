@@ -125,11 +125,11 @@ def generate_sequence(active_mode:int=None, data:list=None, openers:list=None, c
 
     for x in range(secelle_length):
     # determine if next is neume/podatus
-      if random.randint(0,100) < 40:
-        mora = "."
-      else:
-        mora = ""
-      print(mora)
+      # if random.randint(0,100) < 40:
+      #   mora = "."
+      # else:
+      #   mora = ""
+      # print(mora)
       if random.randint(0,100) < neume_chance:
         neume_or_podatus = random.randint(0,10)
         curr_note = notes[len(notes)-1]

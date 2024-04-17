@@ -1070,26 +1070,27 @@ var breathiness;
 var envelope;
 var reverb;
 var speech_tone;
+var fin1, fin2;
+var dom1, dom2;
 var uncolor = () => {for(let i=0; i<illumination_i; i++){illuminated_chant_elements[i].style.fill = "black";}}
 function color_finalis_and_dominant()
 {
     song_tone = pyodideGlobals.get('song_tone');
     song = song_tone.split(" ");
-    var finales = pyodideGlobals.get('Finales');
-    // console.log(finales);
     let chant_element_arr = document.getElementsByClassName("ChantNotationElement");
+    console.log(chant_element_arr);
     for(let i=0; i<chant_element_arr.length; i++)
     {
         // console.log(chant_element_arr[i]);
-        if(chant_element_arr[i].id == "Punctum")
+        if(chant_element_arr[i].id != "DoClef" && chant_element_arr[i].id != "Accidental" && chant_element_arr[i].id != "Clivis")
         {
-            if(song[i]=="G3")
+            if(song[i]=="D3" || song[i]=="D4" || song[i]=="D3." || song[i]=="D4.") // finalis
+            {
+                chant_element_arr[i].style.fill = "#a50202";
+            }
+            else if(song[i]=="A2" || song[i]=="A3" || song[i]=="A2." || song[i]=="A3.") // dominant
             {
                 chant_element_arr[i].style.fill = "rgb(36, 36, 142)";
-            }
-            else if(song[i]==finales[0])
-            {
-                chant_element_arr[i].style.fill = "#105719";
             }
         }
     }
