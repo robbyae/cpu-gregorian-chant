@@ -1346,6 +1346,6 @@ function clear_temp()
 function temp()
 {
     speech_box.style.display="flex";
-    txt = "For centuries, the plainsong repertoire has existed stagnant... devoid of innovation ........ Until now.";
+    txt = "For centuries, the plainsong repertoire has persisted stagnant... devoid of innovation ........ Until now.";
     find_important();
 }

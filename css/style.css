@@ -279,8 +279,8 @@ body {
   position: absolute;
   height: 2%;
   top: 22%;
-  left: 24%;
-  right: 24%;
+  left: 22%;
+  right: 22%; /* 22% */
   display: flex;
   align-items: flex-end;
   margin: 6px 6px;
