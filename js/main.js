@@ -1335,3 +1335,17 @@ function monk_sing_state()
     monks_open.style.zIndex = sing_z;
     monks_closed_noeyes.style.zIndex = rest_z;
 }
+
+// TEMP FUNCTIONS FOR FILMMAKING
+function clear_temp()
+{
+    txt="";
+    monks_closed_noeyes.style.zIndex="1";
+    speech_box.style.display="none";
+}
+function temp()
+{
+    speech_box.style.display="flex";
+    txt = "For centuries, the plainsong repertoire has existed stagnant... devoid of innovation ........ Until now.";
+    find_important();
+}
