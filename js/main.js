@@ -1161,7 +1161,7 @@ function initialize_performance(disable_perform)
             if(disable_perform==true)
             {
                 perform_button.disabled = true;
-                speak();
+                // speak();
             }
             else
             {
