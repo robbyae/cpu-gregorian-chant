@@ -327,7 +327,7 @@ function read_svg_element()
 var plagal;
 var green_arr = ["Do","Re","Mi","Fa","Sol","La","Ti","medieval","syllabic","neumatic","melismatic"];
 var green_indices = [];
-var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant","illuminated","Dorian","Hypodorian","Phrygian","Hypophrygian","Lydian","Hypolydian","Mixolydian","Hypomixolydian"];
+var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant","illuminated","Dorian","Hypodorian","Phrygian","Hypophrygian","Lydian","Hypolydian","Mixolydian","Hypomixolydian","cpu-gregorian-chant.com"];
 var red_indices = [];
 var blue_arr = ["monophonic","mode","form","plainsong","relative","finalis","dominant","ambitus","neume"];
 var blue_indices = [];
@@ -1346,6 +1346,7 @@ function clear_temp()
 function temp()
 {
     speech_box.style.display="flex";
-    txt = "For centuries, the plainsong repertoire has persisted stagnant... devoid of innovation ........ Until now.";
+    // txt = "For centuries, the plainsong repertoire has persisted stagnant... devoid of innovation ........ Until now.";
+    txt = "Thank you for watching! Go to cpu-gregorian-chant.com to generate your own plainsong!"
     find_important();
 }
