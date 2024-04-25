@@ -10,7 +10,7 @@
   <!-- bootstrap css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
   <!-- my css -->
-  <link rel="stylesheet" type="text/css" href="css/style.css">
+  <link rel="stylesheet" type="text/css" href="/cpu-gregorian-chant/css/style.css">
   <!-- pyscript css-->
   <link rel="stylesheet" type="text/css" href="https://pyscript.net/releases/2024.1.1/core.css">
 
@@ -21,8 +21,8 @@
   <!-- exsurge -->
   <script defer type="text/javascript" src="js/exsurge.js"></script>
   <!-- pyscript -->
-  <script defer src="https://pyscript.net/releases/2024.1.3/core.js" type="module"></script>
-  <py-script defer src="pyscript/compose.py" type="py" config="pyscript/pyscript.json"></py-script>
+  <!-- <script defer src="https://pyscript.net/releases/2024.1.3/core.js" type="module"></script>
+  <py-script defer src="pyscript/compose.py" type="py" config="pyscript/pyscript.json"></py-script> -->
   <!-- bootstrap js -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
   <script defer src="js/main.js"></script>
 </head>
 
-<body> <!-- onload="loaded()" -->
+<body onload="loaded()"> <!-- onload="loaded()" -->
   <div id="enable-sound">
     <button class="btn btn-secondary" id="enable-sound-btn" onclick="enable_sound()">Click to Start</button>
   </div>
@@ -102,24 +102,34 @@
       <div id="bibliography">
         <h3 class="info-title">~ Bibliography ~</h3>
       </div>
-      <div id="dictionary">
-        <h3 class="info-title">~ Dictionary ~</h3>
-        <p class="dict-item">Mode: the arrangment of notes in a scale</p>
-        <p class="dict-item">Scale: a series of notes covering the span of an octave</p>
-      </div>
       <div id="history">
         <h3 class="info-title">~ History of Gregorian Chant ~</h3>
-        <p class="indent">Monophonic chants have been sung in liturgies since the earliest days of the Church. For centuries, the method of chant transmission was oral. This presented problems, as the lack of a musical notation left much room for interpretation and, in turn, melodic corruption. In the sixth century, a musical crusade to standardize the plainsong repertoire and purify the liturgical practices of the Christian world was embarked upon by Pope Greogry I and other leaders of the Roman Catholic Church. These holy men sought to establish a <i>corpus</i> of songs that would include the anthems and responses for the rites of the ecclesiastical year.
-          The performative practices of this <i>corpus</i> had to be established, and Rome's school of singing, the <i>Schola Cantorum</i>, was reorganized so that its students could travel as missionaries of a unified musical praxis.
-          
-          <!-- In an attempt to standardize the repertoire and unify the liturgical practices of the Christian world, notation was invented. The date of invention is unknown, but the earliest surviving tomes of notated chants date to the late ninth century. Its earliest manifestation presented itself in the form of <i>neumatic notation</i>, a style in which symbols called neumes appear above words, denoting the number of syllables to sing and the melodic direction of the song. These early neumes, however, did not specify the exact pitches or rhythms to be sung, and as such served only as a memory aid to those already familiar with the melody. [2]</p> -->
+        <p class="indent">
+          Monophonic chants have been sung in liturgies since the earliest days of the Church. For centuries, the method of chant transmission was oral. This presented problems, as the lack of a unified musical practice left much room for interpretation and, in turn, melodic corruption. In the sixth century, a centuries long musical crusade to standardize the plainsong repertoire and purify the liturgical practices of the Christian world was embarked upon probably by Pope Greogry I and other leaders of the Roman Catholic Church. These holy men sought to establish a <i>corpus</i> of songs that would include the anthems and responses for the rites of the ecclesiastical year.
+          The performative practices of this <i>corpus</i> had to be established, and Rome's school of singing, the <i>Schola Cantorum</i>, was reorganized so that its students could travel as missionaries of a unified musical praxis. [1]
+        </p>
+        <p class="indent">
+          One of the most important developments to come from this Gregorian crusade was the invention of notation. The date of invention is unknown, but the earliest surviving tomes of notated chants date to the late ninth century. Its earliest manifestation presented itself in the form of <i>neumatic notation</i>, a style in which symbols called neumes appear above words, denoting the number of syllables to sing and the melodic direction of the song. These early neumes, however, did not specify the exact pitches or rhythms to be sung, and as such served only as a memory aid to those already familiar with the melody. [2]
+        </p>
         <div class="img-sub">
           <img id="neumatic-notation-img" src="assets/img/Graz, Universitätsbibliothek, Ms 748.png" alt="Graz, Universitätsbibliothek, Ms 748; Gradual from the Bologna region from around 890/900"/>
           <a href="https://unipub.uni-graz.at/urn:nbn:at:at-ubg:2-26249" target="_blank" class="info-subtitle italic">Neumatic Notation from a Gradual of the Bologna region, c. 890/900<br>Graz, Universitätsbibliothek, Ms. 748</a> <!--https://unipub.uni-graz.at/obvugrscript/content/pageview/5746911-->
         </div>
+        <p class="indent">
+          For centuries, notation continued to develop through the innovations of devoted individuals. Various forms of neumatic notation existed across the broad Christian ethnosphere, but one form, square notation, persisted into our modern era. Square notation utilized a four line staff, which allowed the notation of exact notes and rhythms, a key innovation to ensure the absolute longevity of a centures-old oral tradition. [3]
+        </p>
+        <div class="img-sub">
+          <img id="neumatic-notation-img" src="assets/img/square-notation.png" alt="Square Notation"/>
+          <p class="info-subtitle italic">Square Notation on a leaf from a Gradual; England, 1st half 15th century</p> <!--https://onlineonly.christies.com/s/history-western-music-manuscripts-schoyen-collection/english-square-notation-56/197968-->
+        </div>
+        <p class="indent">
+          The specific nature of square notation lended itself to the theoretical study of music. From the turn of the eigth and ninth centuries, it became common for music theory to be taught at monasteries. Charlemagne (748-814) believed in the power of religious music, and sought to continue its development which had become stagnant since the Gregorian Corpus was established. [4]
+        </p>
         <div class="citations">
           <p>[1] <cite>Pincherle, "An Illustrated History of Music" 1959, 11-13</cite></p>
           <p>[2] <cite id="notation-1">Burkholder, Grout, & Palisca, "A History of Western Music" 2006, 34-35</cite></p>
+          <p>[3] <cite>Pincherle, "An Illustrated History of Music" 1959, 14</cite></p>
+          <p>[4] <cite>Pincherle, "An Illustrated History of Music" 1959, 15</cite></p>
         </div>
       </div>
       <div id="notation">
@@ -152,7 +162,7 @@
       </div>
       <div id="modes">
         <h3 class="info-title">~ Modes ~</h3>
-        <p class="indent">Like our modern musical alphabet, the Gregorian modal system uses the diatonic scale. The notes are almost always natural, but one accidental, the flat, appears occasionally. The flat always falls on the seventh degree, <i>Ti</i>.</p>
+        <p class="indent">Like our modern musical alphabet, the Gregorian modal system uses the diatonic scale. The notes are almost always natural, but one accidental, the flat, appears occasionally. The flat always falls on the seventh degree, <i>Ti</i>. [1]</p>
         <div class="img-sub">
           <img id="modern-modes-img" src="assets/img/modern-modes.png" alt="modern modes"/>
 
@@ -160,9 +170,10 @@
           <p class="info-subtitle italic">Note that the locations of these pitches will vary depending on the clef used and its placement on the staff.</p>
         </div>        
         <!-- <p class="indent">In modern music, two modes are commonly used. The Ionian (major) and Aeolian (minor).</p> -->
-        <p class="indent">There are eight Gregorian modes, each defined by a <i>finalis</i> and organized in two categories: authentic and plagal. Each authentic mode has a relative plagal and vice versa. Relative modes share the same finalis.</p>
+        <p class="indent">There are eight Gregorian modes, each defined by a <i>finalis</i> and organized in two categories: authentic and plagal. Each authentic mode has a relative plagal and vice versa. Relative modes share the same finalis. [1]</p>
           <img id="gregorian-modes-img" src="assets/img/gregorian-modes.png" alt="gregorian modes"/>
           <p class="info-subtitle"><i>Finales are underlined. Dominants are encircled.</i></p>
+        <p>[1] <cite>Goodchild, "Gregorian Chant for Church and School" 1944, 21</cite></p>
       </div>
   </div>
 </body>
