@@ -25,7 +25,6 @@ document.getElementById("title").addEventListener("click", () => {
     //txt = 'Plainsong, name derived from the Latin "cantus planus", is a medieval style of music sung in Latin and used in liturgies of the Western Church.';
     welcome_txt();
 });
-// END TITLE INFO //
 
 // MODE INFO //
 var active_mode;
@@ -62,7 +61,6 @@ function mode_info(active_mode)
     if(txt != prev_txt){find_important();}
     return txt;
 }
-// END MODE INFO //
 
 // FORM INFO //
 var active_form;
@@ -103,7 +101,6 @@ function form_info(active_form)
     if(txt != prev_txt){find_important();}
     return txt;
 }
-// END FORM INFO //
 
 // GENERATE MESSAGE //
 document.getElementById("generate-button").addEventListener("click", () => {
@@ -111,7 +108,6 @@ document.getElementById("generate-button").addEventListener("click", () => {
     // find_important();
     mode_info(active_mode,0);
 });
-// END GENERATE MESSAGE //
 
 // GLYPH INFO //
 function read_svg_element()
@@ -321,7 +317,6 @@ function read_svg_element()
         });
     }
 }
-// END GLYPH INFO //
 
 // GET INDICES OF IMPORTANT TEXT //
 var plagal;
@@ -470,7 +465,6 @@ function find_important()
     }
     prev_txt = txt;
 }
-// END GET INDICES OF IMPORTANT TEXT //
 
 // OFFSET TO CENTER TEXT //
 function getOffset(el) // https://stackoverflow.com/a/28222246/23386341
@@ -481,7 +475,6 @@ function getOffset(el) // https://stackoverflow.com/a/28222246/23386341
       top: rect.top + window.scrollY
     };
 }
-// END OFFSET TO CENTER TEXT //
 
 // TYPEWRITER EFFECT //
 var type_iterator = 0;
@@ -641,7 +634,6 @@ function typeWriter()
         isTyping = false;
     }
 }
-// END TYPEWRITER EFFECT //
 
 // MONK TALK EFFECT //
 var open_z = "2";
@@ -701,7 +693,6 @@ function speak()
     }
     setTimeout(speak, talk_speed);
 }
-// END MONK TALK EFFECT //
 
 // PYSCRIPT GLOBAL VARIABLES //
 function createObject(object, variableName)
@@ -809,7 +800,6 @@ function showForm(item)
         initialize_performance(true);
     }
 }
-// END BUTTONS //
 
 // DISPLAY INFO WINDOW //
 var x = document.getElementById("x");
@@ -858,8 +848,9 @@ function winderp(active)
         window_clicked = 1;
         prev_active = active;
         setTimeout(() => {
-            document.getElementById("body-div").addEventListener("click", hide_info);
+            document.getElementById("body-div").addEventListener("click",hide_info);
             svg_wrapper.addEventListener("click", hide_info);
+            document.getElementById("monks-images").addEventListener("click",hide_info);
         }, 0);
         return;
     }
@@ -897,7 +888,6 @@ function hide_info()
     document.getElementById("body-div").removeEventListener("click", hide_info);
     window_clicked = 0;
 }
-// END DISPLAY INFO WINDOW //
 
 // BLUE TEXT //
 var blue_div = document.getElementById("blue-text-div");
@@ -989,9 +979,8 @@ function blue_text(e,color,node,str,in_out)
         blue_div.style.display = "none";
     }
 }
-// END BLUE TEXT //
 
-// INFO POPUP //
+// INFO POPUP - OBSOLETE //
 function info_popup()
 {
     var red_text = document.getElementsByClassName("red-text");
@@ -1052,7 +1041,6 @@ generate_button.addEventListener("click", () => {
     song_svg.style.cursor = "url(assets/cursors/cursor-finger.png), auto";
     }, 500);
     });
-// END RENDER GABC //
 
 // PERFORM GABC //
 var perform_button = document.getElementById("perform-button");
@@ -1336,7 +1324,7 @@ function monk_sing_state()
     monks_closed_noeyes.style.zIndex = rest_z;
 }
 
-// TEMP FUNCTIONS FOR FILMMAKING
+// TEMP FUNCTIONS FOR FILMMAKING //
 function clear_temp()
 {
     txt="";
