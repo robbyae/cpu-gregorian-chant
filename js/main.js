@@ -1113,7 +1113,7 @@ function initialize_performance(disable_perform)
                 C4: "C4.wav"
             },
             release: 1,
-            baseUrl: "../assets/samples/",
+            baseUrl: "/assets/samples/",
             attack: 0.25,
             release: 0.35,
             curve: "exponential",
