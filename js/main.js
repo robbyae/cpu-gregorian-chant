@@ -931,7 +931,7 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Do Clef","n","a clef that defines the placement of Do on the staff; may be placed on any of the top three staff lines",
                 "Fa Clef","n","a clef that defines the placement of Fa on the staff; may be placed on the second or third staff line",
                 "Punctum","n","a single note with a value of one beat",
-                "Punctum Mora","n","a punctum with a mora, or dot, placed behind a note; the mora doubles the value of the note",
+                "Punctum Mora","n","a punctum with a mora, or dot, placed behind it; the mora doubles the value of the note",
                 "Podatus","n","a two-note neume in which the first ascends to the second",
                 "Clivis","n","a two-note neume in which the first descends to the second",
                 "Porrectus","n","a three-note neume that descends to the second note and ascends to the third; the arched line constitutes two notes",
