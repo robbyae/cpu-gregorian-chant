@@ -238,7 +238,7 @@ body {
 .btn:disabled:hover {
   background-color:#373c3f;
   border-color:#373c3f;
-  cursor: default;
+  cursor:not-allowed;
 }
 
 .dropdown-item {

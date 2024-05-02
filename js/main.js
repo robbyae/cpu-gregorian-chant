@@ -715,6 +715,7 @@ function loaded()
 function enable_sound()
 {
     document.getElementById("enable-sound").style.display = "none";
+    document.body.style.cursor = "url(../assets/cursors/cursor-finger.png), auto";
     mode_dropdown.disabled = false;
     form_dropdown.disabled = false;
     history_btn.disabled = false;
@@ -739,7 +740,7 @@ mode_dropdown.disabled = true;
 function reset_mode_and_form()
 {
     song_svg.style.display = "none";
-    svg_wrapper.style.cursor = "default";
+    // svg_wrapper.style.cursor = "default";
     svg_wrapper.style.height = "30%";
     if(is_performing == 1)
     {
