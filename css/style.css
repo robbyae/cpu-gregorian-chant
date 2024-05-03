@@ -110,6 +110,8 @@ a:hover {
 #disclaimer {
   text-align: center;
   margin-top: 5vh;
+  font-size: 2rem;
+  color: black;
 }
 
 #song-svg {
