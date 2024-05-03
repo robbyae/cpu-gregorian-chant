@@ -166,6 +166,18 @@ function read_svg_element()
             });
         }
     }
+    var apostropha = document.getElementsByClassName("ChantNotationElement Apostropha")
+    {
+        for(let i=0; i<apostropha.length; i++)
+        {
+            apostropha[i].addEventListener("mousemove", (e) => {
+                blue_text(e,"#a50202",apostropha[i],"Punctum",1);
+            });
+            apostropha[i].addEventListener("mouseleave", (e) => {
+                blue_text(e,"#a50202",apostropha[i],"Punctum",0);
+            });
+        }
+    }
     var podatus = document.getElementsByClassName("ChantNotationElement Podatus");
     for(let i=0; i<podatus.length; i++)
     {
@@ -715,6 +727,7 @@ function loaded()
 function enable_sound()
 {
     document.getElementById("enable-sound").style.display = "none";
+    document.getElementById("disclaimer").style.display = "none";
     document.body.style.cursor = "url(../assets/cursors/cursor-finger.png), auto";
     mode_dropdown.disabled = false;
     form_dropdown.disabled = false;
@@ -1285,6 +1298,14 @@ function perform(voice)
             illumination_i++;
             active_element_i++;
             setTimeout(illuminate_elements, (3*time_seconds)-(time_subtractor));
+            return;
+        }
+        else if(active_element[active_element_i]=="TorculusResupinus" || active_element[active_element_i]=="PorrectusFlexus" || active_element[active_element_i]=="ScandicusFlexus")
+        {
+            illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+            illumination_i++;
+            active_element_i++;
+            setTimeout(illuminate_elements, (4*time_seconds)-(time_subtractor));
             return;
         }
         else if(active_element[active_element_i]=="QuarterBar" || active_element[active_element_i]=="DoubleBar")

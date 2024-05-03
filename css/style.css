@@ -107,6 +107,10 @@ a:hover {
   width: 100vw;
   display: block;
 } */
+#disclaimer {
+  text-align: center;
+  margin-top: 5vh;
+}
 
 #song-svg {
   position: absolute;
