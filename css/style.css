@@ -35,6 +35,17 @@ a:hover {
   cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 
+.js-lib-a
+{
+  color: #a50202;
+  white-space: nowrap;
+}
+
+.nowrap
+{
+  white-space: nowrap;
+}
+
 #loading {
   width: 100vw;
   height: 100vh;
@@ -405,7 +416,7 @@ body {
 #info-window p {
   margin: 0 24px 6px;
 }
-#info-window a {
+.info-sub-a {
   display: block;
   text-align: center;
   width: 60%;
@@ -433,6 +444,9 @@ cite {
 }
 .indent {
   text-indent: 2em;
+}
+.double-indent {
+  text-indent: 4em;
 }
 #x {
   position: absolute;

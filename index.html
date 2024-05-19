@@ -79,6 +79,8 @@
       <button class="btn btn-secondary right-btn" id="mode-button">Modes</button>  
       <br>
       <button class="btn btn-secondary right-btn" id="history-button">History</button>
+      <br>
+      <button class="btn btn-secondary right-btn" id="about-button">About</button>
     </div>
     <div id="speech-box">
       <p id="speech-text"></p>
@@ -120,14 +122,14 @@
         </p>
         <div class="img-sub">
           <img id="neumatic-notation-img" src="assets/img/Graz, Universitätsbibliothek, Ms 748.png" alt="Graz, Universitätsbibliothek, Ms 748; Gradual from the Bologna region from around 890/900"/>
-          <a href="https://unipub.uni-graz.at/urn:nbn:at:at-ubg:2-26249" target="_blank" class="info-subtitle italic">Neumatic Notation from a Gradual of the Bologna region, c. 890/900<br>Graz, Universitätsbibliothek, Ms. 748</a> <!--https://unipub.uni-graz.at/obvugrscript/content/pageview/5746911-->
+          <a href="https://unipub.uni-graz.at/urn:nbn:at:at-ubg:2-26249" target="_blank" class="info-subtitle info-sub-a italic">Neumatic Notation from a Gradual of the Bologna region, c. 890/900<br>Graz, Universitätsbibliothek, Ms. 748</a> <!--https://unipub.uni-graz.at/obvugrscript/content/pageview/5746911-->
         </div>
         <p class="indent">
           For centuries, notation continued to develop through the innovations of devoted individuals. Various forms of neumatic notation existed across the broad Christian ethnosphere, but one form, square notation, persisted into our modern era. Square notation utilized a four line staff, which allowed the notation of exact notes and rhythms, a key innovation to ensure the absolute longevity of a centures-old oral tradition. [3]
         </p>
         <div class="img-sub">
           <img id="neumatic-notation-img" src="assets/img/square-notation.png" alt="Square Notation"/>
-          <a href="https://onlineonly.christies.com/s/history-western-music-manuscripts-schoyen-collection/english-square-notation-56/197968" target="_blank"><p class="info-subtitle italic">Square Notation on a leaf from a Gradual; England, 1st half 15th century</p></a> <!--https://onlineonly.christies.com/s/history-western-music-manuscripts-schoyen-collection/english-square-notation-56/197968-->
+          <a href="https://onlineonly.christies.com/s/history-western-music-manuscripts-schoyen-collection/english-square-notation-56/197968" target="_blank" class="info-sub-a"><p class="info-subtitle italic">Square Notation on a leaf from a Gradual; England, 1st half 15th century</p></a> <!--https://onlineonly.christies.com/s/history-western-music-manuscripts-schoyen-collection/english-square-notation-56/197968-->
         </div>
         <p class="indent">
           Since the establishment of the <i>Corpus</i>, spiritual musical innovation had run stagnant. Charlemagne (748-814) recognized this stasis, and, through his intervention it became common for the theoretical side of music to be taught at monasteries. The teaching of music as a mathematic practice reinvigorated spiritual musical innovation. Guido d'Arezzo (c.991-after 1033), a key innovater of music and notation once expressed, "<i>Nam qui facit quod non sapit defnitur bestia.</i>" [For he who does what he does not know is, by definition, a beast.] [4]
@@ -183,6 +185,17 @@
         <div class="citations">
           <p><cite>Goodchild, "Gregorian Chant for Church and School" 1944, 21</cite> [1]</p>
         </div>
+      </div>
+      <div id="about">
+        <h3 class="info-title">~ About ~</h3>
+        <p class="double-indent">The CPU Gregorian Chant project was created by <a class="js-lib-a" href="https://robbystrong.com" target="_blank">Robert Strong</a> as the capstone project for his undergraduate studies in Creative Technology & Design at the University of Colorado Boulder.</p>
+        <p class="double-indent">The web components of the project were built using HMTL, CSS and various Javascript libraries. The JS libraries used are:</p>
+        <p class="double-indent"><a class="js-lib-a" href='https://github.com/frmatthew/exsurge' target="_blank">Exsurge.js</a> for the rendering of Gregorian Chant notation.</p>
+        <p class="double-indent"><a class="js-lib-a" href="https://tonejs.github.io/" target ="_blank">Tone.js</a> for the production of sound.</p>
+        <p class="double-indent"><a class="js-lib-a" href="https://pyscript.net/" target="_blank">Pyscript</a> for the communication of Python and Javascript.</p>
+        <p class="double-indent"><a class="js-lib-a" href="https://getbootstrap.com/" target="_blank">Bootstrap</a> for the function of the drop down buttons.</p>
+        <p class="indent">The music is generated using Python and rendered using <a class="js-lib-a" href="https://gregorio-project.github.io/index.html" target="_blank">gabc</a>, a notation for typesetting Gregorian Chant. The algorithm uses Markov chains to generate the music, the data of which was mostly retrieved from Sister Mary Antonine Goodchild's <a class="js-lib-a" href="https://media.churchmusicassociation.org/pdf/goodchild.pdf" target="_blank">Gregorian Chant for Church and School</a> of 1944.</p>
+        <p class="indent">Visit the project's <a class="js-lib-a" href="https://github.com/robbyae/cpu-gregorian-chant">Github</a> page.</p>
       </div>
   </div>
 </body>
