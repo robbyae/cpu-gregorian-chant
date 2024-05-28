@@ -152,6 +152,7 @@ a:hover {
 .ChantScore {
   margin: .5% 0;
   background-color: #ddd0b9;
+  overflow:hidden;
 }
 
 .ChantNotationElement {
