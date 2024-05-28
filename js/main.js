@@ -112,17 +112,17 @@ document.getElementById("generate-button").addEventListener("click", () => {
 // GLYPH INFO //
 function read_svg_element()
 {
-    // var mode_text = document.getElementsByClassName("annotation");
-    // active_mode = mode_text[0].innerHTML[7];
-    // for(let i=0; i<mode_text.length; i++)
-    // {
-    //     mode_text[i].addEventListener("mousemove", (e) => {
-    //         blue_text(e,"#a50202",mode_text[i],"Mode",1);
-    //     });
-    //     mode_text[i].addEventListener("mouseleave", (e) => {
-    //         blue_text(e,"#a50202",mode_text[i],"Mode",0);
-    //     });
-    // }
+    var mode_text = document.getElementsByClassName("annotation");
+    active_mode = mode_text[0].innerHTML[7];
+    for(let i=0; i<mode_text.length; i++)
+    {
+        mode_text[i].addEventListener("mousemove", (e) => {
+            blue_text(e,"#a50202",mode_text[i],"Mode",1);
+        });
+        mode_text[i].addEventListener("mouseleave", (e) => {
+            blue_text(e,"#a50202",mode_text[i],"Mode",0);
+        });
+    }
     var doClef = document.getElementsByClassName("ChantNotationElement DoClef");
     for(let i=0; i<doClef.length; i++)
     {
@@ -1044,7 +1044,7 @@ generate_button.addEventListener("click", () => {
       } else {
         mappings = exsurge.Gabc.createMappingsFromSource(ctxt, gabc);
         score = new exsurge.ChantScore(ctxt, mappings, true);
-        // score.annotation = new exsurge.Annotation(ctxt, document.getElementById("mode-dropdown").innerHTML[0]);
+        score.annotation = new exsurge.Annotation(ctxt, document.getElementById("mode-dropdown").innerHTML[0]);
       }
       layoutChant();
     }
