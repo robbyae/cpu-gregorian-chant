@@ -727,7 +727,7 @@ function loaded()
 function enable_sound()
 {
     document.getElementById("enable-sound").style.display = "none";
-    document.getElementById("disclaimer").style.display = "none";
+    // document.getElementById("disclaimer").style.display = "none";
     document.body.style.cursor = "url(../assets/cursors/cursor-finger.png), auto";
     mode_dropdown.disabled = false;
     form_dropdown.disabled = false;
