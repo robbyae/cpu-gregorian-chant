@@ -717,7 +717,8 @@ function loaded()
 {
     // document.getElementById("loading").style.display = "none";
     document.getElementById("loading").style.display = "none";
-    document.getElementById("enable-sound").style.display = "block";
+    enable_sound();
+    // document.getElementById("enable-sound").style.display = "block";
     monks_closed_noeyes.style.zIndex = "-3";
     monks_closed.style.zIndex = "-1";
     reverb = new Tone.Reverb({
@@ -726,7 +727,7 @@ function loaded()
 }
 function enable_sound()
 {
-    document.getElementById("enable-sound").style.display = "none";
+    // document.getElementById("enable-sound").style.display = "none";
     // document.getElementById("disclaimer").style.display = "none";
     document.body.style.cursor = "url(../assets/cursors/cursor-finger.png), auto";
     mode_dropdown.disabled = false;
