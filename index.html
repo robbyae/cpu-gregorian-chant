@@ -3,11 +3,21 @@
 <head>
   <meta charset=utf-8>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="CPU Gregorian Chant">
 
   <title>CPU Gregorian Chant</title>
   <link rel="icon" type="image/x-icon" href="assets/img/neume-icon.ico">
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/neume-icon.ico">
+  <meta name="description" content="A web application that procedurally generates and plays Gregorian Chant.">
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-L2VJXFTFM1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-L2VJXFTFM1');
+  </script>
 
   <!-- bootstrap css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
@@ -20,8 +30,10 @@
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
   <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-  <!-- exsurge -->
-  <script defer type="text/javascript" src="js/exsurge.js"></script>
+  <!-- detect browser -->
+  <script type="text/javascript" src="js/detect-browser.js"></script>
+  <!-- exsurge - OUTSOURCED TO detect-browser.js -->
+  <!-- <script defer type="text/javascript" src="js/exsurge.js"></script> -->
   <!-- <script defer type="text/javascript" src="js/exsurge.min.js"></script> -->
   <!-- <script async data-main="js/compline" src="js/require.js"></script> -->
   <!-- pyscript -->
@@ -31,7 +43,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <!-- my js-->
-  <script defer src="js/main.js"></script>
+  <!-- <script defer src="js/main.js"></script> -->
 </head>
 
 <body> <!-- onload="loaded()" -->
@@ -45,7 +57,7 @@
     <div id="left-content">
       <p id="title" onclick="reset_mode_and_form()">CPU Gregorian Chant</p>
       <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="mode-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mode</button>
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="mode-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="Tone.start()">Mode</button>
         <div class="dropdown-menu" aria-labelledby="mode-dropdown">
           <a class="dropdown-item" href="#" onclick="showMode(this)">1: Dorian</a>
           <a class="dropdown-item" href="#" onclick="showMode(this)">2: Hypodorian</a>
@@ -65,24 +77,24 @@
           <a class="dropdown-item" href="#" onclick="showForm(this)">Melismatic</a>
         </div>
       </div>
-      <button py-click="generate_song" class="btn btn-secondary" id="generate-button">Compose</button>
+      <button type="button" py-click="generate_song" class="btn btn-secondary" id="generate-button">Compose</button>
       <br>
-      <button class="btn btn-secondary" id="perform-button">Perform</button>
+      <button type="button" class="btn btn-secondary" id="perform-button">Sing</button>
     </div>
     <div id="right-content">
       <!-- <button class="btn btn-secondary right-btn" id="clear-button" onclick="clear_temp()">Clear</button>
       <br>
       <button class="btn btn-secondary right-btn" id="temp-button" onclick="temp()">Temp</button>
       <br> -->
-      <button class="btn btn-secondary right-btn" id="bibliography-button">Bibliography</button>
+      <button type="button" class="btn btn-secondary right-btn" id="bibliography-button">Bibliography</button>
       <br>
-      <button class="btn btn-secondary right-btn" id="notation-button">Notation</button>
+      <button type="button" class="btn btn-secondary right-btn" id="notation-button">Notation</button>
       <br>
-      <button class="btn btn-secondary right-btn" id="mode-button">Modes</button>  
+      <button type="button" class="btn btn-secondary right-btn" id="mode-button">Modes</button>  
       <br>
-      <button class="btn btn-secondary right-btn" id="history-button">History</button>
+      <button type="button" class="btn btn-secondary right-btn" id="history-button">History</button>
       <br>
-      <button class="btn btn-secondary right-btn" id="about-button">About</button>
+      <button type="button" class="btn btn-secondary right-btn" id="about-button">About</button>
     </div>
     <div id="speech-box">
       <p id="speech-text"></p>
@@ -120,7 +132,7 @@
           The performative practices of this <i>corpus</i> had to be established, and Rome's school of singing, the <i>Schola Cantorum</i>, was reorganized so that its students could travel as missionaries of a unified musical praxis. [1]
         </p>
         <p class="indent">
-          One of the most important developments to come from this Gregorian crusade was the invention of notation. The date of invention is unknown, but the earliest surviving tomes of notated chants date to the late ninth century. Its earliest manifestation presented itself in the form of <i>neumatic notation</i>, a style in which symbols called neumes appear above words, denoting the number of syllables to sing and the melodic direction of the song. These early neumes, however, did not specify the exact pitches or rhythms to be sung, and as such served only as a memory aid to those already familiar with the melody. [2]
+          One of the most important developments to come from this Gregorian crusade was the introduction of notation. The date of invention is unknown, but the earliest surviving tomes of notated chants date to the late ninth century. Its earliest manifestation presented itself in the form of <i>neumatic notation</i>, a style in which symbols called neumes appear above words, denoting the number of syllables to sing and the melodic direction of the song. These early neumes, however, did not specify the exact pitches or rhythms to be sung, and as such served only as a memory aid to those already familiar with the melody. [2]
         </p>
         <div class="img-sub">
           <img id="neumatic-notation-img" src="assets/img/Graz, Universitätsbibliothek, Ms 748.png" alt="Graz, Universitätsbibliothek, Ms 748; Gradual from the Bologna region from around 890/900"/>
@@ -190,7 +202,7 @@
       </div>
       <div id="about">
         <h3 class="info-title">~ About ~</h3>
-        <p class="double-indent">The CPU Gregorian Chant project was created by <a class="js-lib-a" href="https://robbystrong.com" target="_blank">Robert Strong</a> as the capstone project for his undergraduate studies in Creative Technology & Design at the University of Colorado Boulder.</p>
+        <p class="double-indent">CPU Gregorian Chant was created by <a class="js-lib-a" href="https://robbystrong.com" target="_blank">Robert Strong</a> as the capstone project for his undergraduate studies in Creative Technology & Design at the University of Colorado Boulder.</p>
         <p class="double-indent">The web components of the project were built using HMTL, CSS and various Javascript libraries. The JS libraries used are:</p>
         <p class="double-indent"><a class="js-lib-a" href='https://github.com/frmatthew/exsurge' target="_blank">Exsurge.js</a> for the rendering of Gregorian Chant notation.</p>
         <p class="double-indent"><a class="js-lib-a" href="https://tonejs.github.io/" target ="_blank">Tone.js</a> for the production of sound.</p>

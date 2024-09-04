@@ -1210,9 +1210,22 @@ function perform(voice)
     illuminated_chant_elements = document.getElementsByClassName("ChantNotationElement");
     illumination_i = 1;
     active_element_i = 1;
+    var multiplier = 0;
     for(let i=0; i<illuminated_chant_elements.length; i++)
     {
-        active_element.push(illuminated_chant_elements[i].id);
+        multiplier = 0;
+        for(const child of illuminated_chant_elements[i].children)
+        {
+            if(child.getAttribute('xlink:href')=='#PunctumQuadratum' || child.getAttribute('xlink:href')=='#Mora' || child.getAttribute('xlink:href')=='#PodatusLower' || child.getAttribute('xlink:href')=='#PodatusUpper' || child.getAttribute('xlink:href')=='#PunctumInclinatum' || child.getAttribute('xlink:href')=='#Porrectus1' || child.getAttribute('xlink:href')=='#Porrectus2' || child.getAttribute('xlink:href')=='#Porrectus3' || child.getAttribute('xlink:href')=='#Porrectus4' || child.getAttribute('xlink:href')=='#None')
+            {
+                multiplier++;
+            }
+            else if(child.getAttribute('xlink:href')=='#Flat')
+            {
+                multiplier = -1;
+            }
+        }
+        active_element.push(multiplier);
     }
 
     monks_closed.style.zIndex = "-3";
@@ -1267,34 +1280,15 @@ function perform(voice)
         if(is_performing == 0){return;}
         uncolor();
         child_elm = "";
-        if(illuminated_chant_elements[illumination_i].childElementCount == 2)
-        {
-            child_elm = illuminated_chant_elements[illumination_i].lastChild.attributes[0].nodeValue;
-            if(child_elm == "#Mora")
-            {
-                illuminated_chant_elements[illumination_i].style.fill = "#B40101";
-                illumination_i++;
-                active_element_i++;
-                setTimeout(illuminate_elements, (2*time_seconds)-(time_subtractor));
-                return;
-            }
-        }
-        if(active_element[active_element_i]=="Accidental")
-        {
-            illuminated_chant_elements[illumination_i].style.fill = "#B40101";
-            illuminated_chant_elements[illumination_i+1].style.fill = "#B40101";
-            illumination_i++;
-            active_element_i++;
-        }
-        if(active_element[active_element_i]=="Punctum" || active_element[active_element_i]=="Apostropha")
+        if(active_element[active_element_i] == "1")
         {
             illuminated_chant_elements[illumination_i].style.fill = "#B40101";
             illumination_i++;
             active_element_i++;
-            setTimeout(illuminate_elements, (time_seconds)-(time_subtractor));
+            setTimeout(illuminate_elements, (1*time_seconds)-(time_subtractor));
             return;
         }
-        else if(active_element[active_element_i]=="Clivis" || active_element[active_element_i]=="Podatus" || active_element[active_element_i]=="Distropha")
+        else if(active_element[active_element_i] == "2")
         {
             illuminated_chant_elements[illumination_i].style.fill = "#B40101";
             illumination_i++;
@@ -1302,7 +1296,7 @@ function perform(voice)
             setTimeout(illuminate_elements, (2*time_seconds)-(time_subtractor));
             return;
         }
-        else if(active_element[active_element_i]=="Climacus" || active_element[active_element_i]=="Scandicus" || active_element[active_element_i]=="Torculus" || active_element[active_element_i]=="Porrectus" || active_element[active_element_i]=="Tristropha")
+        else if(active_element[active_element_i] == "3")
         {
             illuminated_chant_elements[illumination_i].style.fill = "#B40101";
             illumination_i++;
@@ -1310,7 +1304,7 @@ function perform(voice)
             setTimeout(illuminate_elements, (3*time_seconds)-(time_subtractor));
             return;
         }
-        else if(active_element[active_element_i]=="TorculusResupinus" || active_element[active_element_i]=="PorrectusFlexus" || active_element[active_element_i]=="ScandicusFlexus")
+        else if(active_element[active_element_i] == "4")
         {
             illuminated_chant_elements[illumination_i].style.fill = "#B40101";
             illumination_i++;
@@ -1318,7 +1312,23 @@ function perform(voice)
             setTimeout(illuminate_elements, (4*time_seconds)-(time_subtractor));
             return;
         }
-        else if(active_element[active_element_i]=="QuarterBar" || active_element[active_element_i]=="DoubleBar")
+        else if(active_element[active_element_i] == "5")
+        {
+            illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+            illumination_i++;
+            active_element_i++;
+            setTimeout(illuminate_elements, (5*time_seconds)-(time_subtractor));
+            return;
+        }
+        else if(active_element[active_element_i] == "-1")
+        {
+            illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+            illumination_i++;
+            active_element_i++;
+            setTimeout(illuminate_elements, (0*time_seconds)-(time_subtractor));
+            return;
+        }
+        else if(active_element[active_element_i] == "0")
         {
             illuminated_chant_elements[illumination_i].style.fill = "#B40101";
             illumination_i++;
@@ -1327,7 +1337,7 @@ function perform(voice)
             if(illuminated_chant_elements[illumination_i])
             {
                 setTimeout(monk_sing_state, 0.95*time_seconds);
-                setTimeout(illuminate_elements, (time_seconds)-(time_subtractor));
+                setTimeout(illuminate_elements, (1*time_seconds)-(time_subtractor));
                 return;
             }
             else
@@ -1336,16 +1346,106 @@ function perform(voice)
                 return;
             }
         }
-        else if(active_element[active_element_i] == "Custos" || active_element[active_element_i]=="DoClef" || active_element[active_element_i]=="FaClef")
-        {
-            illumination_i++;
-            active_element_i++;
-            illuminate_elements();
-            return;
-        }
+        // if(active_element[active_element_i]=="#Flat")
+        // {
+        //     illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+        //     illuminated_chant_elements[illumination_i+1].style.fill = "#B40101";
+        //     illumination_i++;
+        //     active_element_i++;
+        // }
+        // if(active_element[active_element_i]=="#PunctumQuadratum" || active_element[active_element_i]=="#PodatusLower" || active_element[active_element_i]=="#PodatusUpper")
+        // {
+        //     illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+        //     illumination_i++;
+        //     active_element_i++;
+        //     setTimeout(illuminate_elements, (time_seconds)-(time_subtractor));
+        //     return;
+        // }
+        // else if(active_element[active_element_i]=="#Mora")
+        // {
+        //     illuminated_chant_elements[illumination_i-1].style.fill = "#B40101";
+        //     active_element_i++;
+        //     setTimeout(illuminate_elements, (time_seconds)-(time_subtractor));
+        //     return;
+        // }
+        // else if(active_element[active_element_i]=="#PunctumInclinatum")
+        // {
+        //     illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+        //     illumination_i++;
+        //     active_element_i+=2;
+        //     setTimeout(illuminate_elements, (2*time_seconds)-(time_subtractor));
+        //     return;
+        // }
+        // else if(active_element[active_element_i]==null && active_element[active_element_i+1]===null)
+        // {
+        //     illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+        //     illumination_i++;
+        //     active_element_i += 2;
+        //     monk_sing_state();
+        //     if(illuminated_chant_elements[illumination_i])
+        //     {
+        //         setTimeout(monk_sing_state, 0.95*time_seconds);
+        //         setTimeout(illuminate_elements, (time_seconds)-(time_subtractor));
+        //         return;
+        //     }
+        //     else
+        //     {
+        //         initialize_performance(false);
+        //         return;
+        //     }
+        // }
+        // else if(active_element[active_element_i]==null)
+        // {
+        //     illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+        //     illumination_i++;
+        //     active_element_i++;
+        //     monk_sing_state();
+        //     if(illuminated_chant_elements[illumination_i])
+        //     {
+        //         setTimeout(monk_sing_state, 0.95*time_seconds);
+        //         setTimeout(illuminate_elements, (time_seconds)-(time_subtractor));
+        //         return;
+        //     }
+        //     else
+        //     {
+        //         initialize_performance(false);
+        //         return;
+        //     }
+        // }
+        // else if(active_element[active_element_i]=="#CustosShort" || active_element[active_element_i]=="#DoClef" || active_element[active_element_i]=="#FaClef")
+        // {
+        //     illumination_i++;
+        //     active_element_i++;
+        //     illuminate_elements();
+        //     return;
+        // }
     }
     illuminate_elements();
 }
+        // else if(active_element[active_element_i]=="Clivis" || active_element[active_element_i]=="Podatus" || active_element[active_element_i]=="Distropha")
+        // {
+        //     illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+        //     illumination_i++;
+        //     active_element_i++;
+        //     setTimeout(illuminate_elements, (2*time_seconds)-(time_subtractor));
+        //     return;
+        // }
+        // else if(active_element[active_element_i]=="Climacus" || active_element[active_element_i]=="Scandicus" || active_element[active_element_i]=="Torculus" || active_element[active_element_i]=="Porrectus" || active_element[active_element_i]=="Tristropha")
+        // {
+        //     illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+        //     illumination_i++;
+        //     active_element_i++;
+        //     setTimeout(illuminate_elements, (3*time_seconds)-(time_subtractor));
+        //     return;
+        // }
+        // else if(active_element[active_element_i]=="TorculusResupinus" || active_element[active_element_i]=="PorrectusFlexus" || active_element[active_element_i]=="ScandicusFlexus")
+        // {
+        //     illuminated_chant_elements[illumination_i].style.fill = "#B40101";
+        //     illumination_i++;
+        //     active_element_i++;
+        //     setTimeout(illuminate_elements, (4*time_seconds)-(time_subtractor));
+        //     return;
+        // }
 
 var sing_z = "-2";
 var rest_z = "-1";

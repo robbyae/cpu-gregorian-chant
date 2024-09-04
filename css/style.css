@@ -17,9 +17,23 @@ html {
   -ms-overflow-style: none;
   scrollbar-width: none;
   background-color: #D9A066;
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 body {
   font-family: "Alagard","IM Fell English","IM Fell English Italic";
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+button {
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+button:hover {
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+button::after {
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+.dropdown {
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
 }
 
 html::-webkit-scrollbar {
@@ -135,7 +149,7 @@ a:hover {
   background-color: #ddd0b9;
   margin: 1% auto;
   place-items: center;
-  width: 80%;
+  width: 1050px;
   z-index: 0;
 }
 
