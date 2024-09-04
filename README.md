@@ -1,0 +1,1 @@
+![](https://github.com/robbyae/cpu-gregorian-chant/blob/main/assets/img/monk-speak-gif.gif)
