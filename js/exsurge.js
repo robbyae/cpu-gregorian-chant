@@ -6540,6 +6540,14 @@ return /******/ (function(modules) { // webpackBootstrap
 	            addNotation(ctxt.activeClef = new _Exsurge3.FaClef(3, 2));
 	            break;
 	
+			  case "cb1":
+				addNotation(ctxt.activeClef = new _Exsurge3.DoClef(-3, 2, new Signs.Accidental(-4, Signs.AccidentalType.Flat)));
+				break; // ADDITION
+
+			  case "cb2":
+				addNotation(ctxt.activeClef = new _Exsurge3.DoClef(-1, 2, new Signs.Accidental(-2, Signs.AccidentalType.Flat)));
+				break; // ADDITION
+
 	          case "cb3":
 	            addNotation(ctxt.activeClef = new _Exsurge3.DoClef(1, 2, new Signs.Accidental(0, Signs.AccidentalType.Flat)));
 	            break;

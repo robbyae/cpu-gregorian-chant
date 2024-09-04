@@ -113,7 +113,7 @@ document.getElementById("generate-button").addEventListener("click", () => {
 function read_svg_element()
 {
     var mode_text = document.getElementsByClassName("annotation");
-    active_mode = mode_text[0].innerHTML[7];
+    // active_mode = mode_text[0].innerHTML[7];
     for(let i=0; i<mode_text.length; i++)
     {
         mode_text[i].addEventListener("mousemove", (e) => {
@@ -926,7 +926,7 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Mode","n","a musical scale and its characteristic melodic and harmonic qualities",
                 "Relative","adj","a mode that shares a finalis with another but holds its own dominant",
                 "Authentic","adj","one of the odd numbered Gregorian modes; characterized by a melody that moves primarily above the finalis",
-                "Plagal","adj","one of the even numbered Gregorian modes; a mode relative to an authentic, sharing the same finalis but holding a different dominant; has the prefix -hypo, Greek for 'under'",
+                "Plagal","adj","one of the even numbered Gregorian modes; a mode relative to an authentic, sharing the same finalis but possessing a different dominant; has the prefix -hypo, Greek for 'under'",
                 "Finalis","n","a mode's primary tone and the final tone of the melody",
                 "Dominant","n","the note of secondmost importance in a mode, strongly influencing its melodic qualities",
                 "Ambitus","n","the range of tones in a mode",
