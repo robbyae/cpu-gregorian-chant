@@ -2,4 +2,4 @@
 
 # Welcome to CPU Gregorian Chant!
 
-CPU Gregorian Chant is a web application that procedurally generates Gregorian Chant with the intention to educate and entertain. 
+CPU Gregorian Chant is a web application that procedurally generates Gregorian Chant to educate and entertain. It generates music in all eight common Gregorian modes, so users can hear and read about the differences in Gregorian modes. Additionally, the application includes articles on Notation, Modes and History.
