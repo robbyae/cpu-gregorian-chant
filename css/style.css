@@ -300,6 +300,7 @@ body {
   position: absolute;
   z-index: -1;
   height: 44%;
+  bottom: 30%;
   left: 50%;
   transform: translateX(-50%);
 }
