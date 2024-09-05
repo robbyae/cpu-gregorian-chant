@@ -887,14 +887,7 @@ function winderp(active)
         window_clicked = 0;
         if(active == prev_active || active == "x")
         {
-            info_window.style.display = "none";
-            x.style.display = "none";
-            // dict_display.style.display = "none";
-            history_display.style.display = "none";
-            notation_display.style.display = "none";
-            mode_display.style.display = "none";
-            bib_display.style.display = "none";
-            about_display.style.display = "none";
+            hide_info();
         }
         else
         {
