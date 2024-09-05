@@ -645,6 +645,9 @@ cite {
   #svg-wrapper {
     z-index: -1000;
   }
+  #loading-text {
+    margin-top: 20%;
+  }
 }
 
 /* HOVER MOBILE SUPPORT */
