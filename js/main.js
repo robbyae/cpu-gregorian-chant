@@ -6,7 +6,7 @@ perform_btn.disabled = true;
 gen_btn.addEventListener("click", () => {
     setTimeout(() => {
     perform_btn.disabled = false;
-    },500);
+    },1000);
     setTimeout(() => {
         read_svg_element();
     }, 1000);
@@ -965,8 +965,8 @@ var blue_dict = ["Gregorian Chant","n","the central cultural and musical practic
                 "Scandicus Flexus","n","a four-note neume of which the first three ascend and the last descends.",
                 "Distropha","n","a two-note neume of which both notes share the same tonal value",
                 "Tristropha","n","a three-note neume of which all notes share the same tonal value",
-                "Quarter Bar","n","notates a brief rest",
-                "Double Bar","n","notates the end of a section",
+                "Quarter Bar","n","denotes a brief rest",
+                "Double Bar","n","denotes the end of a section",
                 "Flat","n","lowers the value of the affected note by one semitone; the only accidental in plainsong; always falls on the seventh degree, Ti",
                 "Scandicus","n","an ascending three-note neume of which the first note rises to the second, which rises to the third",
                 "Custos","n","a note fragment at the end of the staff, indicating the first note of the next line"];
@@ -1063,7 +1063,7 @@ generate_button.addEventListener("click", () => {
     updateChant();
     song_svg.style.display = "block";
     song_svg.style.cursor = "url(assets/cursors/cursor-finger.png), auto";
-    }, 500);
+    }, 1000);
     });
 
 // PERFORM GABC //
@@ -1185,7 +1185,7 @@ function initialize_performance(disable_perform)
                 monks_closed_noeyes.style.zIndex = "-3";
                 generate_button.disabled = false;
             }
-        }, 250);
+        }, 500);
     }
 }
 
