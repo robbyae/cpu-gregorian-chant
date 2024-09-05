@@ -116,9 +116,9 @@ a:hover {
   background-color:#ddd0b9;
   position: absolute;
   height: 30%;
+  top:50%;
   min-height: 30%;
-  bottom: 0;
-  /* margin: 20vh 0 0; */
+  margin: 20vh 0 0;
   width: 100vw;
   display: block;
 }
