@@ -6,6 +6,14 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 
 ![](https://github.com/robbyae/cpu-gregorian-chant/blob/main/assets/img/monk-speak-gif.gif)
 
-## Tools Used
+## How It's Made
 
-This project uses HTML, CSS, JavaScript and Python.
+**Tech used:**
+&emsp; • HTML
+&emsp; • CSS
+&emsp; • JavaScript and various libraries
+&emsp; • Python
+**Libraries used:** Bootstrap/jQuery for the function of the buttons.
+
+## Cross-browser functionality
+
