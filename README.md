@@ -18,7 +18,15 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 <br>
 • Python
 
-**Libraries used:** Bootstrap/jQuery for the function of the buttons.
+**Libraries used:**
+<br>
+• [Exsurge.js](https://github.com/frmatthew/exsurge) for the rendering of Gregorian Chant notation.
+<br>
+• [Tone.js](https://tonejs.github.io/) for the production of sound.
+<br>
+• [Pyscript](https://pyscript.net/) for the communication of Python and Javascript.
+<br>
+• [Bootstrap](https://getbootstrap.com/)/[jQuery](https://jquery.com/) for the function of the buttons
 
 ## Cross-browser functionality
 
