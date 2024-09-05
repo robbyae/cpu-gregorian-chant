@@ -865,7 +865,14 @@ function winderp(active)
         else if(active=="modes"){mode_display.style.display = "block";}
         else if(active=="bibliography"){bib_display.style.display = "block";}
         else if(active=="about"){about_display.style.display = "block";}
-        svg_wrapper.style.height = info_window.offsetHeight - 400 + "px";
+        if(screen.width >= 1000)
+        {
+            svg_wrapper.style.height = info_window.offsetHeight - 400 + "px";
+        }
+        else
+        {
+            svg_wrapper.style.height = info_window.offsetHeight - 200 + "px";
+        }
         window_clicked = 1;
         prev_active = active;
         setTimeout(() => {
