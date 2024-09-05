@@ -141,14 +141,15 @@ a:hover {
 #song-svg {
   position: absolute;
   height: 44%;
-  top: 50%;
+  top: 0%;
   left: 50%;
-  transform: translate(-50%, -113.64%);
+  transform: translateX(-50%);
   display: block;
   background-color: #ddd0b9;
   margin: 1% auto;
   place-items: center;
   width: 1050px;
+  max-width: 75%;
   z-index: 0;
 }
 
@@ -579,4 +580,66 @@ cite {
 }
 .footnote:hover {
   cursor: url(../assets/cursors/cursor-finger.png), auto;
+}
+
+#disclaimer {
+  display: none;
+}
+
+/* RESPONSIVE CSS */
+@media screen and (max-width: 500px) {
+  #disclaimer {
+    display: block;
+  }
+  #title {
+    font-size: 9vw;
+    text-align: center;
+  }
+  #left-content {
+    margin-top: 5vh;
+    width: 100vw;
+  }
+  #loading-text {
+    margin-top: 40%;
+  }
+  .btn {
+    display: none;
+  }
+  #speech-box {
+    display: none;
+  }
+  #ghost-box {
+    display: none;
+  }
+  #monks-closed {
+    height: 16%;
+    max-width: 100%;
+    bottom: 50%;
+  }
+  #monks-open {
+    height: 16%;
+    max-width: 100%;
+    bottom: 50%;
+  }
+  #monks-closed-noeyes {
+    height: 16%;
+    max-width: 100%;
+    bottom: 50%;
+  }
+  #svg-wrapper {
+    height: 50%;
+    top: 50%;
+  }
+}
+
+@media screen and (min-width: 500px) and (max-width: 500px) {
+  #title {
+    font-size: 4vw;
+  }
+  #left-content {
+    width: 40%;
+  }
+  .btn {
+    font-size: 1.8vw;
+  }
 }
