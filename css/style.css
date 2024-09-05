@@ -119,6 +119,7 @@ a:hover {
   top:70%;
   min-height: 30%;
   width: 100vw;
+  max-width: 100vw;
   display: block;
 }
 /* #svg-wrapper {
@@ -149,7 +150,7 @@ a:hover {
   margin: 1% auto;
   place-items: center;
   width: 1050px;
-  max-width: 75%;
+  max-width: 75vw;
   z-index: 0;
 }
 
