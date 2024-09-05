@@ -117,8 +117,8 @@ a:hover {
   position: absolute;
   height: 30%;
   min-height: 30%;
-  top: 50%;
-  margin: 20vh 0 0;
+  bottom: 0;
+  /* margin: 20vh 0 0; */
   width: 100vw;
   display: block;
 }
@@ -283,26 +283,25 @@ body {
 #monks-closed {
   position: absolute;
   z-index: -3;
+  bottom: 30%;
   height: 44%;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -54.8%);
+  transform: translateX(-50%);
 }
 #monks-open {
   position: absolute;
   z-index: -2;
   height: 44%;
-  top: 50%;
+  bottom: 30%;
   left: 50%;
-  transform: translate(-50%, -54.8%);
+  transform: translateX(-50%);
 }
 #monks-closed-noeyes {
   position: absolute;
   z-index: -1;
   height: 44%;
-  top: 50%;
   left: 50%;
-  transform: translate(-50%, -54.8%);
+  transform: translateX(-50%);
 }
 
 #speech-box {
