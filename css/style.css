@@ -597,7 +597,7 @@ cite {
     width: 100vw;
   }
   #loading-text {
-    margin-top: 40%;
+    margin-top: 43%;
   }
   .btn {
     display: none;
@@ -644,6 +644,9 @@ cite {
   }
   #svg-wrapper {
     z-index: -1000;
+  }
+  #loading-text {
+    margin-top: 5%;
   }
 }
 

@@ -599,12 +599,12 @@ function typeWriter()
                     blue_spans = document.getElementsByClassName("blue-text");
                     for(let i=0; i<blue_spans.length; i++)
                     {
-                        blue_spans[i].addEventListener("click", (e) => {
+                        blue_spans[i].addEventListener("mousemove", (e) => {
                             blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),1);
                         });
-                        // blue_spans[i].addEventListener("mouseleave", (e) => {
-                        //     blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),0);
-                        // }); //TELEPORT
+                        blue_spans[i].addEventListener("mouseleave", (e) => {
+                            blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),0);
+                        }); //TELEPORT
                     }
                     if(span_status == 1){blue_index += 2;}
                     span_status = 0;
