@@ -6,10 +6,10 @@ perform_btn.disabled = true;
 gen_btn.addEventListener("click", () => {
     setTimeout(() => {
     perform_btn.disabled = false;
-    },1000);
+    }, 1000);
     setTimeout(() => {
         read_svg_element();
-    }, 1000);
+    }, 1100);
 });
 
 // SPEECH BOX //
@@ -605,6 +605,12 @@ function typeWriter()
                         blue_spans[i].addEventListener("mouseleave", (e) => {
                             blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),0);
                         });
+                        blue_spans[i].addEventListener("touchstart", (e) => {
+                            blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),1);
+                        });
+                        blue_spans[i].addEventListener("touchend", (e) => {
+                            blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),0);
+                        });
                     }
                     if(span_status == 1){blue_index += 2;}
                     span_status = 0;
@@ -865,7 +871,14 @@ function winderp(active)
         else if(active=="modes"){mode_display.style.display = "block";}
         else if(active=="bibliography"){bib_display.style.display = "block";}
         else if(active=="about"){about_display.style.display = "block";}
-        svg_wrapper.style.height = info_window.offsetHeight - 400 + "px";
+        if(screen.width >= 1000)
+        {
+            svg_wrapper.style.height = info_window.offsetHeight - 400 + "px";
+        }
+        else
+        {
+            svg_wrapper.style.height = info_window.offsetHeight - 200 + "px";
+        }
         window_clicked = 1;
         prev_active = active;
         setTimeout(() => {

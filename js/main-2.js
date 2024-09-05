@@ -9,7 +9,7 @@ gen_btn.addEventListener("click", () => {
     },1000);
     setTimeout(() => {
         read_svg_element();
-    }, 1000);
+    }, 1100);
 });
 
 // SPEECH BOX //
