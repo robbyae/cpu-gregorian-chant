@@ -116,9 +116,8 @@ a:hover {
   background-color:#ddd0b9;
   position: absolute;
   height: 30%;
-  top:50%;
+  top:70%;
   min-height: 30%;
-  margin: 20vh 0 0;
   width: 100vw;
   display: block;
 }
