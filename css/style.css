@@ -643,4 +643,7 @@ cite {
   .btn {
     font-size: 1.8vw;
   }
+  #disclaimer {
+    display: none;
+  }
 }
