@@ -121,6 +121,7 @@ a:hover {
   width: 100vw;
   max-width: 100vw;
   display: block;
+  z-index: -1000;
 }
 /* #svg-wrapper {
   background-color:#ddd0b9;
@@ -212,10 +213,15 @@ a:hover {
 
 .dropdown-menu {
   background-color: #402D2B;
+  z-index: 44;
 }
 
 .dropdown-item {
   color: white;
+  z-index: 44;
+  font-family: "Alagard";
+  cursor: url(../assets/cursors/cursor-finger.png), auto;
+  font-size: 1.3vw;
 }
 
 #TextMeasurer {
@@ -272,13 +278,6 @@ body {
   background-color:#373c3f;
   border-color:#373c3f;
   cursor:not-allowed;
-}
-
-.dropdown-item {
-  font-family: "Alagard";
-  cursor: url(../assets/cursors/cursor-finger.png), auto;
-  font-size: 1.3vw;
-  z-index: 4;
 }
 
 #monks-closed {
