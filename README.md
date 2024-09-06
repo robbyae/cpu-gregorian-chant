@@ -4,7 +4,7 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 
 **Link to site:** https://cpu-gregorian-chant.com/
 
-![](https://github.com/robbyae/cpu-gregorian-chant/blob/main/assets/img/monk-speak-gif.gif)
+![](assets/readme/welcome.GIF)
 
 ## How It's Made
 
