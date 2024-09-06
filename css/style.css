@@ -304,12 +304,12 @@ body {
 
 #speech-box {
   font-family: "Alagard";
-  font-size: 1.25vw;
+  font-size: 1.5rem;
   position: absolute;
   height: 2%;
   top: 22%;
-  left: 22%;
-  right: 22%; /* 22% */
+  left: 18%;
+  right: 18%;
   display: flex;
   align-items: flex-end;
   margin: 6px 6px;
@@ -337,8 +337,8 @@ body {
   position: absolute;
   height: 22%;
   top: 2%;
-  left: 22%;
-  right: 22%;
+  left: 18%;
+  right: 18%;
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -637,7 +637,7 @@ cite {
     width: 40%;
   }
   .btn {
-    font-size: 1.5vw;
+    font-size: 1rem;
   }
   #disclaimer {
     display: none;
