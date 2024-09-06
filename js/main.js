@@ -924,7 +924,12 @@ function winderp(active)
 function hide_info()
 {
     if(song_svg.style.display == "none"){svg_wrapper.style.height = "30%";}
-    else{svg_wrapper.style.height = song_svg.style.height + "40px";}
+    else {if(window.screen.width <= 1100) {
+          svg_wrapper.style.height = "100%";
+        }
+        else {
+            svg_wrapper.style.height = song_svg.style.height + "40px";
+        }}
     window.scrollTo(0, 0);
     x.style.display = "none";
     info_window.style.display = "none";
@@ -1048,6 +1053,7 @@ function info_popup()
 // RENDER GABC //
 var song_svg = document.getElementById("song-svg");
 var generate_button = document.getElementById("generate-button");
+var chantScore;
 generate_button.addEventListener("click", () => {
     perform_button.disabled = true;
     setTimeout(() => {
@@ -1081,7 +1087,11 @@ generate_button.addEventListener("click", () => {
         score.layoutChantLines(ctxt, song_svg.clientWidth, function() {
           // render the score to svg code
           song_svg.innerHTML = score.createSvg(ctxt);
-          svg_wrapper.style.height = song_svg.style.height + "40px";
+          chantScore = document.getElementById('ChantScore');
+          if(window.screen.width <= 1100)
+          {
+            svg_wrapper.style.height = "100%";
+          }
           // svg_wrapper.style.height = "40%";
           // color_finalis_and_dominant();
         });

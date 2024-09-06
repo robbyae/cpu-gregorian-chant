@@ -648,6 +648,9 @@ cite {
   #loading-text {
     margin-top: 5%;
   }
+  .annotation {
+    display: none;
+  }
 }
 
 /* HOVER MOBILE SUPPORT */
