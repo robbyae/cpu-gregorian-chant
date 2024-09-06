@@ -1298,7 +1298,7 @@ function perform(voice)
     // ILLUMINATE CHANT ELEMENTS && ANIMATE SINGING //
     var child_elm = "";
     var time_seconds = Tone.Time("4n").toMilliseconds();
-    var time_subtractor = 5;
+    var time_subtractor = 1;
     if(exsurge_version == 1) {
         illuminate_elements = () =>
         {
