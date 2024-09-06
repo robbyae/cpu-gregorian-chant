@@ -924,7 +924,7 @@ function winderp(active)
 function hide_info()
 {
     if(song_svg.style.display == "none"){svg_wrapper.style.height = "30%";}
-    else{svg_wrapper.style.height = "40%";}
+    else{svg_wrapper.style.height = song_svg.style.height + "40px";}
     window.scrollTo(0, 0);
     x.style.display = "none";
     info_window.style.display = "none";
