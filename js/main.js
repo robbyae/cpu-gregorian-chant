@@ -557,12 +557,10 @@ function typeWriter()
                     green_spans = document.getElementsByClassName("green-text");
                     for(let i=0; i<green_spans.length; i++)
                     {
-                        green_spans[i].addEventListener("mousemove", (e) => {
+                        green_spans[i].addEventListener("click", (e) => {
                             blue_text(e,"#105719",green_spans[i],green_spans[i].innerHTML,1);
                         });
-                        green_spans[i].addEventListener("mouseleave", (e) => {
-                            blue_text(e,"#105719",green_spans[i],green_spans[i].innerHTML,0);
-                        });
+
                     }
                     if(span_status == 1){green_index += 2;}
                     span_status = 0;
