@@ -1081,7 +1081,8 @@ generate_button.addEventListener("click", () => {
         score.layoutChantLines(ctxt, song_svg.clientWidth, function() {
           // render the score to svg code
           song_svg.innerHTML = score.createSvg(ctxt);
-          svg_wrapper.style.height = "40%";
+          svg_wrapper.style.height = song_svg.style.height + "40px";
+          // svg_wrapper.style.height = "40%";
           // color_finalis_and_dominant();
         });
       });
