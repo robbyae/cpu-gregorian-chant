@@ -21,8 +21,23 @@ function detect_browser() {
         return;
     }
   }
-
 detect_browser();
+
+var mobile;
+var blue_text_enter;
+var blue_text_leave;
+function detect_mobile() {
+    if(screen.width >= 1100) {
+        mobile = false;
+        blue_text_enter = 'mousemove';
+        blue_text_leave = 'mouseleave';
+    }
+    else {
+        mobile = true;
+        blue_text_enter = 'click';
+        blue_text_leave = 'touchend';
+    }
+}
 
 var gen_btn = document.getElementById("generate-button");
 var perform_btn = document.getElementById("perform-button");
@@ -142,30 +157,30 @@ function read_svg_element()
     // active_mode = mode_text[0].innerHTML[7];
     for(let i=0; i<mode_text.length; i++)
     {
-        mode_text[i].addEventListener("mousemove", (e) => {
+        mode_text[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",mode_text[i],"Mode",1);
         });
-        mode_text[i].addEventListener("mouseleave", (e) => {
+        mode_text[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",mode_text[i],"Mode",0);
         });
     }
     var doClef = document.getElementsByClassName("ChantNotationElement DoClef");
     for(let i=0; i<doClef.length; i++)
     {
-        doClef[i].addEventListener("mousemove", (e) => {
+        doClef[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",doClef[i],"Do Clef",1);
         });
-        doClef[i].addEventListener("mouseleave", (e) => {
+        doClef[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",doClef[i],"Do Clef",0);
         });
     }
     var faClef = document.getElementsByClassName("ChantNotationElement FaClef");
     for(let i=0; i<faClef.length; i++)
     {
-        faClef[i].addEventListener("mousemove", (e) => {
+        faClef[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",faClef[i],"Fa Clef",1);
         });
-        faClef[i].addEventListener("mouseleave", (e) => {
+        faClef[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",faClef[i],"Fa Clef",0);
         });
     }
@@ -175,19 +190,19 @@ function read_svg_element()
         let last_child = punctum[i].lastChild;
         if(last_child.attributes[0].nodeValue == "#Mora")
         {
-            punctum[i].addEventListener("mousemove", (e) => {
+            punctum[i].addEventListener(blue_text_enter, (e) => {
                 blue_text(e,"#a50202",punctum[i],"Punctum Mora",1);
             });
-            punctum[i].addEventListener("mouseleave", (e) => {
+            punctum[i].addEventListener(blue_text_leave, (e) => {
                 blue_text(e,"#a50202",punctum[i],"Punctum Mora",0);
             });
         }
         else
         {
-            punctum[i].addEventListener("mousemove", (e) => {
+            punctum[i].addEventListener(blue_text_enter, (e) => {
                 blue_text(e,"#a50202",punctum[i],"Punctum",1);
             });
-            punctum[i].addEventListener("mouseleave", (e) => {
+            punctum[i].addEventListener(blue_text_leave, (e) => {
                 blue_text(e,"#a50202",punctum[i],"Punctum",0);
             });
         }
@@ -196,10 +211,10 @@ function read_svg_element()
     {
         for(let i=0; i<apostropha.length; i++)
         {
-            apostropha[i].addEventListener("mousemove", (e) => {
+            apostropha[i].addEventListener(blue_text_enter, (e) => {
                 blue_text(e,"#a50202",apostropha[i],"Punctum",1);
             });
-            apostropha[i].addEventListener("mouseleave", (e) => {
+            apostropha[i].addEventListener(blue_text_leave, (e) => {
                 blue_text(e,"#a50202",apostropha[i],"Punctum",0);
             });
         }
@@ -207,150 +222,150 @@ function read_svg_element()
     var podatus = document.getElementsByClassName("ChantNotationElement Podatus");
     for(let i=0; i<podatus.length; i++)
     {
-        podatus[i].addEventListener("mousemove", (e) => {
+        podatus[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",podatus[i],"Podatus",1);
         });
-        podatus[i].addEventListener("mouseleave", (e) => {
+        podatus[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",podatus[i],"Podatus",0);
         });
     }
     var clivis = document.getElementsByClassName("ChantNotationElement Clivis");
     for(let i=0; i<clivis.length; i++)
     {
-        clivis[i].addEventListener("mousemove", (e) => {
+        clivis[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",clivis[i],"Clivis",1);
         });
-        clivis[i].addEventListener("mouseleave", (e) => {
+        clivis[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",clivis[i],"Clivis",0);
         });
     }
     var porrectus = document.getElementsByClassName("ChantNotationElement Porrectus");
     for(let i=0; i<porrectus.length; i++)
     {
-        porrectus[i].addEventListener("mousemove", (e) => {
+        porrectus[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",porrectus[i],"Porrectus",1);
         });
-        porrectus[i].addEventListener("mouseleave", (e) => {
+        porrectus[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",porrectus[i],"Porrectus",0);
         });
     }
     var climacus = document.getElementsByClassName("ChantNotationElement Climacus");
     for(let i=0; i<climacus.length; i++)
     {
-        climacus[i].addEventListener("mousemove", (e) => {
+        climacus[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",climacus[i],"Climacus",1);
         });
-        climacus[i].addEventListener("mouseleave", (e) => {
+        climacus[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",climacus[i],"Climacus",0);
         });
     }
     var torculus = document.getElementsByClassName("ChantNotationElement Torculus");
     for(let i=0; i<torculus.length; i++)
     {
-        torculus[i].addEventListener("mousemove", (e) => {
+        torculus[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",torculus[i],"Torculus",1);
         });
-        torculus[i].addEventListener("mouseleave", (e) => {
+        torculus[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",torculus[i],"Torculus",0);
         });
     }
     var torculus_resupinus = document.getElementsByClassName("ChantNotationElement TorculusResupinus");
     for(let i=0; i<torculus_resupinus.length; i++)
     {
-        torculus_resupinus[i].addEventListener("mousemove", (e) => {
+        torculus_resupinus[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",torculus_resupinus[i],"Torculus Resupinus",1);
         });
-        torculus_resupinus[i].addEventListener("mouseleave", (e) => {
+        torculus_resupinus[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",torculus_resupinus[i],"Torculus Resupinus",0);
         });
     }
     var porrectus_flexus = document.getElementsByClassName("ChantNotationElement PorrectusFlexus");
     for(let i=0; i<porrectus_flexus.length; i++)
     {
-        porrectus_flexus[i].addEventListener("mousemove", (e) => {
+        porrectus_flexus[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",porrectus_flexus[i],"Porrectus Flexus",1);
         });
-        porrectus_flexus[i].addEventListener("mouseleave", (e) => {
+        porrectus_flexus[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",porrectus_flexus[i],"Porrectus Flexus",0);
         });
     }
     var scandicus_flexus = document.getElementsByClassName("ChantNotationElement ScandicusFlexus");
     for(let i=0; i<scandicus_flexus.length; i++)
     {
-        scandicus_flexus[i].addEventListener("mousemove", (e) => {
+        scandicus_flexus[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",scandicus_flexus[i],"Scandicus Flexus",1);
         });
-        scandicus_flexus[i].addEventListener("mouseleave", (e) => {
+        scandicus_flexus[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",scandicus_flexus[i],"Scandicus Flexus",0);
         });
     }
     var distropha = document.getElementsByClassName("ChantNotationElement Distropha");
     for(let i=0; i<distropha.length; i++)
     {
-        distropha[i].addEventListener("mousemove", (e) => {
+        distropha[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",distropha[i],"Distropha",1);
         });
-        distropha[i].addEventListener("mouseleave", (e) => {
+        distropha[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",distropha[i],"Distropha",0);
         });
     }
     var tristropha = document.getElementsByClassName("ChantNotationElement Tristropha");
     for(let i=0; i<tristropha.length; i++)
     {
-        tristropha[i].addEventListener("mousemove", (e) => {
+        tristropha[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",tristropha[i],"Tristropha",1);
         });
-        tristropha[i].addEventListener("mouseleave", (e) => {
+        tristropha[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",tristropha[i],"Tristropha",0);
         });
     }
     var quarterBar = document.getElementsByClassName("ChantNotationElement QuarterBar");
     for(let i=0; i<quarterBar.length; i++)
     {
-        quarterBar[i].addEventListener("mousemove", (e) => {
+        quarterBar[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",quarterBar[i],"Quarter Bar",1);
         });
-        quarterBar[i].addEventListener("mouseleave", (e) => {
+        quarterBar[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",quarterBar[i],"Quarter Bar",0);
         });
     }
     var doubleBar = document.getElementsByClassName("ChantNotationElement DoubleBar");
     for(let i=0; i<doubleBar.length; i++)
     {
-        doubleBar[i].addEventListener("mousemove", (e) => {
+        doubleBar[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",doubleBar[i],"Double Bar",1);
         });
-        doubleBar[i].addEventListener("mouseleave", (e) => {
+        doubleBar[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",doubleBar[i],"Double Bar",0);
         });
     }
     var accidental = document.getElementsByClassName("ChantNotationElement Accidental");
     for(let i=0; i<accidental.length; i++)
     {
-        accidental[i].addEventListener("mousemove", (e) => {
+        accidental[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",accidental[i],"Flat",1);
         });
-        accidental[i].addEventListener("mouseleave", (e) => {
+        accidental[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",accidental[i],"Flat",0);
         });
     }
     var scandicus = document.getElementsByClassName("ChantNotationElement Scandicus");
     for(let i=0; i<scandicus.length; i++)
     {
-        scandicus[i].addEventListener("mousemove", (e) => {
+        scandicus[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",scandicus[i],"Scandicus",1);
         });
-        scandicus[i].addEventListener("mouseleave", (e) => {
+        scandicus[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",scandicus[i],"Scandicus",0);
         });
     }
     var custos = document.getElementsByClassName("ChantNotationElement Custos");
     for(let i=0; i<custos.length; i++)
     {
-        custos[i].addEventListener("mousemove", (e) => {
+        custos[i].addEventListener(blue_text_enter, (e) => {
             blue_text(e,"#a50202",custos[i],"Custos",1);
         });
-        custos[i].addEventListener("mouseleave", (e) => {
+        custos[i].addEventListener(blue_text_leave, (e) => {
             blue_text(e,"#a50202",custos[i],"Custos",0);
         });
     }
@@ -557,10 +572,12 @@ function typeWriter()
                     green_spans = document.getElementsByClassName("green-text");
                     for(let i=0; i<green_spans.length; i++)
                     {
-                        green_spans[i].addEventListener("click", (e) => {
+                        green_spans[i].addEventListener(blue_text_enter, (e) => {
                             blue_text(e,"#105719",green_spans[i],green_spans[i].innerHTML,1);
                         });
-
+                        green_spans[i].addEventListener(blue_text_leave, (e) => {
+                            blue_text(e,"#105719",green_spans[i],green_spans[i].innerHTML,0);
+                        });
                     }
                     if(span_status == 1){green_index += 2;}
                     span_status = 0;
@@ -589,10 +606,10 @@ function typeWriter()
                     red_spans = document.getElementsByClassName("red-text");
                     for(let i=0; i<red_spans.length; i++)
                     {
-                        red_spans[i].addEventListener("mousemove", (e) => {
+                        red_spans[i].addEventListener(blue_text_enter, (e) => {
                             blue_text(e,"#a50202",red_spans[i],red_spans[i].innerHTML,1);
                         });
-                        red_spans[i].addEventListener("mouseleave", (e) => {
+                        red_spans[i].addEventListener(blue_text_leave, (e) => {
                             blue_text(e,"#a50202",red_spans[i],red_spans[i].innerHTML,0);
                         });
                     }
@@ -623,10 +640,10 @@ function typeWriter()
                     blue_spans = document.getElementsByClassName("blue-text");
                     for(let i=0; i<blue_spans.length; i++)
                     {
-                        blue_spans[i].addEventListener("mousemove", (e) => {
+                        blue_spans[i].addEventListener(blue_text_enter, (e) => {
                             blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),1);
                         });
-                        blue_spans[i].addEventListener("mouseleave", (e) => {
+                        blue_spans[i].addEventListener(blue_text_leave, (e) => {
                             blue_text(e,"rgb(36, 36, 142)",blue_spans[i],blue_spans[i].innerHTML.toLowerCase(),0);
                         }); //TELEPORT
                     }
@@ -889,7 +906,7 @@ function winderp(active)
         else if(active=="modes"){mode_display.style.display = "block";}
         else if(active=="bibliography"){bib_display.style.display = "block";}
         else if(active=="about"){about_display.style.display = "block";}
-        if(screen.width >= 1000)
+        if(mobile == false)
         {
             svg_wrapper.style.height = info_window.offsetHeight - 400 + "px";
         }
@@ -922,7 +939,7 @@ function winderp(active)
 function hide_info()
 {
     if(song_svg.style.display == "none"){svg_wrapper.style.height = "30%";}
-    else {if(window.screen.width <= 1100) {
+    else {if(mobile == true) {
           svg_wrapper.style.height = "100%";
         }
         else {
@@ -1086,7 +1103,7 @@ generate_button.addEventListener("click", () => {
           // render the score to svg code
           song_svg.innerHTML = score.createSvg(ctxt);
           chantScore = document.getElementById('ChantScore');
-          if(window.screen.width <= 1100)
+          if(mobile == true)
           {
             svg_wrapper.style.height = "100%";
           }
