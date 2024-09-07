@@ -555,6 +555,9 @@ cite {
   height: 100%;
   z-index: -50;
 }
+#load-font {
+  font-family: "IM Fell English Italic";
+}
 /* END INFO WINDOW */
 
 /* #history {
