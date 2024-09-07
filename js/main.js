@@ -41,6 +41,8 @@ function detect_mobile() {
     }
 }
 
+detect_mobile();
+
 var gen_btn = document.getElementById("generate-button");
 var perform_btn = document.getElementById("perform-button");
 gen_btn.disabled = true;
