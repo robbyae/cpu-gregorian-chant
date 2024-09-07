@@ -36,8 +36,11 @@ Why didn't I opt to use this new, more compatible version of exsurge for all ver
 
 <table>
   <tr>
-  kjekw
+    <td>![](assets/readme/exsurge-1.png)</td>
+    <td>![](assets/readme/exsurge-2.png)</td>
   </tr>
   <tr>
-  wabbajack
+    <tr>exsurge version 1</td>
+    <tr>exsurge version 2</td>
   </tr>
+</table>
