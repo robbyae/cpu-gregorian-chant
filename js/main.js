@@ -1094,7 +1094,10 @@ generate_button.addEventListener("click", () => {
       } else {
         mappings = exsurge.Gabc.createMappingsFromSource(ctxt, gabc);
         score = new exsurge.ChantScore(ctxt, mappings, true);
-        score.annotation = new exsurge.Annotation(ctxt, document.getElementById("mode-dropdown").innerHTML[0]);
+        if(exsurge_version == 1)
+        {
+            score.annotation = new exsurge.Annotation(ctxt, document.getElementById("mode-dropdown").innerHTML[0]);
+        }
       }
       layoutChant();
     }
