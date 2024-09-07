@@ -29,14 +29,14 @@ var blue_text_leave;
 function detect_mobile() {
     if(screen.width >= 1100) {
         mobile = false;
-        blue_text_enter = 'mousemove';
-        blue_text_leave = 'mouseleave';
+        blue_text_enter = "mousemove";
+        blue_text_leave = "mouseleave";
         alert(mobile);
     }
     else {
         mobile = true;
-        blue_text_enter = 'click';
-        blue_text_leave = 'mouseleave';
+        blue_text_enter = "click";
+        blue_text_leave = "mouseleave";
         alert(mobile);
     }
 }
