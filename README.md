@@ -4,7 +4,7 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 
 **Link to site:** https://cpu-gregorian-chant.com/
 
-![](assets/readme/welcome.GIF)
+![](/assets/readme/welcome.GIF)
 
 ## How It's Made
 
@@ -36,8 +36,8 @@ Why didn't I opt to use this new, more compatible version of exsurge for all ver
 
 <table>
   <tr>
-    <td>![](assets/readme/exsurge-1.png)</td>
-    <td>![](assets/readme/exsurge-2.png)</td>
+    <td>![](/assets/readme/exsurge-1.png)</td>
+    <td>![](/assets/readme/exsurge-2.png)</td>
   </tr>
   <tr>
     <tr>exsurge version 1</td>
