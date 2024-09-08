@@ -37,8 +37,6 @@ Why didn't I opt to use this new, more compatible version of exsurge for all ver
 <figure>
   <img src="/assets/readme/exsurge-1.png" alt="exsurge version 1">
   <figcaption>Exsurge version 1 - less compatible</figcaption>
-</figure>
-<figure>
-  <img src="/assets/readme/exsurge-2.png" alt="exsurge version 1">
+    <img src="/assets/readme/exsurge-2.png" alt="exsurge version 1">
   <figcaption>Exsurge version 2 - more compatible</figcaption>
 </figure>
