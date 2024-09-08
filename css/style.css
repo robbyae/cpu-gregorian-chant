@@ -555,9 +555,7 @@ cite {
   height: 100%;
   z-index: -50;
 }
-#load-font {
-  font-family: "IM Fell English Italic";
-}
+
 /* END INFO WINDOW */
 
 /* #history {
@@ -636,27 +634,53 @@ cite {
   #title {
     font-size: 4vw;
   }
+  #loading {
+    margin-top: 5%;
+  }
   #left-content {
-    width: 40%;
+    width: 60%;
   }
   .btn {
-    font-size: 1.5vw;
+    font-size: 2.25vw;
+  }
+  .dropdown-menu {
+    z-index: 4000000;
+  }
+  .dropdown-item {
+    font-size: 2vw;
   }
   #disclaimer {
     display: none;
   }
+  #monks-closed {
+    height: 50%;
+    bottom: 10%;
+  }
+  #monks-open {
+    height: 50%;
+    bottom: 10%;
+  }
+  #monks-closed-noeyes {
+    height: 50%;
+    bottom: 10%;
+  }
   #svg-wrapper {
     z-index: -1000;
+    height: 10%;
+    top: 90%;
+    min-height: 10%;
   }
   #loading-text {
     margin-top: 5%;
   }
+  #speech-box {
+    top: 35%;
+    font-size: 1.6vw;
+  }
+  #blue-text-div {
+    font-size: 1.6vw;
+  }
   .annotation {
     display: none;
   }
-}
-
-/* HOVER MOBILE SUPPORT */
-@media (hover: none) {
-
 }

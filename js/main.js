@@ -93,7 +93,12 @@ function mode_info(active_mode)
     if(active_mode != prev_mode)
     {
         song_svg.style.display = "none";
-        svg_wrapper.style.height = "30%";
+        if(mobile == false) {
+            svg_wrapper.style.height = "30%";
+        }
+        else {
+            svg_wrapper.style.height = "10%";
+        }
         // svg_wrapper.style.cursor = "default";
         perform_button.style.backgroundColor = "#373c3f";
         perform_button.style.borderColor = "#373c3f";
@@ -120,7 +125,12 @@ function form_info(active_form)
     if(active_form != prev_form)
     {
         song_svg.style.display = "none";
-        svg_wrapper.style.height = "30%";
+        if(mobile == false) {
+            svg_wrapper.style.height = "30%";
+        }
+        else {
+            svg_wrapper.style.height = "10%";
+        }
         // svg_wrapper.style.cursor = "default";
         perform_button.style.backgroundColor = "#373c3f";
         perform_button.style.borderColor = "#373c3f";
@@ -798,7 +808,12 @@ function reset_mode_and_form()
 {
     song_svg.style.display = "none";
     // svg_wrapper.style.cursor = "default";
-    svg_wrapper.style.height = "30%";
+    if(mobile == false) {
+        svg_wrapper.style.height = "30%";
+    }
+    else {
+        svg_wrapper.style.height = "10%";
+    }
     if(is_performing == 1)
     {
         initialize_performance(true);
@@ -940,13 +955,20 @@ function winderp(active)
 }
 function hide_info()
 {
-    if(song_svg.style.display == "none"){svg_wrapper.style.height = "30%";}
-    else {if(mobile == true) {
-          svg_wrapper.style.height = "100%";
-        }
-        else {
-            svg_wrapper.style.height = song_svg.style.height + "40px";
-        }}
+    if(song_svg.style.display == "none"){
+    if(mobile == false) {
+        svg_wrapper.style.height = "30%";
+    }
+    else {
+        svg_wrapper.style.height = "10%";
+    }}
+    else {
+    if(mobile == true) {
+        svg_wrapper.style.height = "100%";
+    }
+    else {
+        svg_wrapper.style.height = song_svg.style.height + "40px";
+    }}
     window.scrollTo(0, 0);
     x.style.display = "none";
     info_window.style.display = "none";
