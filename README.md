@@ -37,3 +37,9 @@ Why didn't I opt to use this new, more compatible version of exsurge for all ver
 ![exsurge version 1 - less compatible](/assets/readme/exsurge-1.png) | ![exsurge version 2 - more compatible](/assets/readme/exsurge-2.png)
 :-------------------------:|:-------------------------:
 exsurge version 1 - less compatible | exsurge version 2 - more compatible
+
+<p align="center">
+  <img alt="exsurge version 1 - less compatible" src="/assets/readme/exsurge-1.png" width="120%">
+&nbsp; &nbsp; &nbsp; &nbsp;
+  <img alt="exsurge version 2 - more compatible" src="/assets/readme/exsurge-2.png" width="120%">
+</p>
