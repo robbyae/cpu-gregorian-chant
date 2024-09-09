@@ -45,6 +45,7 @@ exsurge version 1 - less compatible | exsurge version 2 - more compatible
 ## Fonts
 
 **Fonts**
+<br>
 • [Alagard](https://www.dafont.com/alagard.font)
 <br>
 • [IM Fell English](https://fonts.google.com/specimen/IM+Fell+English)
