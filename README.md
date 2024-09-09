@@ -10,13 +10,13 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 
 **Tech used:**
 <br>
-• [HTML]()
+• [HTML](https://en.wikipedia.org/wiki/HTML)
 <br>
-• [CSS]()
+• [CSS](https://en.wikipedia.org/wiki/CSS)
 <br>
-• [JavaScript]() and various libraries
+• [JavaScript](https://en.wikipedia.org/wiki/JavaScript) and various libraries
 <br>
-• [Python]()
+• [Python](https://en.wikipedia.org/wiki/Python_(programming_language))
 <br>
 • [Pixelorama](https://orama-interactive.itch.io/pixelorama)
 
