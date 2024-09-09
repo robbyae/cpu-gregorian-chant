@@ -17,6 +17,8 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 • JavaScript and various libraries
 <br>
 • Python
+<br>
+• [Pixelorama](https://orama-interactive.itch.io/pixelorama)
 
 **Libraries used:**
 <br>
@@ -37,3 +39,9 @@ Why didn't I opt to use this new, more compatible version of exsurge for all ver
 ![exsurge version 1 - less compatible](/assets/readme/exsurge-1.png) | ![exsurge version 2 - more compatible](/assets/readme/exsurge-2.png)
 :-------------------------:|:-------------------------:
 exsurge version 1 - less compatible | exsurge version 2 - more compatible
+
+## Fonts
+
+**Fonts**
+• [Alagard](https://www.dafont.com/alagard.font)
+• [IM Fell English](https://fonts.google.com/specimen/IM+Fell+English)

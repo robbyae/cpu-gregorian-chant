@@ -61,7 +61,7 @@ var prev_txt;
 var monks_closed = document.getElementById("monks-closed");
 var monks_closed_noeyes = document.getElementById("monks-closed-noeyes");
 var monks_open = document.getElementById("monks-open");
-monks_closed.style.zIndex = "-1";
+monks_closed.style.zIndex = "-201";
 
 // TITLE INFO //
 document.getElementById("title").addEventListener("click", () => {
@@ -701,8 +701,8 @@ function typeWriter()
 }
 
 // MONK TALK EFFECT //
-var open_z = "2";
-var closed_z = "1";
+var open_z = "-198";
+var closed_z = "-199";
 var talk_speed = 100;
 var done_talking;
 var is_talking = 0;
@@ -720,7 +720,7 @@ function change_monk_state()
     }
     else
     {
-        monks_closed_noeyes.style.zIndex = "3";
+        monks_closed_noeyes.style.zIndex = "-197";
     }
 }
 function speak()
@@ -729,19 +729,19 @@ function speak()
 
     if(perform_clicked == 1)
     {
-        monks_open.style.zIndex = "-2";
-        monks_closed_noeyes.style.zIndex = "0";
-        monks_closed_noeyes.style.zIndex = "-3";
+        monks_open.style.zIndex = "-202";
+        monks_closed_noeyes.style.zIndex = "-200";
+        monks_closed_noeyes.style.zIndex = "-203";
         is_talking = 0;
         return;
     }
     if(done_talking == 1)
     {
-        monks_open.style.zIndex = "-2";
-        monks_closed_noeyes.style.zIndex = "0";
+        monks_open.style.zIndex = "-202";
+        monks_closed_noeyes.style.zIndex = "-200";
         setTimeout(() => {
-            monks_closed.style.zIndex = "-1";
-            monks_closed_noeyes.style.zIndex = "-3";
+            monks_closed.style.zIndex = "-201";
+            monks_closed_noeyes.style.zIndex = "-203";
         }, 250);
         talk_speed = 100;
         is_talking = 0;
@@ -749,8 +749,8 @@ function speak()
     }
     if((talk_speed==250 || talk_speed==200) && monks_closed_noeyes.style.zIndex!=1)
     {
-        monks_closed_noeyes.style.zIndex = "2";
-        monks_open.style.zIndex = "1";
+        monks_closed_noeyes.style.zIndex = "-198";
+        monks_open.style.zIndex = "-199";
     }
     else
     {
@@ -772,8 +772,8 @@ function loaded()
     document.getElementById("loading").style.display = "none";
     welcome();
     // document.getElementById("enable-sound").style.display = "block";
-    monks_closed_noeyes.style.zIndex = "-3";
-    monks_closed.style.zIndex = "-1";
+    monks_closed_noeyes.style.zIndex = "-203";
+    monks_closed.style.zIndex = "-201";
     reverb = new Tone.Reverb({
         decay: 18,
     }).toDestination();
@@ -1234,8 +1234,8 @@ function initialize_performance(disable_perform)
         perform_button.innerHTML = "Sing";
         perform_button.style.backgroundColor = "#373c3f";
         perform_button.style.borderColor = "#373c3f";
-        monks_open.style.zIndex = "-2";
-        monks_closed_noeyes.style.zIndex = "-1";
+        monks_open.style.zIndex = "-202";
+        monks_closed_noeyes.style.zIndex = "-201";
         setTimeout(() => {
             if(disable_perform==true)
             {
@@ -1247,9 +1247,9 @@ function initialize_performance(disable_perform)
                 perform_button.disabled = false;
                 perform_button.style.backgroundColor = "#105719";
                 perform_button.style.borderColor = "#105719";
-                monks_closed.style.zIndex = "-1";
-                monks_open.style.zIndex = "-2";
-                monks_closed_noeyes.style.zIndex = "-3";
+                monks_closed.style.zIndex = "-201";
+                monks_open.style.zIndex = "-202";
+                monks_closed_noeyes.style.zIndex = "-203";
                 generate_button.disabled = false;
             }
         }, 500);
@@ -1305,7 +1305,7 @@ function perform(voice)
         }
     }
 
-    monks_closed.style.zIndex = "-3";
+    monks_closed.style.zIndex = "-203";
 
     Tone.Transport.bpm.value = 130;
 
@@ -1514,8 +1514,8 @@ function perform(voice)
     }
 }
 
-var sing_z = "-2";
-var rest_z = "-1";
+var sing_z = "-202";
+var rest_z = "-201";
 function monk_sing_state()
 {
     [sing_z, rest_z] = [rest_z, sing_z];
@@ -1527,7 +1527,7 @@ function monk_sing_state()
 function clear_temp()
 {
     txt="";
-    monks_closed_noeyes.style.zIndex="1";
+    monks_closed_noeyes.style.zIndex="-199";
     speech_box.style.display="none";
 }
 function temp()
