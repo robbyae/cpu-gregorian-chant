@@ -30,6 +30,10 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 <br>
 • [Bootstrap](https://getbootstrap.com/)/[jQuery](https://jquery.com/) for the functionality of the buttons
 
+<br>
+
+
+
 ## Cross-browser functionality
 
 The project uses two separate versions of exsurge. The reason for this is that one version, the one I developed with for nearly the entire development period, is very visually appealing and easy to work with, as the chant elements are perfectly spaced and each svg element has a very specific class name with the respective chant element (PorrectusFlexus, TorculusResupinus, etc.). The problem with this version is that the clefs do not render on Chromium-based browsers! I discovered this while presenting the project to the faculty panel at my university (luckily, no one could tell)! This issue is strange and perplexing, but I believe I know what causes this. The clef is defined last in the `<defs>` section of the svg, and that seems to be the source of this weird issue. I was unable to fix it, but another version of exsurge is fully compatible with all browsers, so detecting the user's browser and loading the appropriate version of exsurge seemed to be the simplest fix.

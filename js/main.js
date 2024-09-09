@@ -75,7 +75,7 @@ document.getElementById("mode-dropdown").addEventListener("click", () => {
     // txt = 'Greogorian Chant uses the diatonic scale and is categorized by eight modes. Modes 1, 3, 5, and 7 are the authentic modes, and modes 2, 4, 6, and 8 are the plagal modes. Each authentic mode has a relative plagal and vice versa. Each mode posesses three defining attributes: a final, a dominant, and an ambitus.';
     if(document.getElementById("mode-dropdown").innerHTML == "Mode")
     {
-        txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but carry different dominants.';
+        txt = 'Gregorian Chant is categorized in eight modes of which there are two varieties: authentic and plagal. Each mode has a relative and posesses three defining attributes: a finalis, a dominant, and an ambitus. Relative modes share the same finalis, but possess different dominants.';
         if(txt != prev_txt){find_important();}
     }
 });
