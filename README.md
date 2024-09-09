@@ -10,13 +10,13 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 
 **Tech used:**
 <br>
-• HTML
+• [HTML]()
 <br>
-• CSS
+• [CSS]()
 <br>
-• JavaScript and various libraries
+• [JavaScript]() and various libraries
 <br>
-• Python
+• [Python]()
 <br>
 • [Pixelorama](https://orama-interactive.itch.io/pixelorama)
 
@@ -34,7 +34,9 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 
 The project uses two separate versions of exsurge. The reason for this is that one version, the one I developed with for nearly the entire development period, is very visually appealing and easy to work with, as the chant elements are perfectly spaced and each svg element has a very specific class name with the respective chant element (PorrectusFlexus, TorculusResupinus, etc.). The problem with this version is that the clefs do not render on Chromium-based browsers! I discovered this while presenting the project to the faculty panel at my university (luckily, no one could tell)! This issue is strange and perplexing, but I believe I know what causes this. The clef is defined last in the `<defs>` section of the svg, and that seems to be the source of this weird issue. I was unable to fix it, but another version of exsurge is fully compatible with all browsers, so detecting the user's browser and loading the appropriate version of exsurge seemed to be the simplest fix.
 
-Why didn't I opt to use this new, more compatible version of exsurge for all versions? There are a couple of reasons, reason one being that the specification of chant elements by class name allowed me to very easily display information on the hover of each chant element i.e. display "Porrectus Flexus: a four-note neume that is a porrectus with a low note at the end" when the user hovers over a porrectus flexus. This is possible on the alternate version, but it would require far more effort. Reason two is that the less compatible version is more visually appealing. The chant elements are flawlessly spaced, whereas the elements on the more compatible version are very condensed. Additionally, the way that chant elements are defined in version one allows the complete neume (punctums and lines, accidentals, etc.) to illuminate together as the monks sing, whereas the compatible version illuminates only the punctums and leaves neume lines the default black. I figured that it was best to use the superior but less compatible version of exsure for browsers that support it (Firefox and Safari).
+In the following paragraph, I will refer to the exsurge versions as version 1 (less compatible) and version 2 (more compatible).
+
+Why didn't I opt to use this new, more compatible version of exsurge for all versions? There are a few reasons, one being that the specification of chant elements by class name allowed me to very easily display information on the hover of each chant element i.e. display "Porrectus Flexus: a four-note neume that is a porrectus with a low note at the end" when the user hovers over a porrectus flexus. This is possible on the alternate version, but it would require far more effort. Another reason is that version 1 is more visually appealing. The chant elements are flawlessly spaced, whereas the elements on version 2 are very condensed. The way that chant elements are classified in version 1 allows the complete neume (punctums and lines, accidentals, etc.) to illuminate together as the monks sing, whereas version 2 illuminates only the punctums and leaves neume lines the default black. Furthermore, there seems to be a design error with the displaying of a climacus (note with descending rhombi) in version 2. In most chant manuscripts, the first note of a climacus is presented as a virga, that is, a square note with a stem descending from the right side (see figure: exsurge version 1), but in version 2, the first note is displayed as a punctum (see figure: exsurge version 2). Exsurge version 2's powerful benefit of compatibility doesn't offset its negative traits, and I figured that it was best to use the superior but less compatible version of exsure for browsers that support it (Firefox and Safari).
 
 ![exsurge version 1 - less compatible](/assets/readme/exsurge-1.png) | ![exsurge version 2 - more compatible](/assets/readme/exsurge-2.png)
 :-------------------------:|:-------------------------:
