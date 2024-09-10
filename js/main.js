@@ -1074,20 +1074,20 @@ function blue_text(e,color,node,str,in_out)
 }
 
 // INFO POPUP - OBSOLETE //
-function info_popup()
-{
-    var red_text = document.getElementsByClassName("red-text");
-    for(let i=0; i<red_text.length; i++)
-    {
-        red_text[i].addEventListener("click", () => {
-            document.getElementById("speech-text").innerHTML="";
-            type_iterator = 0;
-            perform_clicked = 0;
-            txt = mode_info(active_mode);
-            if(txt != prev_txt){find_important();}
-        });
-    }
-}
+// function info_popup()
+// {
+//     var red_text = document.getElementsByClassName("red-text");
+//     for(let i=0; i<red_text.length; i++)
+//     {
+//         red_text[i].addEventListener("click", () => {
+//             document.getElementById("speech-text").innerHTML="";
+//             type_iterator = 0;
+//             perform_clicked = 0;
+//             txt = mode_info(active_mode);
+//             if(txt != prev_txt){find_important();}
+//         });
+//     }
+// }
 
 // RENDER GABC //
 var song_svg = document.getElementById("song-svg");
