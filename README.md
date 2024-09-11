@@ -34,7 +34,7 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian C
 <br>
 Nearly all algorithmic composers use python.
 
-### Speech Box
+**Speech Box**
 <br>
 The speech box presented one of the biggest challenges of the project. Two factors primarily contributed to this challenge — the "typewriter" effect and the colored terms that display a definition when hovered over.
 <br><br>
