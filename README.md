@@ -40,7 +40,7 @@ Tone: A3 G3 D3 E3 D3 A3 C4 D4 B3 A3 B3 G3 A3 C4 B3 G3 E3. |
 
 Now for a discussion of the more intricate details of the process:
 
-Before music can be generated, the user must have selected a mode and form. After the compose button has been clicked, the modal and formal information is passed from JS to Python for generation. 
+There are two core components of Gregorian chant: mode and form. Mode can be defined as a musical scale and its characteristic melodic and harmonic qualities. Form, the structure of a musical composition. Before music can be generated, the user must select a mode and form. After the compose button is clicked, the modal and formal information is passed from JS to Python for generation.
 
 The backbone of the generative algorithm is a [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). Using Markov chains to generate Gregorian chant involves creating datasets of notes from real Gregorian songs (one for each mode) entered in order of their appearance. Below is the dataset for the first mode, the Dorian mode.
 
