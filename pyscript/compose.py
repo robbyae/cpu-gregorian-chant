@@ -283,10 +283,10 @@ def generate_song(click):
   neume_chance = 0
 
   if(form == "Syllabic"):
-    sections = 3
+    sections = 4
     neume_chance = random.randint(1,10)
   elif(form == "Neumatic"):
-    sections = 2
+    sections = 3
     neume_chance = random.randint(40,60)
   elif(form == "Melismatic"):
     sections = 2

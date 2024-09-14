@@ -38,11 +38,14 @@ gabc: (c4)(h)(gd)(e)(dh)(j)(k)(i)(h)(i)(g)(hj)(i)(g)(e.)(::)
 <br><br>
 Tone: A3 G3 D3 E3 D3 A3 C4 D4 B3 A3 B3 G3 A3 C4 B3 G3 E3. |
 <br><br>
-The backbone of this algorithm is a [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). Using Markov chains to generate Gregorian chant involves creating datasets of notes from real Gregorian songs (one for each mode) entered in order of their appearance. Below is the dataset for the first mode, called the Dorian mode.
+We will now discuss the more intricate details of the process. After the compose button has been clicked, the modal and formal information is passed from JS to Python for generation. The backbone of the generative algorithm is a [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). Using Markov chains to generate Gregorian chant involves creating datasets of notes from real Gregorian songs (one for each mode) entered in order of their appearance. Below is the dataset for the first mode, called the Dorian mode.
 
 ![Dorian dataset](/assets/readme/dorian-data.png)
 
 With this set, a collection of "bigrams" is generated and stored in a separate array. For this dataset, the bigrams will be df, fg, gf, fe, ed, etc. This array of bigrams will be used to find the next note in the sequence as the music generates.
+
+There are three components to sequence length: sections
+The potential length is dependent on the selected form. Syallabic songs can generate more sections than neumatic songs, which can generate more than melismatic songs. 
 
 The music generates one note at a time. To begin the sequence, a note is chosen at random to be the first note (based on a dataset of genuine Gregorian starting notes, mode specific). This note is the "current note". To generate the following note, the "current note" is passed to the "predict_next_state" function, which finds all bigrams beginning with the current note and calculates probabilities based on the second note. For example, if the current note is d and the available bigrams are df, da, df, and de, there will be a 50% chance to return f, a 25% chance to return a, and a 25% chance to return e. The function selects a note based on these probabilities and returns it. Whichever note is returned is appended the string and is now the "current note". The process repeats until the note string reaches the defined length, which is randomly determined at the beginning of the generative process.
 
