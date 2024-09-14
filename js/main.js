@@ -1100,6 +1100,7 @@ generate_button.addEventListener("click", () => {
     perform_button.style.borderColor = "#105719";
 
     gabc = pyodideGlobals.get('song_gabc')
+    console.log("gabc: ", gabc);
 
     var ctxt = new exsurge.ChantContext();
     ctxt.lyricTextFont = "'Alagard', serif";
@@ -1192,6 +1193,7 @@ function color_finalis_and_dominant()
 function initialize_performance(disable_perform)
 {
     song_tone = pyodideGlobals.get('song_tone');
+    console.log("Tone.js; ", song_tone)
     song = song_tone.split(" ");
 
     perform_btn_clicks += 1;
