@@ -42,6 +42,8 @@ Now for a discussion of the more intricate details of the process:
 
 There are two core components of Gregorian chant: mode and form. Mode can be defined as a musical scale and its characteristic melodic and harmonic qualities. Form, the structure of a musical composition. Before music can be generated, the user must select a mode and form. After the compose button is clicked, the modal and formal information is passed from JS to Python for generation.
 
+The length of compositions is dependent on the form selected. Syllabic compositions have four sections, neumatic have three, and melismatic have two. These numbers are arbitrary and do not in any way reflect the formal structure of real chants. The number of sections decrease with each form because of their neumatic variety. Songs with many neumes (neumatic and melismatic) will be longer than those with few or no neumes (syllabic).
+
 The backbone of the generative algorithm is a [Markov chain](https://en.wikipedia.org/wiki/Markov_chain). Using Markov chains to generate Gregorian chant involves creating datasets of notes from real Gregorian songs (one for each mode) entered in order of their appearance. Below is the dataset for the first mode, the Dorian mode.
 
 ![Dorian dataset](/assets/readme/dorian-data.png)
