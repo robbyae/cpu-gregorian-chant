@@ -306,7 +306,7 @@ def generate_song(click):
       final_sec = True
     else:
       final_sec = False
-    sectionelles = random.randint(1,2)
+    sectionelles = random.randint(1,1,2)
     secelle_length = random.randint(4,10)
     # parameters: data, openers, closers, Finales, sectionelles, neume_chance, final_sec
     generate_sequence(mode_int, bigrams_list, openers, closers, Finales, sectionelles, neume_chance, final_sec)
