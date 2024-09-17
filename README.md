@@ -53,6 +53,12 @@ The music generates one section and, subsequently, one sectionelle at a time, wi
 
 Once the music has generated, another algorithm reads the generated string and creates a separate string to be used by Tone.js. Both strings are then passed from Python to JavaScript, and the score is rendered.
 
+### The Monks
+The monks were designed in Pixelorama. Their models took some time to develop, with one early model being quite frightening.
+
+![Dorian dataset](/assets/readme/early-monks.png)
+![Dorian dataset](/assets/readme/early-monks-waaah.png)
+
 ### Speech Box
 The speech box presented one of the biggest challenges of the project. Two factors primarily contributed to this challenge — the "typewriter" effect and the colored terms that display a definition when hovered over.
 <br><br>
