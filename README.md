@@ -8,7 +8,8 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian c
 
 ## How it's made
 
-### Tech used:
+**Tech used:**
+<br>
 • [HTML](https://html.spec.whatwg.org/multipage/)
 <br>
 • [CSS](https://www.w3.org/Style/CSS/)
@@ -19,7 +20,7 @@ CPU Gregorian Chant is a web application that procedurally generates Gregorian c
 <br>
 • [Pixelorama](https://orama-interactive.itch.io/pixelorama)
 
-**JavaScript Libraries:**
+**Libraries used:**
 <br>
 • [exsurge.js](https://github.com/frmatthew/exsurge) for the rendering of Gregorian chant notation
 <br>
