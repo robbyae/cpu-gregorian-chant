@@ -59,7 +59,7 @@ The monks were designed in Pixelorama. Their models took some time to develop, w
 ![Dorian dataset](/assets/readme/early-monks.png)
 <br>
 An early version of the monks.
-<br>
+<br><br>
 ![Dorian dataset](/assets/readme/early-monks-waaah.png)
 <br>
 The experimental singing version of those monks.
