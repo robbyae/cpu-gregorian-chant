@@ -57,7 +57,9 @@ Once the music has generated, another algorithm reads the generated string and c
 The monks were designed in Pixelorama. Their models took some time to develop, with one early model being quite frightening.
 
 ![Dorian dataset](/assets/readme/early-monks.png)
+An early version of the monks.
 ![Dorian dataset](/assets/readme/early-monks-waaah.png)
+The experimental singing version of those monks.
 
 ### Speech Box
 The speech box presented one of the biggest challenges of the project. Two factors primarily contributed to this challenge — the "typewriter" effect and the colored terms that display a definition when hovered over.
