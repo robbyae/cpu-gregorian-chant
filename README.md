@@ -60,11 +60,11 @@ The monks were designed in Pixelorama. While I liked their earliest version, it 
 :-------------------------:|:-------------------------:
 an early version of the monks | an experimental singing version of those monks
 
-I humbly present to you another experimental iteration, this time with more pixels.
+After some experimentation increasing the pixel count on both the heads and the robes, I decided to keep the robes 
 
-![Big Monk](/assets/readme/big-monk.png)
-:-------------------------:
-big monk
+![Final Monks](/assets/img/monks-closed-hd.png)
+:--:
+The final version of the monks.
 
 ### Speech Box
 The speech box presented a surprising challenge. Two factors primarily contributed to this challenge — the "typewriter" effect, and the colored terms that display a definition when hovered over.
