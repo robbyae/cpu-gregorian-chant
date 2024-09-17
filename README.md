@@ -38,7 +38,7 @@ gabc: (c4)(h)(gd)(e)(dh)(j)(k)(i)(h)(i)(g)(hj)(i)(g)(e.)(::)
 
 Tone: A3 G3 D3 E3 D3 A3 C4 D4 B3 A3 B3 G3 A3 C4 B3 G3 E3. |
 
-Now for a discussion of the more intricate details of the process:
+<!-- Now for a discussion of the more intricate details of the process: -->
 
 There are two core components of Gregorian chant: form and mode. Mode can be defined as a musical scale and its characteristic melodic and harmonic qualities. Form, the structure of a musical composition. Before music can be "composed", the user must select a mode and form. After the compose button is clicked, the modal and formal information is passed from JS to Python for generation.
 
