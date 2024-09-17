@@ -62,7 +62,7 @@ An early version of the monks.
 <br><br>
 ![Dorian dataset](/assets/readme/early-monks-waaah.png)
 <br>
-The experimental singing version of those monks.
+An experimental singing version of those monks. O_O
 
 ### Speech Box
 The speech box presented one of the biggest challenges of the project. Two factors primarily contributed to this challenge — the "typewriter" effect and the colored terms that display a definition when hovered over.
