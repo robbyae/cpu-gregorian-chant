@@ -62,7 +62,7 @@ an early version of the monks | an experimental singing version of those monks
 
 After some experimentation increasing the pixel count on both the heads and the robes, I decided to keep the robes 
 
-![Final Monks](/assets/readme/monks-final.png)
+![Final Monks](/assets/readme/final-monks.png)
 :--:
 The final version of the monks.
 
