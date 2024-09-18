@@ -115,9 +115,9 @@ a:hover {
 #svg-wrapper {
   background-color:#ddd0b9;
   position: absolute;
-  height: 30%;
-  top:70%;
-  min-height: 30%;
+  height: 25%;
+  top:75%;
+  min-height: 25%;
   width: 100vw;
   max-width: 100vw;
   display: block;
@@ -279,34 +279,34 @@ body {
 #monks-closed {
   position: absolute;
   z-index: -103;
-  bottom: 30%;
-  height: 44%;
+  bottom: 25%;
+  height: 48%;
   left: 50%;
   transform: translateX(-50%);
 }
 #monks-open {
   position: absolute;
   z-index: -102;
-  height: 44%;
-  bottom: 30%;
+  height: 48%;
+  bottom: 25%;
   left: 50%;
   transform: translateX(-50%);
 }
 #monks-closed-noeyes {
   position: absolute;
   z-index: -101;
-  height: 44%;
-  bottom: 30%;
+  height: 48%;
+  bottom: 25%;
   left: 50%;
   transform: translateX(-50%);
 }
 
 #speech-box {
   font-family: "Alagard";
-  font-size: 1.25vw;
+  font-size: 1.3vw;
   position: absolute;
   height: 2%;
-  top: 22%;
+  top: 23%;
   left: 18%;
   right: 18%;
   display: flex;
@@ -332,10 +332,10 @@ body {
 
 #ghost-box {
   font-family: "Alagard";
-  font-size: 1.25vw;
+  font-size: 1.3vw;
   position: absolute;
   height: 2%;
-  top: 22%;
+  top: 23%;
   left: 18%;
   right: 18%;
   display: flex;
