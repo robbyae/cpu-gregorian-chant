@@ -55,7 +55,7 @@ The music generates one section and, subsequently, one sectionelle at a time, wi
 Once the music has generated, another algorithm reads the generated string and creates a separate string to be used by Tone.js. Both strings are then passed from Python to JavaScript, and the score is rendered.
 </details>
 
-<details><summary><b>The Monks</b></summary>
+<details><summary><h2>The Monks</h2></summary>
 The monks were designed in Pixelorama. While I liked their earliest version, it had some issues. The dimensions of their heads were 5x6 pixels, which severely limits detail potential. The greatest issue to emerge from this limitation is the mouth. Their mouth was 1x1 pixel, and animating it to sing or speak had no good solution. I came up with two options. I could remove the mouth entirely when they aren't singing and have it appear when they sing, or I could expand the mouth and chin down one pixel when they sing. As you can imagine, all of these animations become even worse when animating to speak. It was apparrent that I needed more pixels.
 <br><br>
 
