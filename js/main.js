@@ -94,7 +94,7 @@ function mode_info(active_mode)
     {
         song_svg.style.display = "none";
         if(mobile == false) {
-            svg_wrapper.style.height = "30%";
+            svg_wrapper.style.height = "20%";
         }
         else {
             svg_wrapper.style.height = "10%";
@@ -126,7 +126,7 @@ function form_info(active_form)
     {
         song_svg.style.display = "none";
         if(mobile == false) {
-            svg_wrapper.style.height = "30%";
+            svg_wrapper.style.height = "20%";
         }
         else {
             svg_wrapper.style.height = "10%";
@@ -809,7 +809,7 @@ function reset_mode_and_form()
     song_svg.style.display = "none";
     // svg_wrapper.style.cursor = "default";
     if(mobile == false) {
-        svg_wrapper.style.height = "30%";
+        svg_wrapper.style.height = "20%";
     }
     else {
         svg_wrapper.style.height = "10%";
@@ -957,7 +957,7 @@ function hide_info()
 {
     if(song_svg.style.display == "none"){
     if(mobile == false) {
-        svg_wrapper.style.height = "30%";
+        svg_wrapper.style.height = "20%";
     }
     else {
         svg_wrapper.style.height = "10%";
@@ -1133,7 +1133,7 @@ generate_button.addEventListener("click", () => {
           chantScore = document.getElementById('ChantScore');
           if(mobile == true)
           {
-            svg_wrapper.style.height = "100%";
+            svg_wrapper.style.height = "70%";
           }
           // svg_wrapper.style.height = "40%";
           // color_finalis_and_dominant();

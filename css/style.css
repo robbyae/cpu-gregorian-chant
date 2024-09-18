@@ -115,9 +115,9 @@ a:hover {
 #svg-wrapper {
   background-color:#ddd0b9;
   position: absolute;
-  height: 25%;
-  top:75%;
-  min-height: 25%;
+  height: 20%;
+  top:80%;
+  min-height: 20%;
   width: 100vw;
   max-width: 100vw;
   display: block;
@@ -279,24 +279,24 @@ body {
 #monks-closed {
   position: absolute;
   z-index: -103;
-  bottom: 25%;
-  height: 48%;
+  bottom: 20%;
+  height: 53%;
   left: 50%;
   transform: translateX(-50%);
 }
 #monks-open {
   position: absolute;
   z-index: -102;
-  height: 48%;
-  bottom: 25%;
+  height: 53%;
+  bottom: 20%;
   left: 50%;
   transform: translateX(-50%);
 }
 #monks-closed-noeyes {
   position: absolute;
   z-index: -101;
-  height: 48%;
-  bottom: 25%;
+  height: 53%;
+  bottom: 20%;
   left: 50%;
   transform: translateX(-50%);
 }
