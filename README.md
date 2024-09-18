@@ -60,14 +60,15 @@ The monks were designed in Pixelorama. While I liked their earliest version, it 
 :-------------------------:|:-------------------------:
 an early version of the monks | an experimental singing version of the monks
 
-After some experimentation, I decided to increase the pixel count on the heads (and legs!) only, leaving the robes identical to the earliest model. I believe the wide black outlines conveys a sort of thickness, and the stylistic inconsistencies between the heads and the robes meshes very well.
+After some experimentation, I decided to increase the visible pixel count on the heads only and leave the robes identical to the earliest model. The wide black outlines conveys a sort of thickness, and the stylistic inconsistencies between the heads and the robes mesh well. Additionally, keeping the robes identical conveys the genercism of the monks despite their distinct faces.
 
 ![Final Monks](/assets/readme/final-monks.png)
 :--:
 The final version of the monks.
 
-Some find
+Some find the monks "creepy". While this never occurred to me as I was creating them, I don't find them creepy at all. In fact, I think they are quite cute.
 </details>
+
 <details><summary><h3>Speech Box</h3></summary>
 The speech box presented a surprising challenge. Two factors primarily contributed to this challenge — the "typewriter" effect, and the colored terms that display a definition when hovered over.
 <br><br>
@@ -76,8 +77,7 @@ The typewriter effect is, in essence, simple — add characters individually on 
 One interesting component of the speech box is the use of a "ghost box" to correctly display the box in certain cases. Most of the time, the monks' speech will exceed one line. In this case, the box renders to the full extent and there are no problems. In a few cases, however, the speech does not exceed one line. Without modifications, this results in an uncentered box floating to the left. Bad. I couldn't simply align the text to the center (text-align: center), because the text, being rendered one character at a time, would render the first character at the center and expand in both directions. Worse. The answer was a "ghost box", an invisible box containing the complete speech text. This box would be centered, and its "left" property would be read in JS and applied to the speech box. This way, the typed speech could begin on the left side and remain centered over the monks' tonsures.
 </details>
 
-## Cross-browser functionality
-
+<details><summary><h3>Cross-browser functionality</h3></summary>
 The project uses two separate versions of exsurge. The reason for this is that one version, the one I developed with for nearly the entire development period, is very visually appealing and easy to work with, as the chant elements are perfectly spaced and each svg element has a very specific class name with the respective chant element (PorrectusFlexus, TorculusResupinus, etc.). The problem with this version is that the clefs do not render on Chromium-based browsers! I discovered this while presenting the project to the faculty panel at my university (luckily, no one could tell)! This issue is strange and perplexing, but I believe I know what causes this. The clef is defined last in the `<defs>` section of the svg, and that seems to be the source of this weird issue. I was unable to fix it, but another version of exsurge is fully compatible with all browsers, so detecting the user's browser and loading the appropriate version of exsurge seemed to be the simplest fix.
 
 In the following paragraph, I will refer to the exsurge versions as version 1 (less compatible) and version 2 (more compatible).
