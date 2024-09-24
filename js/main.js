@@ -802,6 +802,7 @@ function welcome_txt()
 var mode_selected = 0;
 var form_selected = 0;
 var is_performing = 0;
+var start_here = document.getElementById("start-here");
 var mode_dropdown = document.getElementById("mode-dropdown");
 mode_dropdown.disabled = true;
 function reset_mode_and_form()
@@ -832,6 +833,7 @@ function resetMode()
 }
 function showMode(item)
 {
+    start_here.style.display="none";
     mode_dropdown.innerHTML = item.innerHTML;
     active_mode = item.innerHTML.substr(0,1);
     mode_selected = 1;
@@ -859,6 +861,7 @@ function resetForm()
 }
 function showForm(item)
 {
+    start_here.style.display="none";
     form_dropdown.innerHTML = item.innerHTML;
     active_form = item.innerHTML;
     form_selected = 1;

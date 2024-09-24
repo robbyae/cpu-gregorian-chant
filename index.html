@@ -51,30 +51,37 @@
     </div>
     <div id="left-content">
       <p id="title" onclick="reset_mode_and_form()">CPU Gregorian Chant</p>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="mode-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="Tone.start()">Mode</button>
-        <div class="dropdown-menu" aria-labelledby="mode-dropdown">
-          <a class="dropdown-item" href="#" onclick="showMode(this)">1: Dorian</a>
-          <a class="dropdown-item" href="#" onclick="showMode(this)">2: Hypodorian</a>
-          <a class="dropdown-item" href="#" onclick="showMode(this)">3: Phrygian</a>
-          <a class="dropdown-item" href="#" onclick="showMode(this)">4: Hypophrygian</a>
-          <a class="dropdown-item" href="#" onclick="showMode(this)">5: Lydian</a>
-          <a class="dropdown-item" href="#" onclick="showMode(this)">6: Hypolydian</a>
-          <a class="dropdown-item" href="#" onclick="showMode(this)">7: Mixolydian</a>
-          <a class="dropdown-item" href="#" onclick="showMode(this)">8: Hypomixolydian</a>
+      <table>
+        <tr>
+          <td>
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="mode-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" onclick="Tone.start()">Mode</button>
+              <div class="dropdown-menu" aria-labelledby="mode-dropdown">
+                <a class="dropdown-item" href="#" onclick="showMode(this)">1: Dorian</a>
+                <a class="dropdown-item" href="#" onclick="showMode(this)">2: Hypodorian</a>
+                <a class="dropdown-item" href="#" onclick="showMode(this)">3: Phrygian</a>
+                <a class="dropdown-item" href="#" onclick="showMode(this)">4: Hypophrygian</a>
+                <a class="dropdown-item" href="#" onclick="showMode(this)">5: Lydian</a>
+                <a class="dropdown-item" href="#" onclick="showMode(this)">6: Hypolydian</a>
+                <a class="dropdown-item" href="#" onclick="showMode(this)">7: Mixolydian</a>
+                <a class="dropdown-item" href="#" onclick="showMode(this)">8: Hypomixolydian</a>
+              </div>
+            </div>
+          </td>
+          <td><p id='start-here'><- Start Here</p></td>
+        </tr>
+      </table>
+        <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="form-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Form</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item" href="#" onclick="showForm(this)">Syllabic</a>
+            <a class="dropdown-item" href="#" onclick="showForm(this)">Neumatic</a>
+            <a class="dropdown-item" href="#" onclick="showForm(this)">Melismatic</a>
+          </div>
         </div>
-      </div>
-      <div class="dropdown">
-        <button class="btn btn-secondary dropdown-toggle" type="button" id="form-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Form</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-          <a class="dropdown-item" href="#" onclick="showForm(this)">Syllabic</a>
-          <a class="dropdown-item" href="#" onclick="showForm(this)">Neumatic</a>
-          <a class="dropdown-item" href="#" onclick="showForm(this)">Melismatic</a>
-        </div>
-      </div>
-      <button type="button" py-click="generate_song" class="btn btn-secondary" id="generate-button">Compose</button>
-      <br>
-      <button type="button" class="btn btn-secondary" id="perform-button">Sing</button>
+        <button type="button" py-click="generate_song" class="btn btn-secondary" id="generate-button">Compose</button>
+        <br>
+        <button type="button" class="btn btn-secondary" id="perform-button">Sing</button>
     </div>
     <div id="right-content">
       <!-- <button class="btn btn-secondary right-btn" id="clear-button" onclick="clear_temp()">Clear</button>
