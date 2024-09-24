@@ -633,6 +633,9 @@ cite {
     height: 50%;
     top: 50%;
   }
+  #start-here {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 500px) and (max-width: 1100px) {
@@ -691,5 +694,8 @@ cite {
   }
   .annotation {
     display: none;
+  }
+  #start-here {
+    font-size: 2vw;
   }
 }
