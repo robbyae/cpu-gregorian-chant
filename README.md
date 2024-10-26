@@ -66,7 +66,7 @@ After some experimentation, I decided to increase the visible pixel count on the
 :--:
 The final version of the monks.
 
-Some find the monks "creepy". While this never occurred to me as I was creating them, I don't find them creepy at all. In fact, I think they are quite cute.
+Some find the monks "creepy". This never occurred to me as I was creating them, and I don't find them creepy at all. In fact, I think they are quite cute.
 </details>
 
 <details><summary><h3>Speech Box</h3></summary>
