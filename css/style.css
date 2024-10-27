@@ -238,7 +238,7 @@ body {
 }
 
 #start-here {
-  font-size: 1.5rem;
+  font-size: 1.3vw;
   color:#a50202;
   padding-left: 10px;
   padding-top: 10px;
@@ -696,6 +696,6 @@ cite {
     display: none;
   }
   #start-here {
-    font-size: 2vw;
+    font-size: 2.25vw;
   }
 }
