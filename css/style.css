@@ -54,6 +54,9 @@ a:hover {
   color: #a50202;
   white-space: nowrap;
 }
+.js-lib-a:hover {
+  text-decoration-thickness: 1px;
+}
 
 .nowrap
 {
