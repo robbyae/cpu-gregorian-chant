@@ -387,7 +387,7 @@ function read_svg_element()
 var plagal;
 var green_arr = ["Do","Re","Mi","Fa","Sol","La","Ti","medieval","syllabic","neumatic","melismatic"];
 var green_indices = [];
-var red_arr = ["plagal","authentic","diatonic","click","Gregorian Chant","illuminated","Dorian","Hypodorian","Phrygian","Hypophrygian","Lydian","Hypolydian","Mixolydian","Hypomixolydian","cpu-gregorian-chant.com"];
+var red_arr = ["plagal","authentic","diatonic","Gregorian Chant","illuminated","Dorian","Hypodorian","Phrygian","Hypophrygian","Lydian","Hypolydian","Mixolydian","Hypomixolydian","cpu-gregorian-chant.com"];
 var red_indices = [];
 var blue_arr = ["monophonic","mode","form","plainsong","relative","finalis","dominant","ambitus","neume"];
 var blue_indices = [];
@@ -794,7 +794,7 @@ function welcome()
 }
 function welcome_txt()
 {
-    txt = 'Welcome to CPU Gregorian Chant, an application to procedurally generate medieval church song! To begin, choose a mode and form on the left to compose a Gregorian Chant. Hover over our illuminated words for more information or select a button on the right for an article.';
+    txt = 'Welcome to CPU Gregorian Chant, an application to procedurally generate medieval church song! To begin, choose a mode and form on the left, click compose to write a song, and click sing to hear your chant. Hover over our illuminated words for more information or select a button on the right for an article.';
     if(txt != prev_txt){find_important();}
     // Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church.
 }
