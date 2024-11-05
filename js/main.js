@@ -80,14 +80,14 @@ document.getElementById("mode-dropdown").addEventListener("click", () => {
     }
 });
 var prev_mode = "";
-var mode_text = ['The Dorian mode is an authentic mode and relative of the Hypodorian mode. Its finalis is Re, and its dominant falls on the fifth degree, La.',
-'The Hypodorian mode is a plagal mode and relative of the Dorian mode. Its finalis is Re, and its dominant falls on the third degree, Fa.',
-'The Phrygian mode is an authentic mode and relative of the Hypophrygian mode. Its finalis is Mi, and its dominant falls on the sixth degree, Do.',
-'The Hypophrygian mode is a plagal mode and relative of the Phrygian mode. Its finalis is Mi, and its dominant falls on the fourth degree, La.',
-'The Lydian mode is an authentic mode and relative of the Hypolydian mode. Its finalis is Fa, and its dominant falls on the fifth degree, Do.',
-'The Hypoydian mode is a plagal mode and relative of the Lydian mode. Its finalis is Fa, and its dominant falls on the third degree, La.',
-'The Mixolydian mode is an authentic mode and relative of the Hypomixolydian mode. Its finalis is Sol, and its dominant falls on the fifth degree, Re.',
-'The Hypomixolydian mode is a plagal mode and relative of the Mixolydian mode. Its finalis is Sol, and its dominant falls on the fourth degree, Do.']
+var mode_text = ['The Dorian mode is an authentic mode and relative of the Hypodorian mode. Its finalis is Re, and its dominant is the fifth degree, La.',
+'The Hypodorian mode is a plagal mode and relative of the Dorian mode. Its finalis is Re, and its dominant is the third degree, Fa.',
+'The Phrygian mode is an authentic mode and relative of the Hypophrygian mode. Its finalis is Mi, and its dominant is the sixth degree, Do.',
+'The Hypophrygian mode is a plagal mode and relative of the Phrygian mode. Its finalis is Mi, and its dominant is the fourth degree, La.',
+'The Lydian mode is an authentic mode and relative of the Hypolydian mode. Its finalis is Fa, and its dominant is the fifth degree, Do.',
+'The Hypoydian mode is a plagal mode and relative of the Lydian mode. Its finalis is Fa, and its dominant is the third degree, La.',
+'The Mixolydian mode is an authentic mode and relative of the Hypomixolydian mode. Its finalis is Sol, and its dominant is the fifth degree, Re.',
+'The Hypomixolydian mode is a plagal mode and relative of the Mixolydian mode. Its finalis is Sol, and its dominant is the fourth degree, Do.']
 function mode_info(active_mode)
 {
     if(active_mode != prev_mode)
