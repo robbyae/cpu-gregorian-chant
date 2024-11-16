@@ -794,7 +794,7 @@ function welcome()
 }
 function welcome_txt()
 {
-    txt = 'Welcome to CPU Gregorian Chant, an application to procedurally generate medieval church song! To begin, choose a mode and form on the left, click compose to write a song, and click sing to hear your chant. Hover over our illuminated words for more information or select a button on the right for an article.';
+    txt = 'Welcome to CPU Gregorian Chant, an application to procedurally generate medieval church song! To begin, select a mode and form on the left, click compose to write a song, and click sing to hear your chant. Hover over our illuminated words for more information or select a button on the right for an article.';
     if(txt != prev_txt){find_important();}
     // Gregorian Chant refers to the primary repertory of plainsong, a type of monophonic song sung in liturgies of the Western Church.
 }
