@@ -8,7 +8,7 @@
   <link rel="icon" type="image/x-icon" href="assets/img/neume-icon.ico">
   <link rel="shortcut icon" type="image/x-icon" href="assets/img/neume-icon.ico">
   <meta name="description" content="Procedurally generate Gregorian-style chant and explore early western music theory.">
-  <meta name="keywords" content="Gregorian Chant, generate, gabc, generator">
+  <meta name="keywords" content="Gregorian Chant, generate, music, gabc, generator">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-L2VJXFTFM1"></script>
@@ -48,10 +48,16 @@
   </div> -->
   <div id="body-div">
     <div id="loading">
-      <p id="loading-text">Loading</p>
+      <p id="loading-text">Loading Chant Generator</p>
+    </div>
+    <div id="speech-box">
+      <p id="speech-text">Welcome to CPU Gregorian Chant, an application to procedurally generate medieval church plainsong! To begin, choose a mode and form on the left, click compose to write a song, and click sing to hear your chant. Hover over our illuminated words for more information or select a button on the right for an article.</p>
+    </div>
+    <div id="ghost-box">
+      <p id="ghost-text"></p>
     </div>
     <div id="left-content">
-      <p id="title" onclick="reset_mode_and_form()">CPU Gregorian Chant</p>
+      <h1 id="title" onclick="reset_mode_and_form()">CPU Gregorian Chant</h1>
       <table>
         <tr>
           <td>
@@ -99,12 +105,6 @@
       <br>
       <button type="button" class="btn btn-secondary right-btn" id="about-button">About</button>
     </div>
-    <div id="speech-box">
-      <p id="speech-text"></p>
-    </div>
-    <div id="ghost-box">
-      <p id="ghost-text"></p>
-    </div>
   </div>
     <div id="blue-text-div">
       <p id="blue-div-text"><span id="term"></span>: <span id="def"></span></p>
@@ -116,7 +116,6 @@
     </div>
     <div id="svg-wrapper">
       <div id="song-svg" class="song-svg">
-        <p id="disclaimer">Please switch to horizontal view and refresh the page to use CPU Gregorian Chant on mobile devices.</p>
       </div>
     </div>
     </div>
@@ -208,7 +207,7 @@
       </div>
       <div id="about">
         <h3 class="info-title">~ About ~</h3>
-        <p class="double-indent">CPU Gregorian Chant was created by <a class="js-lib-a" href="https://robbystrong.com" target="_blank">Robert Strong</a> as the capstone project for his undergraduate studies in Creative Technology & Design at the University of Colorado, Boulder.</p>
+        <p class="double-indent">CPU Gregorian Chant was created by <a class="js-lib-a" href="https://robbystrong.com" target="_blank">Robby Strong</a> as the capstone project for his undergraduate studies in Creative Technology & Design at the University of Colorado, Boulder.</p>
         <!-- The idea to algorithmically compose Gregorian chant was inspired by the 1994 video game <a class="js-lib-a" href='https://en.wikipedia.org/wiki/C.P.U._Bach' target="_blank">C.P.U. Bach</a>. The title of this program pays homage to its inspirator. -->
         <p class="indent">Visit the project's <a class="js-lib-a" href="https://github.com/robbyae/cpu-gregorian-chant" target="_blank">Github</a> page for documentarion.</p>
         <p class="indent">The web components of the project were built using HMTL, CSS and various Javascript libraries. The JS libraries used are:</p>
