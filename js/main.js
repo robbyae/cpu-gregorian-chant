@@ -790,7 +790,7 @@ function welcome()
     mode_btn.disabled = false;
     // bib_btn.disabled = false;
     about_btn.disabled = false;
-    changelog_btn.disabled = false;
+    // changelog_btn.disabled = false;
     welcome_txt();
 }
 function welcome_txt()
@@ -887,13 +887,13 @@ var notation_btn = document.getElementById("notation-button");
 var mode_btn = document.getElementById("mode-button");
 // var bib_btn = document.getElementById("bibliography-button");
 var about_btn = document.getElementById("about-button");
-var changelog_btn = document.getElementById("changelog-button");
+// var changelog_btn = document.getElementById("changelog-button");
 history_btn.disabled = true;
 notation_btn.disabled = true;
 mode_btn.disabled = true;
 // bib_btn.disabled = true;
 about_btn.disabled = true;
-changelog_btn.disabled = true;
+// changelog_btn.disabled = true;
 // var dict_display = document.getElementById("dictionary");
 var history_display = document.getElementById("history");
 var notation_display = document.getElementById("notation");
@@ -901,7 +901,7 @@ var info_window = document.getElementById("info-window");
 var mode_display = document.getElementById("modes");
 // var bib_display = document.getElementById("bibliography");
 var about_display = document.getElementById("about");
-var changelog_display = document.getElementById("changelog");
+// var changelog_display = document.getElementById("changelog");
 var window_clicked = 0;
 x.addEventListener("click", () => winderp("x"));
 // dict_btn.addEventListener("click", () => winderp("dict"));
@@ -910,7 +910,7 @@ notation_btn.addEventListener("click", () => winderp("notation"));
 mode_btn.addEventListener("click", () => winderp("modes"));
 // bib_btn.addEventListener("click", () => winderp("bibliography"));
 about_btn.addEventListener("click", () => winderp("about"));
-changelog_btn.addEventListener("click", () => winderp("changelog"));
+// changelog_btn.addEventListener("click", () => winderp("changelog"));
 var svg_wrapper = document.getElementById("svg-wrapper");
 var prev_active;
 function winderp(active)
@@ -923,7 +923,7 @@ function winderp(active)
         mode_display.style.display = "none";
         // bib_display.style.display = "none";
         about_display.style.display = "none";
-        changelog_display.style.display = "none";
+        // changelog_display.style.display = "none";
         document.getElementById("body-div").removeEventListener("click", hide_info);
         info_window.style.display = "block";
         x.style.display = "block";
@@ -933,7 +933,7 @@ function winderp(active)
         else if(active=="modes"){mode_display.style.display = "block";}
         // else if(active=="bibliography"){bib_display.style.display = "block";}
         else if(active=="about"){about_display.style.display = "block";}
-        else if(active=="changelog"){changelog_display.style.display = "block";}
+        // else if(active=="changelog"){changelog_display.style.display = "block";}
         if(mobile == false)
         {
             svg_wrapper.style.height = info_window.offsetHeight - 400 + "px";
@@ -989,7 +989,7 @@ function hide_info()
     mode_display.style.display = "none";
     // bib_display.style.display = "none";
     about_display.style.display = "none";
-    changelog_display.style.display = "none";
+    // changelog_display.style.display = "none";
     document.getElementById("body-div").removeEventListener("click", hide_info);
     window_clicked = 0;
 }
