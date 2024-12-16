@@ -1551,3 +1551,4 @@ function temp()
     txt = "Thank you for watching! Go to cpu-gregorian-chant.com to generate your own plainsong!"
     find_important();
 }
+
